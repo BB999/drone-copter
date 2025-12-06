@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>DROCON - MR Drone Simulator</title>
+
+  <!-- PWA Meta Tags -->
+  <meta name="description" content="Mixed Reality Drone Simulator for Quest 3 / Quest Pro">
+  <meta name="theme-color" content="#00c8ff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="DROCON">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Rajdhani', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0d0d2a 100%);
+      /* PWA Safe Area対応 */
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+    }
+
+    #app {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Landing Page */
+    #landing-page {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      padding-top: calc(20px + env(safe-area-inset-top));
+      padding-bottom: calc(20px + env(safe-area-inset-bottom));
+      overflow-y: auto;
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0d0d2a 100%);
+    }
+
+    /* Animated Background */
+    #landing-page::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(0, 200, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(0, 255, 150, 0.05) 0%, transparent 60%);
+      pointer-events: none;
+      animation: pulseBackground 8s ease-in-out infinite;
+    }
+
+    @keyframes pulseBackground {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* Grid Lines */
+    .grid-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(rgba(0, 200, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 200, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+
+    /* Title Section */
+    .title-section {
+      text-align: center;
+      margin-bottom: clamp(10px, 2vmin, 30px);
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+
+    .main-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 900;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      text-shadow:
+        0 0 10px rgba(0, 200, 255, 0.8),
+        0 0 20px rgba(0, 200, 255, 0.5),
+        0 0 40px rgba(0, 200, 255, 0.3);
+      animation: titleGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes titleGlow {
+      0%, 100% {
+        text-shadow:
+          0 0 10px rgba(0, 200, 255, 0.8),
+          0 0 20px rgba(0, 200, 255, 0.5),
+          0 0 40px rgba(0, 200, 255, 0.3);
+      }
+      50% {
+        text-shadow:
+          0 0 20px rgba(0, 200, 255, 1),
+          0 0 40px rgba(0, 200, 255, 0.8),
+          0 0 60px rgba(0, 200, 255, 0.5);
+      }
+    }
+
+    .subtitle {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: rgba(0, 200, 255, 0.7);
+      letter-spacing: 0.5em;
+      margin-top: 10px;
+      font-weight: 300;
+    }
+
+    /* Drone Icon */
+    .drone-icon {
+      width: clamp(120px, 25vmin, 200px);
+      height: clamp(120px, 25vmin, 200px);
+      margin: clamp(10px, 2vmin, 20px) auto;
+      position: relative;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 200, 255, 0.1) 0%, transparent 70%);
+      box-shadow: 0 0 30px rgba(0, 200, 255, 0.3);
+      flex-shrink: 0;
+    }
+
+    .drone-icon canvas {
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: clamp(10px, 2vmin, 20px);
+      margin-top: clamp(15px, 3vmin, 30px);
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+
+    .action-btn {
+      padding: clamp(12px, 2vmin, 18px) clamp(30px, 5vmin, 50px);
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.9rem, 2vmin, 1.2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .action-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .action-btn:hover::before {
+      left: 100%;
+    }
+
+    .mr-btn {
+      background: linear-gradient(135deg, #00c8ff 0%, #0080ff 100%);
+      color: #fff;
+      box-shadow:
+        0 0 20px rgba(0, 200, 255, 0.4),
+        0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .mr-btn:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 0 30px rgba(0, 200, 255, 0.6),
+        0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .vr-btn {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+      color: #fff;
+      box-shadow:
+        0 0 20px rgba(255, 107, 107, 0.4),
+        0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .vr-btn:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 0 30px rgba(255, 107, 107, 0.6),
+        0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .action-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    .footer-info {
+      margin-top: clamp(15px, 3vmin, 30px);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: clamp(0.7rem, 1.5vmin, 0.8rem);
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+
+    /* Hidden state for original elements */
+    #start-button,
+    #vr-button {
+      display: none !important;
+    }
+
+    #info {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      background: rgba(0,0,0,0.7);
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      z-index: 100;
+    }
+
+    #depth-toggle {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+      z-index: 100;
+      display: none;
+    }
+
+    #depth-toggle:hover {
+      background: #1976D2;
+      transform: scale(1.05);
+    }
+
+    /* Scrollbar styling */
+    #landing-page::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #landing-page::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    #landing-page::-webkit-scrollbar-thumb {
+      background: rgba(0, 200, 255, 0.5);
+      border-radius: 4px;
+    }
+
+    #landing-page::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 200, 255, 0.7);
+    }
+
+    /* BGM Button */
+    .bgm-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid rgba(0, 200, 255, 0.6);
+      background: rgba(10, 10, 30, 0.8);
+      color: #00c8ff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 2100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+    }
+
+    .bgm-btn:hover {
+      background: rgba(0, 200, 255, 0.2);
+      box-shadow: 0 0 25px rgba(0, 200, 255, 0.5);
+      transform: scale(1.1);
+    }
+
+    .bgm-btn.playing {
+      border-color: rgba(0, 255, 150, 0.8);
+      color: #00ff96;
+      box-shadow: 0 0 20px rgba(0, 255, 150, 0.5);
+      animation: bgmPulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes bgmPulse {
+      0%, 100% { box-shadow: 0 0 15px rgba(0, 255, 150, 0.4); }
+      50% { box-shadow: 0 0 25px rgba(0, 255, 150, 0.7); }
+    }
+
+    /* Credits Button */
+    .credits-btn {
+      margin-top: clamp(15px, 3vmin, 30px);
+      padding: clamp(10px, 2vmin, 15px) clamp(30px, 5vmin, 50px);
+      border-radius: 30px;
+      border: 2px solid rgba(0, 200, 255, 0.5);
+      background: transparent;
+      color: rgba(0, 200, 255, 0.9);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(0.9rem, 2vmin, 1.1rem);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .credits-btn:hover {
+      background: rgba(0, 200, 255, 0.1);
+      border-color: rgba(0, 200, 255, 0.8);
+      color: #00c8ff;
+      box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+    }
+
+    /* Back Button */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: 2px solid rgba(0, 200, 255, 0.6);
+      background: rgba(10, 10, 30, 0.8);
+      color: #00c8ff;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      z-index: 2100;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+      display: none;
+    }
+
+    .back-btn:hover {
+      background: rgba(0, 200, 255, 0.2);
+      box-shadow: 0 0 25px rgba(0, 200, 255, 0.5);
+      transform: scale(1.05);
+    }
+
+    /* Credits Page */
+    #credits-page {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2050;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      padding-top: calc(20px + env(safe-area-inset-top));
+      padding-bottom: calc(20px + env(safe-area-inset-bottom));
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 50%, #0d0d2a 100%);
+      overflow-y: auto;
+    }
+
+    .credits-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 40px;
+      text-shadow:
+        0 0 10px rgba(0, 200, 255, 0.8),
+        0 0 20px rgba(0, 200, 255, 0.5);
+    }
+
+    .credits-list {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      text-align: center;
+    }
+
+    .credit-item {
+      background: rgba(0, 200, 255, 0.05);
+      border: 1px solid rgba(0, 200, 255, 0.3);
+      border-radius: 15px;
+      padding: 20px 40px;
+      transition: all 0.3s ease;
+    }
+
+    .credit-item:hover {
+      background: rgba(0, 200, 255, 0.1);
+      border-color: rgba(0, 200, 255, 0.6);
+      box-shadow: 0 0 20px rgba(0, 200, 255, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .credit-category {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(0, 200, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .credit-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+    }
+  </style>
+  <script type="module" crossorigin src="/drone-copter/assets/index-H2FNaE6L.js"></script>
+<link rel="manifest" href="/drone-copter/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/drone-copter/registerSW.js"></script></head>
+<body>
+  <div id="app"></div>
+
+  <!-- Landing Page -->
+  <div id="landing-page">
+    <div class="grid-overlay"></div>
+
+    <!-- Title Section -->
+    <div class="title-section">
+      <h1 class="main-title">DROCON</h1>
+      <p class="subtitle">Mixed Reality Drone Simulator</p>
+
+      <!-- 3D Drone Model -->
+      <div class="drone-icon" id="drone-3d-container"></div>
+
+      <!-- Action Buttons (under drone icon) -->
+      <div class="action-buttons" style="margin-top: 20px;">
+        <button class="action-btn mr-btn" id="landing-mr-btn">MR START</button>
+        <button class="action-btn vr-btn" id="landing-vr-btn">VR START</button>
+      </div>
+
+      <!-- Credits Button -->
+      <button class="credits-btn" id="credits-btn">CREDITS</button>
+    </div>
+
+    <div class="footer-info">
+      <p>Quest 3 / Quest Pro 対応 | WebXR Immersive Experience</p>
+      <p style="margin-top: 10px;">created by noranekob</p>
+    </div>
+
+    <!-- BGM Button -->
+    <button class="bgm-btn" id="bgm-btn" title="BGM ON/OFF">&#9835;</button>
+  </div>
+
+  <!-- Credits Page -->
+  <div id="credits-page">
+    <div class="grid-overlay"></div>
+    <h2 class="credits-title">CREDITS</h2>
+    <div class="credits-list">
+      <div class="credit-item">
+        <div class="credit-category">3D Model</div>
+        <div class="credit-name">KAMUI/神威</div>
+      </div>
+      <div class="credit-item">
+        <div class="credit-category">Sound Effects</div>
+        <div class="credit-name">効果音ラボ</div>
+      </div>
+      <div class="credit-item">
+        <div class="credit-category">Sound Effects</div>
+        <div class="credit-name">On-Jin ～音人～</div>
+      </div>
+      <div class="credit-item">
+        <div class="credit-category">Music</div>
+        <div class="credit-name">魔王魂</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back Button -->
+  <button class="back-btn" id="back-btn">← BACK</button>
+
+  <button id="start-button">MR START</button>
+  <button id="vr-button">VR START</button>
+  <button id="depth-toggle">深度表示 OFF</button>
+  <div id="info">ドローンを表示するには「MR START」または「VR START」をタップしてください</div>
+
+</body>
+</html>

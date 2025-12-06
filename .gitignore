@@ -1,1 +1,19 @@
 node_modules/
+
+# Android/TWA ビルド関連
+drocon-apk/.gradle/
+drocon-apk/build/
+drocon-apk/app/build/
+drocon-apk/*.apk
+drocon-apk/*.aab
+drocon-apk/*.idsig
+
+# キーストア（セキュリティ上重要）
+drocon-apk/*.keystore
+drocon-apk/*.jks
+
+# macOS
+.DS_Store
+
+# その他
+情報.md

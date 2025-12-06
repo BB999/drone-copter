@@ -467,8 +467,7 @@
       text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
     }
   </style>
-  <script type="module" crossorigin src="/drone-copter/assets/index-H2FNaE6L.js"></script>
-<link rel="manifest" href="/drone-copter/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/drone-copter/registerSW.js"></script></head>
+</head>
 <body>
   <div id="app"></div>
 
@@ -535,5 +534,227 @@
   <button id="depth-toggle">深度表示 OFF</button>
   <div id="info">ドローンを表示するには「MR START」または「VR START」をタップしてください</div>
 
+  <script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
+    // Landing page 3D drone
+    const container = document.getElementById('drone-3d-container');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+    camera.position.set(0, 0.5, 2);
+    camera.lookAt(0, 0, 0);
+
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(400, 400);
+    renderer.setClearColor(0x000000, 0);
+    container.appendChild(renderer.domElement);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0x00c8ff, 1);
+    directionalLight.position.set(2, 2, 2);
+    scene.add(directionalLight);
+    const backLight = new THREE.DirectionalLight(0xff6b6b, 0.5);
+    backLight.position.set(-2, 1, -2);
+    scene.add(backLight);
+
+    // Load drone model
+    let drone = null;
+    let propellers = [];
+    const loader = new GLTFLoader();
+    loader.load('./doron.glb', (gltf) => {
+      drone = gltf.scene;
+      drone.scale.set(0.8, 0.8, 0.8);
+      drone.position.set(0, 0, 0);
+      scene.add(drone);
+
+      // Find propellers
+      drone.traverse((child) => {
+        if (child.name === 'pera1' || child.name === 'pera2' ||
+            child.name === 'pera3' || child.name === 'pera4') {
+          if (child.geometry) {
+            child.geometry.computeBoundingBox();
+            const center = new THREE.Vector3();
+            child.geometry.boundingBox.getCenter(center);
+            child.geometry.translate(-center.x, -center.y, -center.z);
+            child.position.copy(center);
+          }
+          propellers.push(child);
+        }
+      });
+
+      // 前方向を示す青い光るボックスを追加
+      const indicatorGeometry = new THREE.BoxGeometry(0.1, 0.04, 0.01);
+      const indicatorMaterial = new THREE.MeshStandardMaterial({
+        color: 0x0088ff,
+        emissive: 0x0088ff,
+        emissiveIntensity: 2,
+      });
+      const indicator = new THREE.Mesh(indicatorGeometry, indicatorMaterial);
+      indicator.position.set(0, 0.04, 0.22);
+      drone.add(indicator);
+
+      // 点滅パターン: 0.15秒表示→0.15秒消灯→0.15秒表示→1.5秒消灯→ループ
+      let blinkState = 0;
+      const blinkPattern = [
+        { visible: true, duration: 150 },
+        { visible: false, duration: 150 },
+        { visible: true, duration: 150 },
+        { visible: false, duration: 1000 },
+      ];
+
+      function blink() {
+        indicator.visible = blinkPattern[blinkState].visible;
+        setTimeout(() => {
+          blinkState = (blinkState + 1) % blinkPattern.length;
+          blink();
+        }, blinkPattern[blinkState].duration);
+      }
+      blink();
+    });
+
+    // Animation loop
+    let hoverTime = 0;
+    function animate() {
+      requestAnimationFrame(animate);
+
+      if (drone) {
+        // Hover animation
+        hoverTime += 0.016;
+        drone.position.y = Math.sin(hoverTime * 1.2) * 0.05;
+        drone.rotation.y += 0.005;
+
+        // Rotate propellers
+        propellers.forEach(prop => {
+          prop.rotation.y += 0.5;
+        });
+      }
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // BGM設定
+    const bgm = new Audio('./mainBGM.mp3');
+    bgm.loop = true;
+    bgm.volume = 0.2;
+    let isBgmPlaying = false;
+
+    // BGMボタン
+    const bgmBtn = document.getElementById('bgm-btn');
+
+    function toggleBGM() {
+      if (isBgmPlaying) {
+        bgm.pause();
+        bgmBtn.classList.remove('playing');
+        isBgmPlaying = false;
+      } else {
+        bgm.play().then(() => {
+          bgmBtn.classList.add('playing');
+          isBgmPlaying = true;
+        }).catch(e => console.log('BGM再生エラー:', e));
+      }
+    }
+
+    bgmBtn.addEventListener('click', toggleBGM);
+
+    // ボタン音
+    const mainButtonSound = new Audio('./mainbutton.mp3');
+    mainButtonSound.volume = 0.5;
+
+    // クレジット画面用ボタン音
+    const creditsButtonSound = new Audio('./crash.mp3');
+    creditsButtonSound.volume = 0.3;
+
+    // Credits Page
+    const creditsBtn = document.getElementById('credits-btn');
+    const backBtn = document.getElementById('back-btn');
+    const creditsPage = document.getElementById('credits-page');
+    const landingPage = document.getElementById('landing-page');
+
+    creditsBtn.addEventListener('click', () => {
+      creditsButtonSound.currentTime = 0;
+      creditsButtonSound.play();
+      landingPage.style.display = 'none';
+      creditsPage.style.display = 'flex';
+      backBtn.style.display = 'block';
+      bgmBtn.style.display = 'none';
+    });
+
+    backBtn.addEventListener('click', () => {
+      creditsButtonSound.currentTime = 0;
+      creditsButtonSound.play();
+      creditsPage.style.display = 'none';
+      landingPage.style.display = 'flex';
+      backBtn.style.display = 'none';
+      bgmBtn.style.display = 'flex';
+    });
+
+    // BGMフェードアウト
+    function fadeOutBGM(duration = 2000) {
+      if (!isBgmPlaying) return;
+
+      const startVolume = bgm.volume;
+      const fadeSteps = 20;
+      const stepTime = duration / fadeSteps;
+      const volumeStep = startVolume / fadeSteps;
+      let currentStep = 0;
+
+      const fadeInterval = setInterval(() => {
+        currentStep++;
+        bgm.volume = Math.max(0, startVolume - (volumeStep * currentStep));
+
+        if (currentStep >= fadeSteps) {
+          clearInterval(fadeInterval);
+          bgm.pause();
+          bgm.currentTime = 0;
+          bgm.volume = 0.2;
+          bgmBtn.classList.remove('playing');
+          isBgmPlaying = false;
+        }
+      }, stepTime);
+    }
+
+    // ボタン点滅処理
+    function blinkButton(button, callback) {
+      mainButtonSound.play();
+      fadeOutBGM(2500);
+
+      let blinkCount = 0;
+      const blinkInterval = setInterval(() => {
+        button.style.opacity = button.style.opacity === '0.3' ? '1' : '0.3';
+        blinkCount++;
+        if (blinkCount >= 15) { // 3秒間で15回点滅（200ms間隔）
+          clearInterval(blinkInterval);
+          button.style.opacity = '1';
+          callback();
+        }
+      }, 200);
+    }
+
+    // Landing page button handlers
+    document.getElementById('landing-mr-btn').addEventListener('click', function() {
+      const btn = this;
+      btn.disabled = true;
+      document.getElementById('landing-vr-btn').disabled = true;
+      blinkButton(btn, function() {
+        document.getElementById('landing-page').style.display = 'none';
+        document.getElementById('start-button').click();
+      });
+    });
+
+    document.getElementById('landing-vr-btn').addEventListener('click', function() {
+      const btn = this;
+      btn.disabled = true;
+      document.getElementById('landing-mr-btn').disabled = true;
+      blinkButton(btn, function() {
+        document.getElementById('landing-page').style.display = 'none';
+        document.getElementById('vr-button').click();
+      });
+    });
+  </script>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

@@ -65,7 +65,8 @@ const i18n = {
       handTrackingDesc: 'ピンチジェスチャーでドローンを掴んで移動・スケール変更',
       bothGrips: '両グリップ同時押し + 左右移動: ドローンサイズ変更',
       closeWithA: 'A ボタンで閉じる',
-      footer: 'Quest 3 / Quest Pro 対応 | WebXR Immersive Experience'
+      footer: 'Quest 3 / Quest Pro 対応 | WebXR Immersive Experience',
+      mrWarning: '⚠️ 当たり判定は事前にスキャンした部屋のみになります'
     },
     // ステータステキスト
     status: {
@@ -187,7 +188,8 @@ const i18n = {
       handTrackingDesc: 'Pinch gesture to grab drone and move/scale',
       bothGrips: 'Both Grips + Move: Change Drone Size',
       closeWithA: 'Press A to close',
-      footer: 'Quest 3 / Quest Pro Compatible | WebXR Immersive Experience'
+      footer: 'Quest 3 / Quest Pro Compatible | WebXR Immersive Experience',
+      mrWarning: '⚠️ Collision only works in pre-scanned rooms'
     },
     // Status text
     status: {
@@ -1233,18 +1235,36 @@ export function redrawControllerGuideMenu(pressedButtons) {
   ctx.lineTo(canvas.width - 50, 710);
   ctx.stroke();
 
+  // MRモード時の警告表示
+  if (state.isMrMode) {
+    ctx.fillStyle = 'rgba(255, 150, 0, 0.15)';
+    ctx.strokeStyle = 'rgba(255, 150, 0, 0.5)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.roundRect(50, 720, canvas.width - 100, 40, 8);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.font = 'bold 18px Arial';
+    ctx.fillStyle = '#ffa500';
+    ctx.textAlign = 'center';
+    ctx.fillText(t('guide', 'mrWarning'), canvas.width / 2, 747);
+  }
+
   // 閉じる説明
+  const closeY = state.isMrMode ? 800 : 760;
   ctx.font = 'bold 28px Arial';
   ctx.fillStyle = '#ffff00';
   ctx.shadowColor = 'rgba(255, 255, 0, 0.5)';
   ctx.shadowBlur = 10;
-  ctx.fillText(t('guide', 'closeWithA'), canvas.width / 2, 760);
+  ctx.fillText(t('guide', 'closeWithA'), canvas.width / 2, closeY);
   ctx.shadowBlur = 0;
 
   // フッター
+  const footerY = state.isMrMode ? 840 : 800;
   ctx.font = '16px Arial';
   ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-  ctx.fillText(t('guide', 'footer'), canvas.width / 2, 800);
+  ctx.fillText(t('guide', 'footer'), canvas.width / 2, footerY);
 
   // テクスチャを更新
   guideMenuTexture.needsUpdate = true;

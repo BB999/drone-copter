@@ -779,14 +779,19 @@ async function startXR() {
       state.setTutorialCompleted(false);
       state.setRestartTutorial(false);
       state.setTutorialStep(1);
-      createWelcomeWindow();
+      // 1秒待機してからチュートリアル1を表示
+      setTimeout(() => {
+        createWelcomeWindow();
+      }, 1000);
     } else if (tutorialCompletedStorage === 'true') {
       // チュートリアル完了済みの場合はスキップ
       state.setTutorialCompleted(true);
       state.setTutorialStep(0);
     } else {
-      // 初回はチュートリアルを表示
-      createWelcomeWindow();
+      // 初回はチュートリアルを表示（1秒待機）
+      setTimeout(() => {
+        createWelcomeWindow();
+      }, 1000);
     }
 
     if (xrSession.depthUsage) {
@@ -934,14 +939,19 @@ async function startVR() {
       state.setTutorialCompleted(false);
       state.setRestartTutorial(false);
       state.setTutorialStep(1);
-      createWelcomeWindow();
+      // 1秒待機してからチュートリアル1を表示
+      setTimeout(() => {
+        createWelcomeWindow();
+      }, 1000);
     } else if (tutorialCompletedStorageVR === 'true') {
       // チュートリアル完了済みの場合はスキップ
       state.setTutorialCompleted(true);
       state.setTutorialStep(0);
     } else {
-      // 初回はチュートリアルを表示
-      createWelcomeWindow();
+      // 初回はチュートリアルを表示（1秒待機）
+      setTimeout(() => {
+        createWelcomeWindow();
+      }, 1000);
     }
 
     xrSession.addEventListener('end', () => {

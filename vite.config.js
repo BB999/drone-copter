@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import fs from 'fs';
 import path from 'path';
 import { VitePWA } from 'vite-plugin-pwa';
+import basicSsl from '@vitejs/plugin-basic-ssl';
 
 export default defineConfig({
   // GitHub Pages用: https://bb999.github.io/drone-copter/
@@ -15,6 +16,7 @@ export default defineConfig({
     host: '0.0.0.0'
   },
   plugins: [
+    basicSsl(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['doron.glb', 'doron.blend', '*.mp3', 'icons/*.png'],

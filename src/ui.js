@@ -1800,8 +1800,8 @@ export function redrawSettingsMenu(hoveredButton) {
   ctx.textAlign = 'center';
   ctx.fillText(t('settings', 'laserInstruction'), canvas.width / 2, bottomLineY + 30);
 
-  // 閉じる説明
-  ctx.font = 'bold 28px Arial';
+  // 閉じる説明（操作ガイドと同じ見た目にする）
+  ctx.font = 'bold 32px Arial';
   ctx.fillStyle = '#ffff00';
   ctx.shadowColor = 'rgba(255, 255, 0, 0.5)';
   ctx.shadowBlur = 10;

@@ -575,23 +575,51 @@ function updateGamepadMovement() {
       const axes = gp.axes;
 
       if (state.liftStartTime === null && state.descentStartTime === null && state.decelerationStartTime === null) {
-        if (source.handedness === 'right' && axes.length >= 4) {
-          if (Math.abs(axes[2]) > deadzone) {
-            inputX = axes[2];
-            rawInputX = axes[2];
+        if (state.controllerMode === 2) {
+          // モード2: 左=スロットル+ヨー、右=ピッチ+ロール（国際標準）
+          if (source.handedness === 'right' && axes.length >= 4) {
+            // 右スティック: 前後(ピッチ) + 左右移動(ロール)
+            if (Math.abs(axes[2]) > deadzone) {
+              inputX = axes[2];
+              rawInputX = axes[2];
+            }
+            if (Math.abs(axes[3]) > deadzone) {
+              inputZ = axes[3];
+              rawInputZ = axes[3];
+            }
           }
-          if (Math.abs(axes[3]) > deadzone) {
-            inputY = -axes[3];
-          }
-        }
 
-        if (source.handedness === 'left' && axes.length >= 4) {
-          if (Math.abs(axes[2]) > deadzone) {
-            inputRotation = -axes[2];
+          if (source.handedness === 'left' && axes.length >= 4) {
+            // 左スティック: 上昇/下降(スロットル) + 旋回(ヨー)
+            if (Math.abs(axes[2]) > deadzone) {
+              inputRotation = -axes[2];
+            }
+            if (Math.abs(axes[3]) > deadzone) {
+              inputY = -axes[3];
+            }
           }
-          if (Math.abs(axes[3]) > deadzone) {
-            inputZ = axes[3];
-            rawInputZ = axes[3];
+        } else {
+          // モード1: 左=ピッチ+ヨー、右=スロットル+ロール（日本式）
+          if (source.handedness === 'right' && axes.length >= 4) {
+            // 右スティック: 左右移動(ロール) + 上昇/下降(スロットル)
+            if (Math.abs(axes[2]) > deadzone) {
+              inputX = axes[2];
+              rawInputX = axes[2];
+            }
+            if (Math.abs(axes[3]) > deadzone) {
+              inputY = -axes[3];
+            }
+          }
+
+          if (source.handedness === 'left' && axes.length >= 4) {
+            // 左スティック: 旋回(ヨー) + 前後(ピッチ)
+            if (Math.abs(axes[2]) > deadzone) {
+              inputRotation = -axes[2];
+            }
+            if (Math.abs(axes[3]) > deadzone) {
+              inputZ = axes[3];
+              rawInputZ = axes[3];
+            }
           }
         }
       }

@@ -159,11 +159,15 @@ export let mrPlaneShadowMeshes = new Map();
 // 影の表示フラグ
 export let shadowEnabled = true;
 
+// コントローラーモード（1: モード1, 2: モード2）デフォルトはモード2
+export let controllerMode = 2;
+
 export function setVrObstacles(value) { vrObstacles = value; }
 export function setVrFloor(value) { vrFloor = value; }
 export function setVrShadowLight(value) { vrShadowLight = value; }
 export function setMrPlaneShadowMeshes(value) { mrPlaneShadowMeshes = value; }
 export function setShadowEnabled(value) { shadowEnabled = value; }
+export function setControllerMode(value) { controllerMode = value; }
 
 // ハンドトラッキングとグリップ機能用変数
 export let hand1 = null;

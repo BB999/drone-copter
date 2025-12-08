@@ -26,6 +26,10 @@ const i18n = {
       fpvModeDesc: 'ドローン視点で操縦',
       shadow: '影の表示',
       shadowDesc: 'ドローンの影を表示',
+      controllerMode: '操作モード',
+      controllerModeDesc: 'コントローラーの操作配置',
+      mode1: 'モード1',
+      mode2: 'モード2',
       laserInstruction: '右コントローラーのレーザーで操作',
       closeInstruction: 'X ボタンで閉じる',
       returnToTitle: 'タイトルに戻る',
@@ -151,6 +155,10 @@ const i18n = {
       fpvModeDesc: 'Fly from drone perspective',
       shadow: 'Shadow',
       shadowDesc: 'Show drone shadow',
+      controllerMode: 'Control Mode',
+      controllerModeDesc: 'Controller stick layout',
+      mode1: 'Mode 1',
+      mode2: 'Mode 2',
       laserInstruction: 'Use right controller laser to operate',
       closeInstruction: 'Press X to close',
       returnToTitle: 'Return to Title',
@@ -843,10 +851,10 @@ export function createControllerGuideMenu() {
   iconGradient.addColorStop(1, '#ff6b6b');
   ctx.fillStyle = iconGradient;
   ctx.beginPath();
-  ctx.roundRect(leftX - 100, y - 5, 200, 35, 8);
+  ctx.roundRect(leftX - 110, y - 5, 220, 35, 8);
   ctx.fill();
 
-  ctx.font = 'bold 24px Arial';
+  ctx.font = 'bold 20px Arial';
   ctx.fillStyle = '#0a0a1a';
   ctx.textAlign = 'center';
   ctx.fillText(t('guide', 'leftController'), leftX, y + 20);
@@ -866,26 +874,26 @@ export function createControllerGuideMenu() {
 
   leftControls.forEach((item) => {
     // ボタンラベルの背景
-    const btnGradient = ctx.createLinearGradient(leftX - 95, y, leftX + 35, y);
+    const btnGradient = ctx.createLinearGradient(leftX - 105, y, leftX + 25, y);
     btnGradient.addColorStop(0, 'rgba(0, 200, 255, 0.2)');
     btnGradient.addColorStop(1, 'rgba(255, 107, 107, 0.2)');
     ctx.fillStyle = btnGradient;
     ctx.beginPath();
-    ctx.roundRect(leftX - 95, y - 2, 130, 28, 6);
+    ctx.roundRect(leftX - 105, y - 2, 130, 28, 6);
     ctx.fill();
     ctx.strokeStyle = 'rgba(0, 200, 255, 0.5)';
     ctx.lineWidth = 1;
     ctx.stroke();
 
-    ctx.font = 'bold 18px Arial';
+    ctx.font = 'bold 15px Arial';
     ctx.fillStyle = '#00c8ff';
     ctx.textAlign = 'center';
-    ctx.fillText(item.button, leftX - 30, y + 18);
+    ctx.fillText(item.button, leftX - 40, y + 18);
 
-    ctx.font = '18px Arial';
+    ctx.font = '15px Arial';
     ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
     ctx.textAlign = 'left';
-    ctx.fillText(item.desc, leftX + 45, y + 18);
+    ctx.fillText(item.desc, leftX + 35, y + 18);
 
     y += 38;
   });
@@ -900,10 +908,10 @@ export function createControllerGuideMenu() {
   rightIconGradient.addColorStop(1, '#ff6b6b');
   ctx.fillStyle = rightIconGradient;
   ctx.beginPath();
-  ctx.roundRect(rightX - 100, y - 5, 200, 35, 8);
+  ctx.roundRect(rightX - 110, y - 5, 220, 35, 8);
   ctx.fill();
 
-  ctx.font = 'bold 24px Arial';
+  ctx.font = 'bold 20px Arial';
   ctx.fillStyle = '#0a0a1a';
   ctx.textAlign = 'center';
   ctx.fillText(t('guide', 'rightController'), rightX, y + 20);
@@ -923,26 +931,26 @@ export function createControllerGuideMenu() {
 
   rightControls.forEach((item) => {
     // ボタンラベルの背景
-    const btnGradient = ctx.createLinearGradient(rightX - 95, y, rightX + 35, y);
+    const btnGradient = ctx.createLinearGradient(rightX - 105, y, rightX + 25, y);
     btnGradient.addColorStop(0, 'rgba(0, 200, 255, 0.2)');
     btnGradient.addColorStop(1, 'rgba(255, 107, 107, 0.2)');
     ctx.fillStyle = btnGradient;
     ctx.beginPath();
-    ctx.roundRect(rightX - 95, y - 2, 130, 28, 6);
+    ctx.roundRect(rightX - 105, y - 2, 130, 28, 6);
     ctx.fill();
     ctx.strokeStyle = 'rgba(0, 200, 255, 0.5)';
     ctx.lineWidth = 1;
     ctx.stroke();
 
-    ctx.font = 'bold 18px Arial';
+    ctx.font = 'bold 15px Arial';
     ctx.fillStyle = '#00c8ff';
     ctx.textAlign = 'center';
-    ctx.fillText(item.button, rightX - 30, y + 18);
+    ctx.fillText(item.button, rightX - 40, y + 18);
 
-    ctx.font = '18px Arial';
+    ctx.font = '15px Arial';
     ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
     ctx.textAlign = 'left';
-    ctx.fillText(item.desc, rightX + 45, y + 18);
+    ctx.fillText(item.desc, rightX + 35, y + 18);
 
     y += 38;
   });
@@ -1081,18 +1089,28 @@ export function redrawControllerGuideMenu(pressedButtons) {
   iconGradient.addColorStop(1, '#ff6b6b');
   ctx.fillStyle = iconGradient;
   ctx.beginPath();
-  ctx.roundRect(leftX - 100, y - 5, 200, 35, 8);
+  ctx.roundRect(leftX - 110, y - 5, 220, 35, 8);
   ctx.fill();
 
-  ctx.font = 'bold 24px Arial';
+  ctx.font = 'bold 20px Arial';
   ctx.fillStyle = '#0a0a1a';
   ctx.textAlign = 'center';
   ctx.fillText(t('guide', 'leftController'), leftX, y + 20);
 
   y += 55;
 
-  // 左コントローラーの操作一覧
-  const leftControls = [
+  // 左コントローラーの操作一覧（モードで変化）
+  const leftControls = state.controllerMode === 2 ? [
+    // モード2: 左=スロットル+ヨー
+    { button: t('guide', 'stickUpDown'), desc: t('guide', 'upDown'), key: 'leftStickY' },
+    { button: t('guide', 'stickLeftRight'), desc: t('guide', 'turnLeftRight'), key: 'leftStickX' },
+    { button: t('guide', 'yButton'), desc: t('guide', 'startStop'), key: 'leftX' },
+    { button: t('guide', 'xButton'), desc: t('guide', 'settingsWindow'), key: 'leftY' },
+    { button: t('guide', 'stickPress'), desc: t('guide', 'collisionToggle'), key: 'leftStickPress' },
+    { button: t('guide', 'trigger'), desc: t('guide', 'speedDown'), key: 'leftTrigger' },
+    { button: t('guide', 'grip'), desc: t('guide', 'grabDrone'), key: 'leftGrip' }
+  ] : [
+    // モード1: 左=ピッチ+ヨー
     { button: t('guide', 'stickUpDown'), desc: t('guide', 'forwardBackward'), key: 'leftStickY' },
     { button: t('guide', 'stickLeftRight'), desc: t('guide', 'turnLeftRight'), key: 'leftStickX' },
     { button: t('guide', 'yButton'), desc: t('guide', 'startStop'), key: 'leftX' },
@@ -1109,27 +1127,27 @@ export function redrawControllerGuideMenu(pressedButtons) {
     if (isPressed) {
       ctx.fillStyle = 'rgba(255, 255, 0, 0.6)';
     } else {
-      const btnGradient = ctx.createLinearGradient(leftX - 95, y, leftX + 35, y);
+      const btnGradient = ctx.createLinearGradient(leftX - 105, y, leftX + 25, y);
       btnGradient.addColorStop(0, 'rgba(0, 200, 255, 0.2)');
       btnGradient.addColorStop(1, 'rgba(255, 107, 107, 0.2)');
       ctx.fillStyle = btnGradient;
     }
     ctx.beginPath();
-    ctx.roundRect(leftX - 95, y - 2, 130, 28, 6);
+    ctx.roundRect(leftX - 105, y - 2, 130, 28, 6);
     ctx.fill();
     ctx.strokeStyle = isPressed ? 'rgba(255, 255, 0, 0.9)' : 'rgba(0, 200, 255, 0.5)';
     ctx.lineWidth = isPressed ? 2 : 1;
     ctx.stroke();
 
-    ctx.font = 'bold 18px Arial';
+    ctx.font = 'bold 15px Arial';
     ctx.fillStyle = isPressed ? '#000000' : '#00c8ff';
     ctx.textAlign = 'center';
-    ctx.fillText(item.button, leftX - 30, y + 18);
+    ctx.fillText(item.button, leftX - 40, y + 18);
 
-    ctx.font = '18px Arial';
+    ctx.font = '15px Arial';
     ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
     ctx.textAlign = 'left';
-    ctx.fillText(item.desc, leftX + 45, y + 18);
+    ctx.fillText(item.desc, leftX + 35, y + 18);
 
     y += 38;
   });
@@ -1144,18 +1162,28 @@ export function redrawControllerGuideMenu(pressedButtons) {
   rightIconGradient.addColorStop(1, '#ff6b6b');
   ctx.fillStyle = rightIconGradient;
   ctx.beginPath();
-  ctx.roundRect(rightX - 100, y - 5, 200, 35, 8);
+  ctx.roundRect(rightX - 110, y - 5, 220, 35, 8);
   ctx.fill();
 
-  ctx.font = 'bold 24px Arial';
+  ctx.font = 'bold 20px Arial';
   ctx.fillStyle = '#0a0a1a';
   ctx.textAlign = 'center';
   ctx.fillText(t('guide', 'rightController'), rightX, y + 20);
 
   y += 55;
 
-  // 右コントローラーの操作一覧
-  const rightControls = [
+  // 右コントローラーの操作一覧（モードで変化）
+  const rightControls = state.controllerMode === 2 ? [
+    // モード2: 右=ピッチ+ロール
+    { button: t('guide', 'stickUpDown'), desc: t('guide', 'forwardBackward'), key: 'rightStickY' },
+    { button: t('guide', 'stickLeftRight'), desc: t('guide', 'moveLeftRight'), key: 'rightStickX' },
+    { button: t('guide', 'aButton'), desc: t('guide', 'thisMenu'), key: 'rightA' },
+    { button: t('guide', 'stickPress'), desc: t('guide', 'volumeToggle'), key: 'rightStickPress' },
+    { button: t('guide', 'bButton'), desc: t('guide', 'autoReturn'), key: 'rightB' },
+    { button: t('guide', 'trigger'), desc: t('guide', 'speedUp'), key: 'rightTrigger' },
+    { button: t('guide', 'grip'), desc: t('guide', 'grabDrone'), key: 'rightGrip' }
+  ] : [
+    // モード1: 右=スロットル+ロール
     { button: t('guide', 'stickUpDown'), desc: t('guide', 'upDown'), key: 'rightStickY' },
     { button: t('guide', 'stickLeftRight'), desc: t('guide', 'moveLeftRight'), key: 'rightStickX' },
     { button: t('guide', 'aButton'), desc: t('guide', 'thisMenu'), key: 'rightA' },
@@ -1172,27 +1200,27 @@ export function redrawControllerGuideMenu(pressedButtons) {
     if (isPressed) {
       ctx.fillStyle = 'rgba(255, 255, 0, 0.6)';
     } else {
-      const btnGradient = ctx.createLinearGradient(rightX - 95, y, rightX + 35, y);
+      const btnGradient = ctx.createLinearGradient(rightX - 105, y, rightX + 25, y);
       btnGradient.addColorStop(0, 'rgba(0, 200, 255, 0.2)');
       btnGradient.addColorStop(1, 'rgba(255, 107, 107, 0.2)');
       ctx.fillStyle = btnGradient;
     }
     ctx.beginPath();
-    ctx.roundRect(rightX - 95, y - 2, 130, 28, 6);
+    ctx.roundRect(rightX - 105, y - 2, 130, 28, 6);
     ctx.fill();
     ctx.strokeStyle = isPressed ? 'rgba(255, 255, 0, 0.9)' : 'rgba(0, 200, 255, 0.5)';
     ctx.lineWidth = isPressed ? 2 : 1;
     ctx.stroke();
 
-    ctx.font = 'bold 18px Arial';
+    ctx.font = 'bold 15px Arial';
     ctx.fillStyle = isPressed ? '#000000' : '#00c8ff';
     ctx.textAlign = 'center';
-    ctx.fillText(item.button, rightX - 30, y + 18);
+    ctx.fillText(item.button, rightX - 40, y + 18);
 
-    ctx.font = '18px Arial';
+    ctx.font = '15px Arial';
     ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
     ctx.textAlign = 'left';
-    ctx.fillText(item.desc, rightX + 45, y + 18);
+    ctx.fillText(item.desc, rightX + 35, y + 18);
 
     y += 38;
   });
@@ -1355,6 +1383,19 @@ const settingsItems = [
     defaultValue: 'ja'
   },
   {
+    nameKey: 'controllerMode',
+    descKey: 'controllerModeDesc',
+    key: 'controllerMode',
+    type: 'select',
+    options: [
+      { value: 1, labelKey: 'mode1' },
+      { value: 2, labelKey: 'mode2' }
+    ],
+    getValue: () => state.controllerMode,
+    setValue: (v) => state.setControllerMode(v),
+    defaultValue: 2
+  },
+  {
     nameKey: 'deadzone',
     descKey: 'deadzoneDesc',
     key: 'deadzone',
@@ -1483,9 +1524,9 @@ export function createSettingsMenu() {
 
   // 表示項目数に応じてキャンバスの高さを計算
   const visibleItems = settingsItems.filter(item => !item.isHidden || !item.isHidden());
-  const itemHeight = 100;
-  // タイトル(70) + 設定項目 + 操作説明(90) + チュートリアルボタン(75) + タイトルに戻るボタン(75) + 余白(30)
-  const canvasHeight = 70 + (visibleItems.length * itemHeight) + 90 + 75 + 75 + 30;
+  const itemHeight = 80;
+  // タイトル(90) + 設定項目 + スティック表示(160) + 操作説明(80) + チュートリアルボタン(60) + タイトルに戻るボタン(60) + 余白(30)
+  const canvasHeight = 90 + (visibleItems.length * itemHeight) + 160 + 80 + 60 + 60 + 30;
 
   settingsMenuCanvas = document.createElement('canvas');
   settingsMenuCanvas.width = 700;
@@ -1497,7 +1538,7 @@ export function createSettingsMenu() {
   settingsMenuTexture.needsUpdate = true;
 
   const aspectRatio = settingsMenuCanvas.width / settingsMenuCanvas.height;
-  const menuHeight = 0.35;
+  const menuHeight = 0.45;
   const menuWidth = menuHeight * aspectRatio;
   settingsMenuWidth = menuWidth;
   settingsMenuHeight = menuHeight;
@@ -1558,26 +1599,26 @@ export function redrawSettingsMenu(hoveredButton) {
   ctx.fillRect(4, 4, canvas.width - 8, canvas.height - 8);
 
   // タイトル
-  ctx.font = 'bold 36px Arial';
+  ctx.font = 'bold 48px Arial';
   ctx.fillStyle = '#00c8ff';
   ctx.textAlign = 'center';
   ctx.shadowColor = 'rgba(0, 200, 255, 0.8)';
-  ctx.shadowBlur = 15;
-  ctx.fillText(t('settings', 'title'), canvas.width / 2, 50);
+  ctx.shadowBlur = 20;
+  ctx.fillText(t('settings', 'title'), canvas.width / 2, 60);
   ctx.shadowBlur = 0;
 
   // 区切り線
   ctx.strokeStyle = 'rgba(0, 200, 255, 0.3)';
   ctx.lineWidth = 2;
   ctx.beginPath();
-  ctx.moveTo(40, 70);
-  ctx.lineTo(canvas.width - 40, 70);
+  ctx.moveTo(50, 90);
+  ctx.lineTo(canvas.width - 50, 90);
   ctx.stroke();
 
   // 設定項目（非表示のものを除外）
   const visibleItems = settingsItems.filter(item => !item.isHidden || !item.isHidden());
-  let y = 110;
-  const itemHeight = 100;
+  let y = 120;
+  const itemHeight = 80;
 
   visibleItems.forEach((item, index) => {
     const value = item.getValue();
@@ -1588,25 +1629,25 @@ export function redrawSettingsMenu(hoveredButton) {
     // 項目の背景
     ctx.fillStyle = 'rgba(30, 30, 50, 0.5)';
     ctx.beginPath();
-    ctx.roundRect(25, y - 10, canvas.width - 50, itemHeight - 10, 8);
+    ctx.roundRect(25, y - 5, canvas.width - 50, itemHeight - 10, 8);
     ctx.fill();
 
     // 項目名
-    ctx.font = 'bold 22px Arial';
+    ctx.font = 'bold 20px Arial';
     ctx.fillStyle = '#ffffff';
     ctx.textAlign = 'left';
-    ctx.fillText(itemName, 40, y + 20);
+    ctx.fillText(itemName, 40, y + 22);
 
     // 説明文
     ctx.font = '14px Arial';
     ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-    ctx.fillText(itemDesc, 40, y + 42);
+    ctx.fillText(itemDesc, 40, y + 44);
 
     if (item.type === 'language') {
       // 言語選択ボタン（日本語 / English）
       const isJapanese = value === 'ja';
       const btnWidth = 100;
-      const btnHeight = 50;
+      const btnHeight = 45;
       const btnSpacing = 10;
       const startX = 380;
 
@@ -1686,8 +1727,8 @@ export function redrawSettingsMenu(hoveredButton) {
       // トグルボタン
       const toggleBtnX = 480;
       const toggleBtnY = y + 5;
-      const toggleBtnW = 120;
-      const toggleBtnH = 50;
+      const toggleBtnW = 110;
+      const toggleBtnH = 45;
       const isToggleHovered = hoveredButton && hoveredButton.index === index && hoveredButton.type === 'toggle';
       const isOn = value === true;
 
@@ -1713,15 +1754,189 @@ export function redrawSettingsMenu(hoveredButton) {
       ctx.lineWidth = 2;
       ctx.stroke();
 
-      ctx.font = 'bold 22px Arial';
+      ctx.font = 'bold 20px Arial';
       ctx.fillStyle = isToggleHovered ? '#000000' : (isOn ? '#00ff96' : 'rgba(255, 255, 255, 0.6)');
       ctx.textAlign = 'center';
-      ctx.fillText(isOn ? t('settings', 'on') : t('settings', 'off'), toggleBtnX + toggleBtnW / 2, toggleBtnY + toggleBtnH / 2 + 8);
+      ctx.fillText(isOn ? t('settings', 'on') : t('settings', 'off'), toggleBtnX + toggleBtnW / 2, toggleBtnY + toggleBtnH / 2 + 7);
 
       settingsButtonAreas.push({
         x: toggleBtnX, y: toggleBtnY, w: toggleBtnW, h: toggleBtnH,
         index: index, type: 'toggle'
       });
+    } else if (item.type === 'select') {
+      // セレクトボタン（複数の選択肢から選ぶ）
+      const options = item.options;
+      const btnWidth = 100;
+      const btnHeight = 45;
+      const startX = 320;
+      const btnY = y + 5;
+      const gap = 10;
+
+      options.forEach((option, optIndex) => {
+        const btnX = startX + optIndex * (btnWidth + gap);
+        const isSelected = value === option.value;
+        const isHovered = hoveredButton && hoveredButton.index === index && hoveredButton.type === 'select' && hoveredButton.optionIndex === optIndex;
+
+        // ボタン背景
+        if (isHovered) {
+          ctx.fillStyle = 'rgba(255, 255, 0, 0.8)';
+        } else if (isSelected) {
+          ctx.fillStyle = 'rgba(0, 200, 255, 0.5)';
+        } else {
+          ctx.fillStyle = 'rgba(100, 100, 100, 0.3)';
+        }
+        ctx.beginPath();
+        ctx.roundRect(btnX, btnY, btnWidth, btnHeight, 6);
+        ctx.fill();
+
+        if (isHovered) {
+          ctx.strokeStyle = '#ffff00';
+        } else if (isSelected) {
+          ctx.strokeStyle = 'rgba(0, 200, 255, 0.8)';
+        } else {
+          ctx.strokeStyle = 'rgba(100, 100, 100, 0.6)';
+        }
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.font = 'bold 18px Arial';
+        ctx.fillStyle = isHovered ? '#000000' : (isSelected ? '#00c8ff' : 'rgba(255, 255, 255, 0.6)');
+        ctx.textAlign = 'center';
+        ctx.fillText(t('settings', option.labelKey), btnX + btnWidth / 2, btnY + btnHeight / 2 + 6);
+
+        settingsButtonAreas.push({
+          x: btnX, y: btnY, w: btnWidth, h: btnHeight,
+          index: index, type: 'select', optionIndex: optIndex, optionValue: option.value
+        });
+      });
+
+      // コントローラーモードの場合、スティック表示を追加
+      if (item.key === 'controllerMode') {
+        const stickDisplayY = y + 55;
+        const stickAreaHeight = 150;
+
+        // スティック表示エリアの背景
+        ctx.fillStyle = 'rgba(20, 20, 40, 0.6)';
+        ctx.beginPath();
+        ctx.roundRect(25, stickDisplayY, canvas.width - 50, stickAreaHeight, 8);
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(0, 200, 255, 0.3)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        // 左コントローラー
+        const leftX = 175;
+        let stickY = stickDisplayY + 15;
+
+        // 左コントローラータイトル
+        const leftIconGradient = ctx.createLinearGradient(leftX - 90, stickY, leftX + 90, stickY + 30);
+        leftIconGradient.addColorStop(0, '#00c8ff');
+        leftIconGradient.addColorStop(1, '#ff6b6b');
+        ctx.fillStyle = leftIconGradient;
+        ctx.beginPath();
+        ctx.roundRect(leftX - 90, stickY - 5, 180, 35, 8);
+        ctx.fill();
+
+        ctx.font = 'bold 16px Arial';
+        ctx.fillStyle = '#0a0a1a';
+        ctx.textAlign = 'center';
+        ctx.fillText(t('guide', 'leftController'), leftX, stickY + 20);
+
+        stickY += 45;
+
+        // 左スティックの操作（モードに応じて変化）
+        const leftStickControls = value === 2 ? [
+          { button: t('guide', 'stickUpDown'), desc: t('guide', 'upDown') },
+          { button: t('guide', 'stickLeftRight'), desc: t('guide', 'turnLeftRight') }
+        ] : [
+          { button: t('guide', 'stickUpDown'), desc: t('guide', 'forwardBackward') },
+          { button: t('guide', 'stickLeftRight'), desc: t('guide', 'turnLeftRight') }
+        ];
+
+        leftStickControls.forEach((ctrl) => {
+          // ボタンラベルの背景
+          const btnGradient = ctx.createLinearGradient(leftX - 85, stickY, leftX + 15, stickY);
+          btnGradient.addColorStop(0, 'rgba(0, 200, 255, 0.2)');
+          btnGradient.addColorStop(1, 'rgba(255, 107, 107, 0.2)');
+          ctx.fillStyle = btnGradient;
+          ctx.beginPath();
+          ctx.roundRect(leftX - 85, stickY - 2, 100, 28, 6);
+          ctx.fill();
+          ctx.strokeStyle = 'rgba(0, 200, 255, 0.5)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          ctx.font = 'bold 12px Arial';
+          ctx.fillStyle = '#00c8ff';
+          ctx.textAlign = 'center';
+          ctx.fillText(ctrl.button, leftX - 35, stickY + 18);
+
+          ctx.font = '12px Arial';
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+          ctx.textAlign = 'left';
+          ctx.fillText(ctrl.desc, leftX + 25, stickY + 18);
+
+          stickY += 38;
+        });
+
+        // 右コントローラー
+        const rightX = 525;
+        stickY = stickDisplayY + 15;
+
+        // 右コントローラータイトル
+        const rightIconGradient = ctx.createLinearGradient(rightX - 90, stickY, rightX + 90, stickY + 30);
+        rightIconGradient.addColorStop(0, '#00c8ff');
+        rightIconGradient.addColorStop(1, '#ff6b6b');
+        ctx.fillStyle = rightIconGradient;
+        ctx.beginPath();
+        ctx.roundRect(rightX - 90, stickY - 5, 180, 35, 8);
+        ctx.fill();
+
+        ctx.font = 'bold 16px Arial';
+        ctx.fillStyle = '#0a0a1a';
+        ctx.textAlign = 'center';
+        ctx.fillText(t('guide', 'rightController'), rightX, stickY + 20);
+
+        stickY += 45;
+
+        // 右スティックの操作（モードに応じて変化）
+        const rightStickControls = value === 2 ? [
+          { button: t('guide', 'stickUpDown'), desc: t('guide', 'forwardBackward') },
+          { button: t('guide', 'stickLeftRight'), desc: t('guide', 'moveLeftRight') }
+        ] : [
+          { button: t('guide', 'stickUpDown'), desc: t('guide', 'upDown') },
+          { button: t('guide', 'stickLeftRight'), desc: t('guide', 'moveLeftRight') }
+        ];
+
+        rightStickControls.forEach((ctrl) => {
+          // ボタンラベルの背景
+          const btnGradient = ctx.createLinearGradient(rightX - 85, stickY, rightX + 15, stickY);
+          btnGradient.addColorStop(0, 'rgba(0, 200, 255, 0.2)');
+          btnGradient.addColorStop(1, 'rgba(255, 107, 107, 0.2)');
+          ctx.fillStyle = btnGradient;
+          ctx.beginPath();
+          ctx.roundRect(rightX - 85, stickY - 2, 100, 28, 6);
+          ctx.fill();
+          ctx.strokeStyle = 'rgba(0, 200, 255, 0.5)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          ctx.font = 'bold 12px Arial';
+          ctx.fillStyle = '#00c8ff';
+          ctx.textAlign = 'center';
+          ctx.fillText(ctrl.button, rightX - 35, stickY + 18);
+
+          ctx.font = '12px Arial';
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+          ctx.textAlign = 'left';
+          ctx.fillText(ctrl.desc, rightX + 25, stickY + 18);
+
+          stickY += 38;
+        });
+
+        // スティック表示分のY座標を追加
+        y += stickAreaHeight;
+      }
     } else {
       // 値タイプ（従来の左右矢印とデフォルトボタン）
       const displayValue = item.format ? item.format(value) : value.toString();
@@ -1729,7 +1944,7 @@ export function redrawSettingsMenu(hoveredButton) {
       // 左矢印ボタン
       const leftBtnX = 320;
       const leftBtnY = y + 5;
-      const btnSize = 50;
+      const btnSize = 45;
       const isLeftHovered = hoveredButton && hoveredButton.index === index && hoveredButton.type === 'left';
 
       ctx.fillStyle = isLeftHovered ? 'rgba(255, 255, 0, 0.8)' : 'rgba(0, 200, 255, 0.3)';
@@ -1740,7 +1955,7 @@ export function redrawSettingsMenu(hoveredButton) {
       ctx.lineWidth = 2;
       ctx.stroke();
 
-      ctx.font = 'bold 28px Arial';
+      ctx.font = 'bold 26px Arial';
       ctx.fillStyle = isLeftHovered ? '#000000' : '#00c8ff';
       ctx.textAlign = 'center';
       ctx.fillText('◀', leftBtnX + btnSize / 2, leftBtnY + btnSize / 2 + 8);
@@ -1751,10 +1966,10 @@ export function redrawSettingsMenu(hoveredButton) {
       });
 
       // 値
-      ctx.font = 'bold 22px Arial';
+      ctx.font = 'bold 20px Arial';
       ctx.fillStyle = '#00c8ff';
       ctx.textAlign = 'center';
-      ctx.fillText(displayValue, 440, y + 40);
+      ctx.fillText(displayValue, 440, y + 35);
 
       // 右矢印ボタン
       const rightBtnX = 510;
@@ -1769,7 +1984,7 @@ export function redrawSettingsMenu(hoveredButton) {
       ctx.lineWidth = 2;
       ctx.stroke();
 
-      ctx.font = 'bold 28px Arial';
+      ctx.font = 'bold 26px Arial';
       ctx.fillStyle = isRightHovered ? '#000000' : '#00c8ff';
       ctx.textAlign = 'center';
       ctx.fillText('▶', rightBtnX + btnSize / 2, rightBtnY + btnSize / 2 + 8);
@@ -1782,7 +1997,7 @@ export function redrawSettingsMenu(hoveredButton) {
       // デフォルトボタン
       const defaultBtnX = 580;
       const defaultBtnY = y + 5;
-      const defaultBtnW = 80;
+      const defaultBtnW = 75;
       const isDefaultHovered = hoveredButton && hoveredButton.index === index && hoveredButton.type === 'default';
       const defaultVal = item.getDefaultValue ? item.getDefaultValue() : item.defaultValue;
       const isDefault = Math.abs(value - defaultVal) < 0.0001;
@@ -1814,28 +2029,28 @@ export function redrawSettingsMenu(hoveredButton) {
   ctx.strokeStyle = 'rgba(0, 200, 255, 0.3)';
   ctx.lineWidth = 2;
   ctx.beginPath();
-  ctx.moveTo(40, bottomLineY);
-  ctx.lineTo(canvas.width - 40, bottomLineY);
+  ctx.moveTo(50, bottomLineY);
+  ctx.lineTo(canvas.width - 50, bottomLineY);
   ctx.stroke();
 
   ctx.font = '16px Arial';
   ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
   ctx.textAlign = 'center';
-  ctx.fillText(t('settings', 'laserInstruction'), canvas.width / 2, bottomLineY + 30);
+  ctx.fillText(t('settings', 'laserInstruction'), canvas.width / 2, bottomLineY + 25);
 
   // 閉じる説明（操作ガイドと同じ見た目にする）
-  ctx.font = 'bold 32px Arial';
+  ctx.font = 'bold 28px Arial';
   ctx.fillStyle = '#ffff00';
   ctx.shadowColor = 'rgba(255, 255, 0, 0.5)';
   ctx.shadowBlur = 10;
-  ctx.fillText(t('settings', 'closeInstruction'), canvas.width / 2, bottomLineY + 60);
+  ctx.fillText(t('settings', 'closeInstruction'), canvas.width / 2, bottomLineY + 55);
   ctx.shadowBlur = 0;
 
   // チュートリアルを受けるボタン
   const tutorialBtnX = 25;
-  const tutorialBtnY = bottomLineY + 80;
+  const tutorialBtnY = bottomLineY + 70;
   const tutorialBtnW = canvas.width - 50;
-  const tutorialBtnH = 60;
+  const tutorialBtnH = 50;
   const isTutorialHovered = hoveredButton && hoveredButton.type === 'tutorial';
 
   ctx.fillStyle = isTutorialHovered ? 'rgba(100, 200, 255, 0.9)' : 'rgba(100, 200, 255, 0.4)';
@@ -1846,10 +2061,10 @@ export function redrawSettingsMenu(hoveredButton) {
   ctx.lineWidth = 2;
   ctx.stroke();
 
-  ctx.font = 'bold 26px Arial';
+  ctx.font = 'bold 22px Arial';
   ctx.fillStyle = isTutorialHovered ? '#000000' : '#ffffff';
   ctx.textAlign = 'center';
-  ctx.fillText(t('settings', 'tutorial'), canvas.width / 2, tutorialBtnY + tutorialBtnH / 2 + 9);
+  ctx.fillText(t('settings', 'tutorial'), canvas.width / 2, tutorialBtnY + tutorialBtnH / 2 + 8);
 
   settingsButtonAreas.push({
     x: tutorialBtnX, y: tutorialBtnY, w: tutorialBtnW, h: tutorialBtnH,
@@ -1858,9 +2073,9 @@ export function redrawSettingsMenu(hoveredButton) {
 
   // タイトルに戻るボタン
   const returnBtnX = 25;
-  const returnBtnY = tutorialBtnY + tutorialBtnH + 15;
+  const returnBtnY = tutorialBtnY + tutorialBtnH + 10;
   const returnBtnW = canvas.width - 50;
-  const returnBtnH = 60;
+  const returnBtnH = 50;
   const isReturnHovered = hoveredButton && hoveredButton.type === 'returnToTitle';
 
   ctx.fillStyle = isReturnHovered ? 'rgba(255, 100, 100, 0.9)' : 'rgba(255, 100, 100, 0.4)';
@@ -1871,10 +2086,10 @@ export function redrawSettingsMenu(hoveredButton) {
   ctx.lineWidth = 2;
   ctx.stroke();
 
-  ctx.font = 'bold 26px Arial';
+  ctx.font = 'bold 22px Arial';
   ctx.fillStyle = isReturnHovered ? '#000000' : '#ffffff';
   ctx.textAlign = 'center';
-  ctx.fillText(t('settings', 'returnToTitle'), canvas.width / 2, returnBtnY + returnBtnH / 2 + 9);
+  ctx.fillText(t('settings', 'returnToTitle'), canvas.width / 2, returnBtnY + returnBtnH / 2 + 8);
 
   settingsButtonAreas.push({
     x: returnBtnX, y: returnBtnY, w: returnBtnW, h: returnBtnH,
@@ -2213,6 +2428,12 @@ function handleSettingsButtonClick(button) {
     // トグル切り替え
     const currentValue = item.getValue();
     const newValue = !currentValue;
+    item.setValue(newValue);
+    saveSettingToStorage(item.key, newValue);
+    playButtonSound();
+  } else if (button.type === 'select') {
+    // セレクト選択
+    const newValue = button.optionValue;
     item.setValue(newValue);
     saveSettingToStorage(item.key, newValue);
     playButtonSound();

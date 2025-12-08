@@ -35,11 +35,11 @@ export function createMRShadow() {
   state.renderer.shadowMap.enabled = true;
   state.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-  // ドローンに影を付ける
+  // ドローンに影を付ける（設定に応じて）
   if (state.drone) {
     state.drone.traverse((child) => {
       if (child.isMesh) {
-        child.castShadow = true;
+        child.castShadow = state.shadowEnabled;
       }
     });
   }
@@ -118,11 +118,11 @@ export function createVREnvironment() {
   state.renderer.shadowMap.enabled = true;
   state.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-  // ドローンに影を付ける
+  // ドローンに影を付ける（設定に応じて）
   if (state.drone) {
     state.drone.traverse((child) => {
       if (child.isMesh) {
-        child.castShadow = true;
+        child.castShadow = state.shadowEnabled;
       }
     });
   }

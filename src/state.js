@@ -156,10 +156,14 @@ export let vrShadowLight = null;
 // MR用の検出平面影メッシュ
 export let mrPlaneShadowMeshes = new Map();
 
+// 影の表示フラグ
+export let shadowEnabled = true;
+
 export function setVrObstacles(value) { vrObstacles = value; }
 export function setVrFloor(value) { vrFloor = value; }
 export function setVrShadowLight(value) { vrShadowLight = value; }
 export function setMrPlaneShadowMeshes(value) { mrPlaneShadowMeshes = value; }
+export function setShadowEnabled(value) { shadowEnabled = value; }
 
 // ハンドトラッキングとグリップ機能用変数
 export let hand1 = null;

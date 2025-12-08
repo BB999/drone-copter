@@ -24,6 +24,8 @@ const i18n = {
       propellerSpeedDesc: 'プロペラの回転速度',
       fpvMode: 'FPVモード (実験的機能)',
       fpvModeDesc: 'ドローン視点で操縦',
+      shadow: '影の表示',
+      shadowDesc: 'ドローンの影を表示',
       laserInstruction: '右コントローラーのレーザーで操作',
       closeInstruction: 'X ボタンで閉じる',
       returnToTitle: 'タイトルに戻る',
@@ -147,6 +149,8 @@ const i18n = {
       propellerSpeedDesc: 'Propeller rotation speed',
       fpvMode: 'FPV Mode (Experimental)',
       fpvModeDesc: 'Fly from drone perspective',
+      shadow: 'Shadow',
+      shadowDesc: 'Show drone shadow',
       laserInstruction: 'Use right controller laser to operate',
       closeInstruction: 'Press X to close',
       returnToTitle: 'Return to Title',
@@ -1439,6 +1443,25 @@ const settingsItems = [
     max: 2.0,
     step: 0.1,
     format: (v) => (v * 100).toFixed(0) + '%'
+  },
+  {
+    nameKey: 'shadow',
+    descKey: 'shadowDesc',
+    key: 'shadow',
+    type: 'toggle',
+    getValue: () => state.shadowEnabled,
+    setValue: (v) => {
+      state.setShadowEnabled(v);
+      // ドローンの影を切り替え
+      if (state.drone) {
+        state.drone.traverse((child) => {
+          if (child.isMesh) {
+            child.castShadow = v;
+          }
+        });
+      }
+    },
+    defaultValue: true
   },
   {
     nameKey: 'fpvMode',

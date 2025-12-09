@@ -2184,23 +2184,9 @@ export function toggleSettingsMenu() {
   }
 }
 
-// レーザーを作成
+// レーザーを作成（黄色ポインタのみ、青いレーザーラインは非表示）
 function createSettingsLaser() {
-  // レーザーライン
-  const lineMaterial = new THREE.LineBasicMaterial({
-    color: 0x00ffff,
-    linewidth: 2,
-    transparent: true,
-    opacity: 0.8
-  });
-  const lineGeometry = new THREE.BufferGeometry();
-  const positions = new Float32Array(6);
-  lineGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  const laserLine = new THREE.Line(lineGeometry, lineMaterial);
-  state.scene.add(laserLine);
-  state.setSettingsLaserLine(laserLine);
-
-  // レーザードット
+  // レーザードット（黄色ポインタ）のみ作成
   const dotGeometry = new THREE.SphereGeometry(0.005, 8, 8);
   const dotMaterial = new THREE.MeshBasicMaterial({
     color: 0xffff00,
@@ -2339,21 +2325,6 @@ export function updateSettingsMenu() {
   let hoveredButton = null;
 
   if (rightControllerPos && rightControllerDir && state.settingsMenu) {
-    // レーザーラインを更新
-    if (state.settingsLaserLine) {
-      const positions = state.settingsLaserLine.geometry.attributes.position.array;
-      positions[0] = rightControllerPos.x;
-      positions[1] = rightControllerPos.y;
-      positions[2] = rightControllerPos.z;
-
-      const endPoint = rightControllerPos.clone().add(rightControllerDir.clone().multiplyScalar(2));
-      positions[3] = endPoint.x;
-      positions[4] = endPoint.y;
-      positions[5] = endPoint.z;
-
-      state.settingsLaserLine.geometry.attributes.position.needsUpdate = true;
-    }
-
     // メニューとの交点を計算
     const raycaster = new THREE.Raycaster(rightControllerPos, rightControllerDir);
     const intersects = raycaster.intersectObject(state.settingsMenu);

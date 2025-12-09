@@ -481,9 +481,15 @@ function updateGamepadMovement() {
       }
       state.setHoverTime(0);
 
-      // quaternionからrotationを同期させてY軸の向きを維持
+      // 姿勢を水平にリセット（Y軸の向きは維持）
+      const currentYRotation = state.drone.rotation.y;
       state.drone.rotation.order = 'YXZ';
-      state.drone.rotation.setFromQuaternion(state.drone.quaternion);
+      state.drone.rotation.set(0, currentYRotation, 0);
+      state.drone.quaternion.setFromEuler(state.drone.rotation);
+      if (state.drone.userData.physicsTilt) {
+        state.drone.userData.physicsTilt.x = 0;
+        state.drone.userData.physicsTilt.z = 0;
+      }
 
       console.log('上昇中に衝突検出 - その場で起動完了');
       updateInfo('Collision Detected - Ready');
@@ -508,9 +514,15 @@ function updateGamepadMovement() {
         }
         state.setHoverTime(0);
 
-        // quaternionからrotationを同期させてY軸の向きを維持
+        // 姿勢を水平にリセット（Y軸の向きは維持）
+        const currentYRotation = state.drone.rotation.y;
         state.drone.rotation.order = 'YXZ';
-        state.drone.rotation.setFromQuaternion(state.drone.quaternion);
+        state.drone.rotation.set(0, currentYRotation, 0);
+        state.drone.quaternion.setFromEuler(state.drone.rotation);
+        if (state.drone.userData.physicsTilt) {
+          state.drone.userData.physicsTilt.x = 0;
+          state.drone.userData.physicsTilt.z = 0;
+        }
 
         console.log('起動シーケンス完了 - 最終高さ:', state.drone.position.y);
         updateInfo('Drone Ready');

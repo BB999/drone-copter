@@ -439,12 +439,16 @@ export function updateHoverAnimation() {
   const hoverMultiplier = Math.pow(state.currentDroneScale / 0.3, 0.5);
   const clampedHoverMultiplier = Math.max(0.3, Math.min(2.0, hoverMultiplier));
 
-  const hoverY = Math.sin(state.hoverTime * 1.2) * 0.006 * clampedHoverMultiplier;
-  const hoverZ = Math.cos(state.hoverTime * 0.9) * 0.004 * clampedHoverMultiplier;
-  const hoverX = Math.sin(state.hoverTime * 0.8) * 0.008 * clampedHoverMultiplier;
+  // 起動直後は揺れを徐々に増やす（1秒かけてフェードイン）
+  const fadeInDuration = 1.0;
+  const fadeInProgress = Math.min(state.hoverTime / fadeInDuration, 1.0);
 
-  const hoverTiltX = Math.sin(state.hoverTime * 0.7) * 0.008 * clampedHoverMultiplier;
-  const hoverTiltZ = Math.cos(state.hoverTime * 0.85) * 0.008 * clampedHoverMultiplier;
+  const hoverY = Math.sin(state.hoverTime * 1.2) * 0.006 * clampedHoverMultiplier * fadeInProgress;
+  const hoverZ = Math.cos(state.hoverTime * 0.9) * 0.004 * clampedHoverMultiplier * fadeInProgress;
+  const hoverX = Math.sin(state.hoverTime * 0.8) * 0.008 * clampedHoverMultiplier * fadeInProgress;
+
+  const hoverTiltX = Math.sin(state.hoverTime * 0.7) * 0.008 * clampedHoverMultiplier * fadeInProgress;
+  const hoverTiltZ = Math.cos(state.hoverTime * 0.85) * 0.008 * clampedHoverMultiplier * fadeInProgress;
 
   const basePos = state.drone.userData.basePosition;
   state.drone.position.x = basePos.x + hoverX;

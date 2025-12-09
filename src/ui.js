@@ -2031,7 +2031,7 @@ export function redrawSettingsMenu(hoveredButton) {
     y += itemHeight;
   });
 
-  // 操作説明（設定項目の下）
+  // 区切り線（設定項目の下）
   const bottomLineY = y + 10;
   ctx.strokeStyle = 'rgba(0, 200, 255, 0.3)';
   ctx.lineWidth = 2;
@@ -2040,22 +2040,9 @@ export function redrawSettingsMenu(hoveredButton) {
   ctx.lineTo(canvas.width - 50, bottomLineY);
   ctx.stroke();
 
-  ctx.font = '16px Arial';
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-  ctx.textAlign = 'center';
-  ctx.fillText(t('settings', 'laserInstruction'), canvas.width / 2, bottomLineY + 25);
-
-  // 閉じる説明（操作ガイドと同じ見た目にする）
-  ctx.font = 'bold 28px Arial';
-  ctx.fillStyle = '#ffff00';
-  ctx.shadowColor = 'rgba(255, 255, 0, 0.5)';
-  ctx.shadowBlur = 10;
-  ctx.fillText(t('settings', 'closeInstruction'), canvas.width / 2, bottomLineY + 55);
-  ctx.shadowBlur = 0;
-
   // チュートリアルを受けるボタン
   const tutorialBtnX = 25;
-  const tutorialBtnY = bottomLineY + 70;
+  const tutorialBtnY = bottomLineY + 15;
   const tutorialBtnW = canvas.width - 50;
   const tutorialBtnH = 50;
   const isTutorialHovered = hoveredButton && hoveredButton.type === 'tutorial';
@@ -2097,6 +2084,21 @@ export function redrawSettingsMenu(hoveredButton) {
   ctx.fillStyle = isReturnHovered ? '#000000' : '#ffffff';
   ctx.textAlign = 'center';
   ctx.fillText(t('settings', 'returnToTitle'), canvas.width / 2, returnBtnY + returnBtnH / 2 + 8);
+
+  // 操作説明（一番下）
+  const instructionY = returnBtnY + returnBtnH + 20;
+  ctx.font = '16px Arial';
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+  ctx.textAlign = 'center';
+  ctx.fillText(t('settings', 'laserInstruction'), canvas.width / 2, instructionY);
+
+  // 閉じる説明（操作ガイドと同じ見た目にする）
+  ctx.font = 'bold 28px Arial';
+  ctx.fillStyle = '#ffff00';
+  ctx.shadowColor = 'rgba(255, 255, 0, 0.5)';
+  ctx.shadowBlur = 10;
+  ctx.fillText(t('settings', 'closeInstruction'), canvas.width / 2, instructionY + 35);
+  ctx.shadowBlur = 0;
 
   settingsButtonAreas.push({
     x: returnBtnX, y: returnBtnY, w: returnBtnW, h: returnBtnH,

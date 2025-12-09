@@ -2276,7 +2276,7 @@ export function updateSettingsMenu() {
         const controllerPos = new THREE.Vector3().setFromMatrixPosition(controllerMatrix);
 
         const menuPos = controllerPos.clone();
-        menuPos.y += 0.25;
+        menuPos.y += 0.28;
 
         state.settingsMenu.position.copy(menuPos);
 

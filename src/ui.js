@@ -74,7 +74,10 @@ const i18n = {
       bothGrips: '両グリップ同時押し + 左右移動: ドローンサイズ変更',
       closeWithA: 'A ボタンで閉じる',
       footer: 'Quest 3 / Quest Pro 対応 | WebXR Immersive Experience',
-      mrWarning: '⚠️ 当たり判定は事前にスキャンした部屋のみになります'
+      mrWarning: '⚠️ 当たり判定は事前にスキャンした部屋のみになります',
+      trackingWarning: '⚠️ コントローラーがトラッキングロストすると操作できません',
+      occlusionWarning1: '⚠️ 外で使用時にドローンが見えなくなるときは',
+      occlusionWarning2: 'オクルージョンをオフにしましょう'
     },
     // ステータステキスト
     status: {
@@ -205,7 +208,10 @@ const i18n = {
       bothGrips: 'Both Grips + Move: Change Drone Size',
       closeWithA: 'Press A to close',
       footer: 'Quest 3 / Quest Pro Compatible | WebXR Immersive Experience',
-      mrWarning: '⚠️ Collision only works in pre-scanned rooms'
+      mrWarning: '⚠️ Collision only works in pre-scanned rooms',
+      trackingWarning: '⚠️ Controls disabled when controller tracking is lost',
+      occlusionWarning1: '⚠️ If drone becomes invisible outdoors,',
+      occlusionWarning2: 'turn off Occlusion in settings'
     },
     // Status text
     status: {
@@ -807,7 +813,7 @@ export function createControllerGuideMenu() {
   // キャンバスでメニュー全体を描画
   guideMenuCanvas = document.createElement('canvas');
   guideMenuCanvas.width = 800;
-  guideMenuCanvas.height = 820;
+  guideMenuCanvas.height = 980;
   const canvas = guideMenuCanvas;
   const ctx = canvas.getContext('2d');
 
@@ -1275,6 +1281,7 @@ export function redrawControllerGuideMenu(pressedButtons) {
   ctx.stroke();
 
   // MRモード時の警告表示
+  let warningOffset = 0;
   if (state.isMrMode) {
     ctx.fillStyle = 'rgba(255, 150, 0, 0.15)';
     ctx.strokeStyle = 'rgba(255, 150, 0, 0.5)';
@@ -1288,10 +1295,42 @@ export function redrawControllerGuideMenu(pressedButtons) {
     ctx.fillStyle = '#ffa500';
     ctx.textAlign = 'center';
     ctx.fillText(t('guide', 'mrWarning'), canvas.width / 2, 747);
+    warningOffset = 50;
   }
 
+  // トラッキングロスト警告（常に表示）
+  const trackingWarningY = 720 + warningOffset;
+  ctx.fillStyle = 'rgba(255, 100, 100, 0.15)';
+  ctx.strokeStyle = 'rgba(255, 100, 100, 0.5)';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.roundRect(50, trackingWarningY, canvas.width - 100, 40, 8);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.font = 'bold 18px Arial';
+  ctx.fillStyle = '#ff6666';
+  ctx.textAlign = 'center';
+  ctx.fillText(t('guide', 'trackingWarning'), canvas.width / 2, trackingWarningY + 27);
+
+  // オクルージョン警告（常に表示、2行）
+  const occlusionWarningY = trackingWarningY + 50;
+  ctx.fillStyle = 'rgba(100, 200, 255, 0.15)';
+  ctx.strokeStyle = 'rgba(100, 200, 255, 0.5)';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.roundRect(50, occlusionWarningY, canvas.width - 100, 55, 8);
+  ctx.fill();
+  ctx.stroke();
+
+  ctx.font = 'bold 16px Arial';
+  ctx.fillStyle = '#66ccff';
+  ctx.textAlign = 'center';
+  ctx.fillText(t('guide', 'occlusionWarning1'), canvas.width / 2, occlusionWarningY + 22);
+  ctx.fillText(t('guide', 'occlusionWarning2'), canvas.width / 2, occlusionWarningY + 44);
+
   // 閉じる説明
-  const closeY = state.isMrMode ? 800 : 760;
+  const closeY = state.isMrMode ? 910 : 860;
   ctx.font = 'bold 28px Arial';
   ctx.fillStyle = '#ffff00';
   ctx.shadowColor = 'rgba(255, 255, 0, 0.5)';
@@ -1300,7 +1339,7 @@ export function redrawControllerGuideMenu(pressedButtons) {
   ctx.shadowBlur = 0;
 
   // フッター
-  const footerY = state.isMrMode ? 840 : 800;
+  const footerY = state.isMrMode ? 950 : 900;
   ctx.font = '16px Arial';
   ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
   ctx.fillText(t('guide', 'footer'), canvas.width / 2, footerY);

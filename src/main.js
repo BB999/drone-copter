@@ -524,6 +524,16 @@ function updateGamepadMovement() {
     const floorHeight = 0;
     const currentY = state.drone.userData.basePosition ? state.drone.userData.basePosition.y : state.drone.position.y;
 
+    // 降下中は徐々に水平に戻す
+    const currentRotationY = state.drone.rotation.y;
+    state.drone.rotation.x += (0 - state.drone.rotation.x) * 0.05;
+    state.drone.rotation.z += (0 - state.drone.rotation.z) * 0.05;
+    state.drone.rotation.y = currentRotationY; // Y軸の向きは維持
+    if (state.drone.userData.physicsTilt) {
+      state.drone.userData.physicsTilt.x += (0 - state.drone.userData.physicsTilt.x) * 0.05;
+      state.drone.userData.physicsTilt.z += (0 - state.drone.userData.physicsTilt.z) * 0.05;
+    }
+
     // スタック検出
     let isStuck = false;
     if (state.isCollisionEnabled) {

@@ -2389,6 +2389,11 @@ export function updateSettingsMenu() {
 
 // ボタンクリック処理
 function handleSettingsButtonClick(button) {
+  // チュートリアル中は値変更を禁止（タイトルに戻るとチュートリアル再開は許可）
+  if (!state.tutorialCompleted && button.type !== 'returnToTitle' && button.type !== 'tutorial') {
+    return;
+  }
+
   if (button.type === 'tutorial') {
     // チュートリアルを受ける - タイトルに戻ってチュートリアルを再開
     playButtonSound();

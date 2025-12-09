@@ -481,6 +481,10 @@ function updateGamepadMovement() {
       }
       state.setHoverTime(0);
 
+      // quaternionからrotationを同期させてY軸の向きを維持
+      state.drone.rotation.order = 'YXZ';
+      state.drone.rotation.setFromQuaternion(state.drone.quaternion);
+
       console.log('上昇中に衝突検出 - その場で起動完了');
       updateInfo('Collision Detected - Ready');
       removeSequenceStatusText();
@@ -503,6 +507,10 @@ function updateGamepadMovement() {
           state.drone.userData.basePosition = state.drone.position.clone();
         }
         state.setHoverTime(0);
+
+        // quaternionからrotationを同期させてY軸の向きを維持
+        state.drone.rotation.order = 'YXZ';
+        state.drone.rotation.setFromQuaternion(state.drone.quaternion);
 
         console.log('起動シーケンス完了 - 最終高さ:', state.drone.position.y);
         updateInfo('Drone Ready');

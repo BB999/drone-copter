@@ -925,7 +925,10 @@ export function positionDrone() {
   state.drone.position.copy(dronePos);
 
   const angle = Math.atan2(cameraDirection.x, cameraDirection.z);
-  state.drone.rotation.y = angle;
+  state.drone.rotation.order = 'YXZ';
+  state.drone.rotation.set(0, angle, 0);
+  // quaternionも同期させる
+  state.drone.quaternion.setFromEuler(state.drone.rotation);
 
   // ドローンを表示
   state.drone.visible = true;

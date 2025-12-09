@@ -358,26 +358,11 @@ export function updatePreStartupPhysics() {
   const isAlmostStopped = state.dronePhysicsVelocity.length() < 0.05;
 
   if (isOnGround && isAlmostStopped) {
-    // 完全に静止
+    // 完全に静止（姿勢はそのまま維持）
     state.drone.position.y = landingPlaneHeight;
     state.dronePhysicsVelocity.set(0, 0, 0);
     state.droneAngularVelocity.set(0, 0, 0);
-
-    // 水平姿勢に固定
-    const targetQuat = new THREE.Quaternion().setFromAxisAngle(
-      new THREE.Vector3(0, 1, 0),
-      state.drone.rotation.y
-    );
-    state.drone.quaternion.slerp(targetQuat, 0.3);
-
-    const euler = new THREE.Euler().setFromQuaternion(state.drone.quaternion);
-    if (Math.abs(euler.x) < 0.02 && Math.abs(euler.z) < 0.02) {
-      const finalQuat = new THREE.Quaternion().setFromAxisAngle(
-        new THREE.Vector3(0, 1, 0),
-        state.drone.rotation.y
-      );
-      state.drone.quaternion.copy(finalQuat);
-    }
+    state.setHasLanded(true);
     return;
   }
 
@@ -436,14 +421,6 @@ export function updatePreStartupPhysics() {
     state.droneAngularVelocity.set(0, 0, 0);
   }
 
-  // 着地中は水平姿勢に戻る
-  if (state.drone.position.y <= landingPlaneHeight + 0.02) {
-    const targetQuat = new THREE.Quaternion().setFromAxisAngle(
-      new THREE.Vector3(0, 1, 0),
-      state.drone.rotation.y
-    );
-    state.drone.quaternion.slerp(targetQuat, 0.2);
-  }
 }
 
 // ホバリングアニメーション

@@ -791,6 +791,9 @@ export function updateSequenceStatusText() {
 let guideMenuCanvas = null;
 let guideMenuTexture = null;
 
+// 前回のボタン状態を記録（再描画の最適化用）
+let prevGuideButtonState = null;
+
 // コントローラーガイドメニューを作成
 export function createControllerGuideMenu() {
   if (state.controllerGuideMenu) {
@@ -1327,6 +1330,7 @@ function destroyControllerGuideMenu() {
     state.setControllerGuideMenu(null);
     guideMenuCanvas = null;
     guideMenuTexture = null;
+    prevGuideButtonState = null; // 状態リセット
   }
 }
 
@@ -1352,6 +1356,9 @@ let settingsMenuHeight = 0;
 
 // ボタンの当たり判定領域を保存
 let settingsButtonAreas = [];
+
+// 前回のホバー状態を記録（再描画の最適化用）
+let prevSettingsHoveredButton = null;
 
 // 設定をlocalStorageに保存
 function saveSettingToStorage(key, value) {
@@ -2127,6 +2134,7 @@ function destroySettingsMenu() {
     settingsMenuCanvas = null;
     settingsMenuTexture = null;
     settingsButtonAreas = [];
+    prevSettingsHoveredButton = null; // 状態リセット
   }
 
   // レーザーも削除
@@ -2357,6 +2365,8 @@ export function updateSettingsMenu() {
         if (rightTriggerPressed && hoveredButton && laserClickCooldown < now) {
           handleSettingsButtonClick(hoveredButton);
           laserClickCooldown = now + 200;
+          // クリック後は設定値が変わるので強制再描画
+          prevSettingsHoveredButton = null;
         }
       }
     } else {
@@ -2367,8 +2377,18 @@ export function updateSettingsMenu() {
     }
   }
 
-  // 再描画
-  redrawSettingsMenu(hoveredButton);
+  // ホバー状態が変わった時だけ再描画（パフォーマンス最適化）
+  const hoveredKey = hoveredButton
+    ? `${hoveredButton.index}-${hoveredButton.type}-${hoveredButton.optionIndex ?? ''}`
+    : null;
+  const prevKey = prevSettingsHoveredButton
+    ? `${prevSettingsHoveredButton.index}-${prevSettingsHoveredButton.type}-${prevSettingsHoveredButton.optionIndex ?? ''}`
+    : null;
+
+  if (hoveredKey !== prevKey) {
+    redrawSettingsMenu(hoveredButton);
+    prevSettingsHoveredButton = hoveredButton;
+  }
 }
 
 // ボタンクリック処理
@@ -2611,8 +2631,12 @@ export function updateControllerGuideMenu() {
     }
   }
 
-  // メニューを再描画（ボタン状態を反映）
-  redrawControllerGuideMenu(pressedButtons);
+  // ボタン状態が変わった時だけ再描画（パフォーマンス最適化）
+  const buttonStateKey = Object.values(pressedButtons).map(v => v ? '1' : '0').join('');
+  if (buttonStateKey !== prevGuideButtonState) {
+    redrawControllerGuideMenu(pressedButtons);
+    prevGuideButtonState = buttonStateKey;
+  }
 }
 
 // ドローン位置表示矢印を作成（ドローンがカメラ外にいる時の方向ガイド）

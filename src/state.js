@@ -142,6 +142,7 @@ export let hudDroneLocationArrow = null;
 export let depthDataTexture = null;
 export let depthMesh = null;
 export let showDepthVisualization = false;
+export let occlusionEnabled = true;
 
 // plane-detection用変数
 export let detectedPlanes = new Map();
@@ -357,6 +358,7 @@ export function setHudDroneLocationArrow(value) { hudDroneLocationArrow = value;
 export function setDepthDataTexture(value) { depthDataTexture = value; }
 export function setDepthMesh(value) { depthMesh = value; }
 export function setShowDepthVisualization(value) { showDepthVisualization = value; }
+export function setOcclusionEnabled(value) { occlusionEnabled = value; }
 export function setDetectedPlanes(value) { detectedPlanes = value; }
 export function setVrBackground(value) { vrBackground = value; }
 export function setGridHelper(value) { gridHelper = value; }

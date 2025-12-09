@@ -26,6 +26,8 @@ const i18n = {
       fpvModeDesc: 'ドローン視点で操縦',
       shadow: '影の表示',
       shadowDesc: 'ドローンの影を表示',
+      occlusion: 'オクルージョン',
+      occlusionDesc: '深度遮蔽 (変更後はタイトルに戻ると更新)',
       controllerMode: '操作モード',
       controllerModeDesc: 'コントローラーの操作配置',
       mode1: 'モード1',
@@ -155,6 +157,8 @@ const i18n = {
       fpvModeDesc: 'Fly from drone perspective',
       shadow: 'Shadow',
       shadowDesc: 'Show drone shadow',
+      occlusion: 'Occlusion',
+      occlusionDesc: 'Depth occlusion (return to title to apply)',
       controllerMode: 'Control Mode',
       controllerModeDesc: 'Controller stick layout',
       mode1: 'Mode 1',
@@ -1370,10 +1374,12 @@ function saveSettingToStorage(key, value) {
 // localStorageから設定を読み込んで適用
 export function loadSettingsFromStorage() {
   const settings = JSON.parse(localStorage.getItem('droneSettings') || '{}');
+  console.log('読み込んだ設定:', settings);
 
   settingsItems.forEach(item => {
     if (settings[item.key] !== undefined) {
       item.setValue(settings[item.key]);
+      console.log(`設定適用: ${item.key} = ${settings[item.key]}`);
     }
   });
 }
@@ -1510,6 +1516,19 @@ const settingsItems = [
       }
     },
     defaultValue: true
+  },
+  {
+    nameKey: 'occlusion',
+    descKey: 'occlusionDesc',
+    key: 'occlusion',
+    type: 'toggle',
+    getValue: () => state.occlusionEnabled,
+    setValue: (v) => {
+      state.setOcclusionEnabled(v);
+      // オクルージョン設定はセッション再起動で反映される
+    },
+    defaultValue: true,
+    isHidden: () => !state.isMrMode
   },
   {
     nameKey: 'fpvMode',

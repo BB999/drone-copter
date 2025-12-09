@@ -100,16 +100,19 @@ function render() {
     const frame = state.renderer.xr.getFrame();
     const referenceSpace = state.renderer.xr.getReferenceSpace();
     if (frame && referenceSpace) {
-      processDepthInformation(frame, referenceSpace);
+      // オクルージョンが有効な場合のみ深度処理を実行
+      if (state.occlusionEnabled) {
+        processDepthInformation(frame, referenceSpace);
+      }
       updatePlanes(frame, referenceSpace);
     }
 
-    // 深度視覚化メッシュの作成と更新
-    if (state.depthDataTexture && !state.depthMesh) {
+    // 深度視覚化メッシュの作成と更新（オクルージョン有効時のみ）
+    if (state.occlusionEnabled && state.depthDataTexture && !state.depthMesh) {
       createDepthVisualization();
     }
     if (state.depthMesh) {
-      state.depthMesh.visible = state.showDepthVisualization;
+      state.depthMesh.visible = state.occlusionEnabled && state.showDepthVisualization;
     }
 
     // コントローラーのトラッキング状態を監視
@@ -735,14 +738,27 @@ async function startXR() {
       return;
     }
 
-    const xrSession = await navigator.xr.requestSession('immersive-ar', {
+    // オクルージョン設定に応じてdepth-sensingを有効/無効にする
+    const optionalFeatures = ['local-floor', 'bounded-floor', 'plane-detection', 'hand-tracking'];
+    const sessionOptions = {
       requiredFeatures: [],
-      optionalFeatures: ['local-floor', 'bounded-floor', 'depth-sensing', 'plane-detection', 'hand-tracking'],
-      depthSensing: {
+      optionalFeatures: optionalFeatures
+    };
+
+    // オクルージョンが有効な場合のみdepth-sensingを追加
+    console.log('オクルージョン設定:', state.occlusionEnabled);
+    if (state.occlusionEnabled) {
+      sessionOptions.optionalFeatures.push('depth-sensing');
+      sessionOptions.depthSensing = {
         usagePreference: ['cpu-optimized', 'gpu-optimized'],
         dataFormatPreference: ['luminance-alpha', 'float32']
-      }
-    });
+      };
+      console.log('depth-sensing有効');
+    } else {
+      console.log('depth-sensing無効');
+    }
+
+    const xrSession = await navigator.xr.requestSession('immersive-ar', sessionOptions);
 
     state.setXrSession(xrSession);
     state.setIsMrMode(true);

@@ -2161,6 +2161,10 @@ function destroySettingsMenu() {
   // レーザーも削除
   removeSettingsLaser();
 
+  // トリガー状態をリセット（設定メニュー中はトリガーが別用途のため）
+  state.setLeftTriggerPressed(true);
+  state.setRightTriggerPressed(true);
+
   // チュートリアルステップ4の場合、チュートリアル4ウィンドウを表示
   if (state.tutorialStep === 4) {
     setTimeout(() => {

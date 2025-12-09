@@ -92,8 +92,6 @@ export function handleSpeedChange() {
   if (!state.isStartupComplete || state.bothGripsPressed) return;
   // 設定メニュー表示中は無効（レーザー操作用にトリガーを使うため）
   if (state.isSettingsMenuVisible) return;
-  // ハンドトラッキング使用中は無効
-  if (state.hand1 || state.hand2) return;
 
   const inputSources = state.xrSession.inputSources;
 

@@ -1,0 +1,51 @@
+{
+  "packageId": "com.bb999.drocon",
+  "applicationId": "0",
+  "host": "bb999.github.io",
+  "name": "DROCON - MR Drone Simulator",
+  "launcherName": "DROCON",
+  "display": "standalone",
+  "themeColor": "#00C8FF",
+  "themeColorDark": "#000000",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#000000",
+  "enableNotifications": true,
+  "enableMicrophone": false,
+  "enableXRScene": false,
+  "startUrl": "/drone-copter/",
+  "iconUrl": "https://bb999.github.io/drone-copter/icons/icon-512.png",
+  "maskableIconUrl": "https://bb999.github.io/drone-copter/icons/icon-512-maskable.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "/Users/noranekob/cursor/drone-copter/drocon-apk/android.keystore",
+    "alias": "android"
+  },
+  "appVersionName": "1",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://bb999.github.io/drone-copter/manifest.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {
+    "horizonPlatformSDK": {
+      "enabled": true
+    }
+  },
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": true,
+  "horizonOSAppMode": "2D",
+  "fullScopeUrl": "https://bb999.github.io/drone-copter/",
+  "minSdkVersion": 23,
+  "orientation": "any",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "appVersion": "1"
+}

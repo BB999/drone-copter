@@ -1,0 +1,2530 @@
+android.support.customtabs.ICustomTabsCallback$Default
+android.support.customtabs.ICustomTabsCallback$Stub$Proxy
+android.support.customtabs.ICustomTabsCallback$Stub:
+    private static final java.lang.String DESCRIPTOR
+    static final int TRANSACTION_extraCallback
+    static final int TRANSACTION_extraCallbackWithResult
+    static final int TRANSACTION_onMessageChannelReady
+    static final int TRANSACTION_onNavigationEvent
+    static final int TRANSACTION_onPostMessage
+    static final int TRANSACTION_onRelationshipValidationResult
+    public static android.support.customtabs.ICustomTabsCallback asInterface(android.os.IBinder)
+    public static android.support.customtabs.ICustomTabsCallback getDefaultImpl()
+    public static boolean setDefaultImpl(android.support.customtabs.ICustomTabsCallback)
+android.support.customtabs.ICustomTabsService$Default
+android.support.customtabs.ICustomTabsService$Stub$Proxy:
+    public android.os.Bundle extraCommand(java.lang.String,android.os.Bundle)
+    public java.lang.String getInterfaceDescriptor()
+    public boolean mayLaunchUrl(android.support.customtabs.ICustomTabsCallback,android.net.Uri,android.os.Bundle,java.util.List)
+    public int postMessage(android.support.customtabs.ICustomTabsCallback,java.lang.String,android.os.Bundle)
+    public boolean requestPostMessageChannel(android.support.customtabs.ICustomTabsCallback,android.net.Uri)
+    public boolean requestPostMessageChannelWithExtras(android.support.customtabs.ICustomTabsCallback,android.net.Uri,android.os.Bundle)
+    public boolean updateVisuals(android.support.customtabs.ICustomTabsCallback,android.os.Bundle)
+android.support.customtabs.ICustomTabsService$Stub:
+    private static final java.lang.String DESCRIPTOR
+    static final int TRANSACTION_extraCommand
+    static final int TRANSACTION_mayLaunchUrl
+    static final int TRANSACTION_newSession
+    static final int TRANSACTION_newSessionWithExtras
+    static final int TRANSACTION_postMessage
+    static final int TRANSACTION_receiveFile
+    static final int TRANSACTION_requestPostMessageChannel
+    static final int TRANSACTION_requestPostMessageChannelWithExtras
+    static final int TRANSACTION_updateVisuals
+    static final int TRANSACTION_validateRelationship
+    static final int TRANSACTION_warmup
+    public void <init>()
+    public android.os.IBinder asBinder()
+    public boolean onTransact(int,android.os.Parcel,android.os.Parcel,int)
+    public static boolean setDefaultImpl(android.support.customtabs.ICustomTabsService)
+android.support.customtabs.ICustomTabsService:
+    public abstract android.os.Bundle extraCommand(java.lang.String,android.os.Bundle)
+    public abstract boolean mayLaunchUrl(android.support.customtabs.ICustomTabsCallback,android.net.Uri,android.os.Bundle,java.util.List)
+    public abstract int postMessage(android.support.customtabs.ICustomTabsCallback,java.lang.String,android.os.Bundle)
+    public abstract boolean requestPostMessageChannel(android.support.customtabs.ICustomTabsCallback,android.net.Uri)
+    public abstract boolean requestPostMessageChannelWithExtras(android.support.customtabs.ICustomTabsCallback,android.net.Uri,android.os.Bundle)
+    public abstract boolean updateVisuals(android.support.customtabs.ICustomTabsCallback,android.os.Bundle)
+android.support.customtabs.IPostMessageService$Default
+android.support.customtabs.IPostMessageService$Stub$Proxy
+android.support.customtabs.IPostMessageService$Stub
+android.support.customtabs.IPostMessageService
+android.support.customtabs.trusted.ITrustedWebActivityCallback$Default
+android.support.customtabs.trusted.ITrustedWebActivityCallback$Stub$Proxy:
+    public java.lang.String getInterfaceDescriptor()
+android.support.customtabs.trusted.ITrustedWebActivityCallback$Stub:
+    private static final java.lang.String DESCRIPTOR
+    static final int TRANSACTION_onExtraCallback
+    public void <init>()
+    public android.os.IBinder asBinder()
+    public boolean onTransact(int,android.os.Parcel,android.os.Parcel,int)
+    public static boolean setDefaultImpl(android.support.customtabs.trusted.ITrustedWebActivityCallback)
+android.support.customtabs.trusted.ITrustedWebActivityService$Default
+android.support.customtabs.trusted.ITrustedWebActivityService$Stub$Proxy
+android.support.customtabs.trusted.ITrustedWebActivityService$Stub:
+    private static final java.lang.String DESCRIPTOR
+    static final int TRANSACTION_areNotificationsEnabled
+    static final int TRANSACTION_cancelNotification
+    static final int TRANSACTION_extraCommand
+    static final int TRANSACTION_getActiveNotifications
+    static final int TRANSACTION_getSmallIconBitmap
+    static final int TRANSACTION_getSmallIconId
+    static final int TRANSACTION_notifyNotificationWithChannel
+    public static android.support.customtabs.trusted.ITrustedWebActivityService asInterface(android.os.IBinder)
+    public static android.support.customtabs.trusted.ITrustedWebActivityService getDefaultImpl()
+    public static boolean setDefaultImpl(android.support.customtabs.trusted.ITrustedWebActivityService)
+android.support.v4.app.INotificationSideChannel$Stub$Proxy
+android.support.v4.app.INotificationSideChannel$Stub
+android.support.v4.app.INotificationSideChannel
+android.support.v4.os.IResultReceiver$Stub$Proxy
+android.support.v4.os.IResultReceiver$Stub
+android.support.v4.os.IResultReceiver
+android.support.v4.os.ResultReceiver$1
+android.support.v4.os.ResultReceiver$MyResultReceiver
+android.support.v4.os.ResultReceiver$MyRunnable
+android.support.v4.os.ResultReceiver
+androidx.annotation.AnimRes
+androidx.annotation.AnimatorRes
+androidx.annotation.AnyRes
+androidx.annotation.AnyThread
+androidx.annotation.ArrayRes
+androidx.annotation.AttrRes
+androidx.annotation.BinderThread
+androidx.annotation.BoolRes
+androidx.annotation.CallSuper
+androidx.annotation.CheckResult
+androidx.annotation.ColorInt
+androidx.annotation.ColorLong
+androidx.annotation.ColorRes
+androidx.annotation.ContentView
+androidx.annotation.DimenRes
+androidx.annotation.Dimension
+androidx.annotation.DrawableRes
+androidx.annotation.FloatRange
+androidx.annotation.FontRes
+androidx.annotation.FractionRes
+androidx.annotation.GuardedBy
+androidx.annotation.HalfFloat
+androidx.annotation.IdRes
+androidx.annotation.InspectableProperty$EnumEntry
+androidx.annotation.InspectableProperty$FlagEntry
+androidx.annotation.InspectableProperty$ValueType
+androidx.annotation.InspectableProperty
+androidx.annotation.IntDef
+androidx.annotation.IntRange
+androidx.annotation.IntegerRes
+androidx.annotation.InterpolatorRes
+androidx.annotation.LayoutRes
+androidx.annotation.LongDef
+androidx.annotation.MainThread
+androidx.annotation.MenuRes
+androidx.annotation.NavigationRes
+androidx.annotation.NonNull
+androidx.annotation.Nullable
+androidx.annotation.PluralsRes
+androidx.annotation.Px
+androidx.annotation.RawRes
+androidx.annotation.RequiresApi
+androidx.annotation.RequiresFeature
+androidx.annotation.RequiresPermission$Read
+androidx.annotation.RequiresPermission$Write
+androidx.annotation.RequiresPermission
+androidx.annotation.RestrictTo$Scope
+androidx.annotation.RestrictTo
+androidx.annotation.Size
+androidx.annotation.StringDef
+androidx.annotation.StringRes
+androidx.annotation.StyleRes
+androidx.annotation.StyleableRes
+androidx.annotation.TransitionRes
+androidx.annotation.UiThread
+androidx.annotation.VisibleForTesting
+androidx.annotation.WorkerThread
+androidx.annotation.XmlRes
+androidx.arch.core.internal.FastSafeIterableMap
+androidx.arch.core.internal.SafeIterableMap$AscendingIterator
+androidx.arch.core.internal.SafeIterableMap$DescendingIterator
+androidx.arch.core.internal.SafeIterableMap$Entry
+androidx.arch.core.internal.SafeIterableMap$IteratorWithAdditions
+androidx.arch.core.internal.SafeIterableMap$ListIterator
+androidx.arch.core.internal.SafeIterableMap$SupportRemove
+androidx.arch.core.internal.SafeIterableMap
+androidx.arch.core.util.Function
+androidx.browser.R$color
+androidx.browser.R$dimen:
+    private void <init>()
+androidx.browser.R$id
+androidx.browser.R$layout
+androidx.browser.R$string
+androidx.browser.R$xml
+androidx.browser.R
+androidx.browser.browseractions.BrowserActionItem
+androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$1
+androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$2
+androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter$ViewHolderItem
+androidx.browser.browseractions.BrowserActionsFallbackMenuAdapter
+androidx.browser.browseractions.BrowserActionsFallbackMenuDialog$1
+androidx.browser.browseractions.BrowserActionsFallbackMenuDialog
+androidx.browser.browseractions.BrowserActionsFallbackMenuUi$1
+androidx.browser.browseractions.BrowserActionsFallbackMenuUi$2
+androidx.browser.browseractions.BrowserActionsFallbackMenuUi$3
+androidx.browser.browseractions.BrowserActionsFallbackMenuUi$BrowserActionsFallMenuUiListener
+androidx.browser.browseractions.BrowserActionsFallbackMenuUi
+androidx.browser.browseractions.BrowserActionsIntent$BrowserActionsFallDialogListener
+androidx.browser.browseractions.BrowserActionsIntent$BrowserActionsItemId
+androidx.browser.browseractions.BrowserActionsIntent$BrowserActionsUrlType
+androidx.browser.browseractions.BrowserActionsIntent$Builder
+androidx.browser.browseractions.BrowserActionsIntent
+androidx.browser.browseractions.BrowserServiceFileProvider$1
+androidx.browser.browseractions.BrowserServiceFileProvider$FileCleanupTask
+androidx.browser.browseractions.BrowserServiceFileProvider$FileSaveTask
+androidx.browser.browseractions.BrowserServiceFileProvider
+androidx.browser.customtabs.CustomTabColorSchemeParams$Builder:
+    public androidx.browser.customtabs.CustomTabColorSchemeParams$Builder setSecondaryToolbarColor(int)
+androidx.browser.customtabs.CustomTabsCallback:
+    public static final int NAVIGATION_ABORTED
+    public static final int NAVIGATION_FAILED
+    public static final int NAVIGATION_FINISHED
+    public static final int NAVIGATION_STARTED
+    public static final java.lang.String ONLINE_EXTRAS_KEY
+    public static final int TAB_HIDDEN
+    public static final int TAB_SHOWN
+androidx.browser.customtabs.CustomTabsClient$1
+androidx.browser.customtabs.CustomTabsClient:
+    private static final java.lang.String TAG
+    public androidx.browser.customtabs.CustomTabsSession attachSession(androidx.browser.customtabs.CustomTabsSession$PendingSession)
+    public static boolean connectAndInitialize(android.content.Context,java.lang.String)
+    public android.os.Bundle extraCommand(java.lang.String,android.os.Bundle)
+    public static java.lang.String getPackageName(android.content.Context,java.util.List)
+    public static java.lang.String getPackageName(android.content.Context,java.util.List,boolean)
+    public static androidx.browser.customtabs.CustomTabsSession$PendingSession newPendingSession(android.content.Context,androidx.browser.customtabs.CustomTabsCallback,int)
+androidx.browser.customtabs.CustomTabsIntent$Builder:
+    public void <init>(androidx.browser.customtabs.CustomTabsSession)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder addDefaultShareMenuItem()
+    public androidx.browser.customtabs.CustomTabsIntent$Builder addMenuItem(java.lang.String,android.app.PendingIntent)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder addToolbarItem(int,android.graphics.Bitmap,java.lang.String,android.app.PendingIntent)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder enableUrlBarHiding()
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setActionButton(android.graphics.Bitmap,java.lang.String,android.app.PendingIntent)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setActionButton(android.graphics.Bitmap,java.lang.String,android.app.PendingIntent,boolean)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setCloseButtonIcon(android.graphics.Bitmap)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setDefaultColorSchemeParams(androidx.browser.customtabs.CustomTabColorSchemeParams)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setDefaultShareMenuItemEnabled(boolean)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setExitAnimations(android.content.Context,int,int)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setInstantAppsEnabled(boolean)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setPendingSession(androidx.browser.customtabs.CustomTabsSession$PendingSession)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setSecondaryToolbarColor(int)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setSecondaryToolbarViews(android.widget.RemoteViews,int[],android.app.PendingIntent)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setShareState(int)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setShowTitle(boolean)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setStartAnimations(android.content.Context,int,int)
+    public androidx.browser.customtabs.CustomTabsIntent$Builder setUrlBarHidingEnabled(boolean)
+androidx.browser.customtabs.CustomTabsIntent$ColorScheme
+androidx.browser.customtabs.CustomTabsIntent$ShareState
+androidx.browser.customtabs.CustomTabsIntent:
+    public static final int COLOR_SCHEME_DARK
+    public static final int COLOR_SCHEME_LIGHT
+    private static final int COLOR_SCHEME_MAX
+    public static final int COLOR_SCHEME_SYSTEM
+    public static final java.lang.String EXTRA_ACTION_BUTTON_BUNDLE
+    public static final java.lang.String EXTRA_CLOSE_BUTTON_ICON
+    public static final java.lang.String EXTRA_COLOR_SCHEME
+    public static final java.lang.String EXTRA_COLOR_SCHEME_PARAMS
+    public static final java.lang.String EXTRA_DEFAULT_SHARE_MENU_ITEM
+    public static final java.lang.String EXTRA_ENABLE_INSTANT_APPS
+    public static final java.lang.String EXTRA_ENABLE_URLBAR_HIDING
+    public static final java.lang.String EXTRA_EXIT_ANIMATION_BUNDLE
+    public static final java.lang.String EXTRA_MENU_ITEMS
+    public static final java.lang.String EXTRA_NAVIGATION_BAR_COLOR
+    public static final java.lang.String EXTRA_NAVIGATION_BAR_DIVIDER_COLOR
+    public static final java.lang.String EXTRA_REMOTEVIEWS
+    public static final java.lang.String EXTRA_REMOTEVIEWS_CLICKED_ID
+    public static final java.lang.String EXTRA_REMOTEVIEWS_PENDINGINTENT
+    public static final java.lang.String EXTRA_REMOTEVIEWS_VIEW_IDS
+    public static final java.lang.String EXTRA_SECONDARY_TOOLBAR_COLOR
+    public static final java.lang.String EXTRA_SESSION
+    public static final java.lang.String EXTRA_SESSION_ID
+    public static final java.lang.String EXTRA_SHARE_STATE
+    public static final java.lang.String EXTRA_TINT_ACTION_BUTTON
+    public static final java.lang.String EXTRA_TITLE_VISIBILITY_STATE
+    public static final java.lang.String EXTRA_TOOLBAR_COLOR
+    public static final java.lang.String EXTRA_TOOLBAR_ITEMS
+    private static final java.lang.String EXTRA_USER_OPT_OUT_FROM_CUSTOM_TABS
+    public static final java.lang.String KEY_DESCRIPTION
+    public static final java.lang.String KEY_ICON
+    public static final java.lang.String KEY_ID
+    public static final java.lang.String KEY_MENU_ITEM_TITLE
+    public static final java.lang.String KEY_PENDING_INTENT
+    private static final int MAX_TOOLBAR_ITEMS
+    public static final int NO_TITLE
+    public static final int SHARE_STATE_DEFAULT
+    private static final int SHARE_STATE_MAX
+    public static final int SHARE_STATE_OFF
+    public static final int SHARE_STATE_ON
+    public static final int SHOW_PAGE_TITLE
+    public static final int TOOLBAR_ACTION_BUTTON_ID
+    public static int getMaxToolbarItems()
+    public static android.content.Intent setAlwaysUseBrowserUI(android.content.Intent)
+    public static boolean shouldAlwaysUseBrowserUI(android.content.Intent)
+androidx.browser.customtabs.CustomTabsService$1
+androidx.browser.customtabs.CustomTabsService$FilePurpose
+androidx.browser.customtabs.CustomTabsService$Relation
+androidx.browser.customtabs.CustomTabsService$Result
+androidx.browser.customtabs.CustomTabsService
+androidx.browser.customtabs.CustomTabsServiceConnection:
+    android.content.Context getApplicationContext()
+androidx.browser.customtabs.CustomTabsSession$MockSession
+androidx.browser.customtabs.CustomTabsSession$PendingSession
+androidx.browser.customtabs.CustomTabsSession:
+    private static final java.lang.String TAG
+    public static androidx.browser.customtabs.CustomTabsSession createMockSessionForTesting(android.content.ComponentName)
+    public boolean mayLaunchUrl(android.net.Uri,android.os.Bundle,java.util.List)
+    public int postMessage(java.lang.String,android.os.Bundle)
+    public boolean requestPostMessageChannel(android.net.Uri)
+    public boolean setActionButton(android.graphics.Bitmap,java.lang.String)
+    public boolean setSecondaryToolbarViews(android.widget.RemoteViews,int[],android.app.PendingIntent)
+    public boolean setToolbarItem(int,android.graphics.Bitmap,java.lang.String)
+androidx.browser.customtabs.CustomTabsSessionToken$1
+androidx.browser.customtabs.CustomTabsSessionToken$MockCallback
+androidx.browser.customtabs.CustomTabsSessionToken
+androidx.browser.customtabs.PostMessageBackend
+androidx.browser.customtabs.PostMessageService$1
+androidx.browser.customtabs.PostMessageService
+androidx.browser.customtabs.PostMessageServiceConnection
+androidx.browser.customtabs.TrustedWebUtils:
+    public static final java.lang.String ACTION_MANAGE_TRUSTED_WEB_ACTIVITY_DATA
+    public static final java.lang.String EXTRA_LAUNCH_AS_TRUSTED_WEB_ACTIVITY
+    private void <init>()
+    public static void launchAsTrustedWebActivity(android.content.Context,androidx.browser.customtabs.CustomTabsIntent,android.net.Uri)
+    public static void launchBrowserSiteSettings(android.content.Context,androidx.browser.customtabs.CustomTabsSession,android.net.Uri)
+androidx.browser.trusted.ConnectionHolder$WrapperFactory
+androidx.browser.trusted.ConnectionHolder
+androidx.browser.trusted.FutureUtils
+androidx.browser.trusted.NotificationApiHelperForM:
+    private void <init>()
+androidx.browser.trusted.NotificationApiHelperForO:
+    private void <init>()
+androidx.browser.trusted.PackageIdentityUtils:
+    private static final java.lang.String TAG
+    private void <init>()
+androidx.browser.trusted.ScreenOrientation$LockType
+androidx.browser.trusted.ScreenOrientation
+androidx.browser.trusted.Token:
+    private static final java.lang.String TAG
+androidx.browser.trusted.TokenContents:
+    public int getFingerprintCount()
+androidx.browser.trusted.TrustedWebActivityCallback
+androidx.browser.trusted.TrustedWebActivityDisplayMode$DefaultMode:
+    private static final int ID
+androidx.browser.trusted.TrustedWebActivityDisplayMode$ImmersiveMode:
+    private static final int ID
+    public static final java.lang.String KEY_CUTOUT_MODE
+    public static final java.lang.String KEY_STICKY
+    static androidx.browser.trusted.TrustedWebActivityDisplayMode fromBundle(android.os.Bundle)
+    public boolean isSticky()
+    public int layoutInDisplayCutoutMode()
+androidx.browser.trusted.TrustedWebActivityDisplayMode:
+    public static final java.lang.String KEY_ID
+    public static androidx.browser.trusted.TrustedWebActivityDisplayMode fromBundle(android.os.Bundle)
+androidx.browser.trusted.TrustedWebActivityIntentBuilder:
+    public static final java.lang.String EXTRA_ADDITIONAL_TRUSTED_ORIGINS
+    public static final java.lang.String EXTRA_DISPLAY_MODE
+    public static final java.lang.String EXTRA_SCREEN_ORIENTATION
+    public static final java.lang.String EXTRA_SHARE_DATA
+    public static final java.lang.String EXTRA_SHARE_TARGET
+    public static final java.lang.String EXTRA_SPLASH_SCREEN_PARAMS
+    public androidx.browser.trusted.TrustedWebActivityDisplayMode getDisplayMode()
+    public androidx.browser.trusted.TrustedWebActivityIntentBuilder setDefaultColorSchemeParams(androidx.browser.customtabs.CustomTabColorSchemeParams)
+androidx.browser.trusted.TrustedWebActivityService:
+    public static final java.lang.String ACTION_TRUSTED_WEB_ACTIVITY_SERVICE
+    public static final java.lang.String KEY_SMALL_ICON_BITMAP
+    public static final java.lang.String KEY_SUCCESS
+    public static final java.lang.String META_DATA_NAME_SMALL_ICON
+    public static final int SMALL_ICON_NOT_SET
+androidx.browser.trusted.TrustedWebActivityServiceConnection$1
+androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs:
+    public static androidx.browser.trusted.TrustedWebActivityServiceConnection$ActiveNotificationsArgs fromBundle(android.os.Bundle)
+androidx.browser.trusted.TrustedWebActivityServiceConnection$CancelNotificationArgs:
+    public android.os.Bundle toBundle()
+androidx.browser.trusted.TrustedWebActivityServiceConnection$NotificationsEnabledArgs:
+    public android.os.Bundle toBundle()
+androidx.browser.trusted.TrustedWebActivityServiceConnection$NotifyNotificationArgs:
+    public android.os.Bundle toBundle()
+androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs:
+    public static androidx.browser.trusted.TrustedWebActivityServiceConnection$ResultArgs fromBundle(android.os.Bundle)
+androidx.browser.trusted.TrustedWebActivityServiceConnection:
+    private static final java.lang.String KEY_ACTIVE_NOTIFICATIONS
+    private static final java.lang.String KEY_CHANNEL_NAME
+    private static final java.lang.String KEY_NOTIFICATION
+    private static final java.lang.String KEY_NOTIFICATION_SUCCESS
+    private static final java.lang.String KEY_PLATFORM_ID
+    private static final java.lang.String KEY_PLATFORM_TAG
+    private final android.content.ComponentName mComponentName
+    private final android.support.customtabs.trusted.ITrustedWebActivityService mService
+    void <init>(android.support.customtabs.trusted.ITrustedWebActivityService,android.content.ComponentName)
+    public boolean areNotificationsEnabled(java.lang.String)
+    public void cancel(java.lang.String,int)
+    public android.os.Parcelable[] getActiveNotifications()
+    public android.content.ComponentName getComponentName()
+    public android.graphics.Bitmap getSmallIconBitmap()
+    public int getSmallIconId()
+    public boolean notify(java.lang.String,int,android.app.Notification,java.lang.String)
+    public android.os.Bundle sendExtraCommand(java.lang.String,android.os.Bundle,androidx.browser.trusted.TrustedWebActivityCallback)
+    private static android.support.customtabs.trusted.ITrustedWebActivityCallback wrapCallback(androidx.browser.trusted.TrustedWebActivityCallback)
+androidx.browser.trusted.TrustedWebActivityServiceConnectionPool$BindToServiceAsyncTask
+androidx.browser.trusted.TrustedWebActivityServiceConnectionPool
+androidx.browser.trusted.sharing.ShareData:
+    public static final java.lang.String KEY_TEXT
+    public static final java.lang.String KEY_TITLE
+    public static final java.lang.String KEY_URIS
+    public static androidx.browser.trusted.sharing.ShareData fromBundle(android.os.Bundle)
+androidx.browser.trusted.sharing.ShareTarget$EncodingType
+androidx.browser.trusted.sharing.ShareTarget$FileFormField:
+    public static final java.lang.String KEY_ACCEPTED_TYPES
+    public static final java.lang.String KEY_NAME
+    static androidx.browser.trusted.sharing.ShareTarget$FileFormField fromBundle(android.os.Bundle)
+androidx.browser.trusted.sharing.ShareTarget$Params:
+    public static final java.lang.String KEY_FILES
+    public static final java.lang.String KEY_TEXT
+    public static final java.lang.String KEY_TITLE
+    static androidx.browser.trusted.sharing.ShareTarget$Params fromBundle(android.os.Bundle)
+androidx.browser.trusted.sharing.ShareTarget$RequestMethod
+androidx.browser.trusted.sharing.ShareTarget:
+    public static final java.lang.String ENCODING_TYPE_MULTIPART
+    public static final java.lang.String ENCODING_TYPE_URL_ENCODED
+    public static final java.lang.String KEY_ACTION
+    public static final java.lang.String KEY_ENCTYPE
+    public static final java.lang.String KEY_METHOD
+    public static final java.lang.String KEY_PARAMS
+    public static final java.lang.String METHOD_GET
+    public static final java.lang.String METHOD_POST
+    public static androidx.browser.trusted.sharing.ShareTarget fromBundle(android.os.Bundle)
+androidx.browser.trusted.splashscreens.SplashScreenParamKey
+androidx.browser.trusted.splashscreens.SplashScreenVersion
+androidx.collection.ArrayMap:
+    public void <init>(int)
+    public void <init>(androidx.collection.SimpleArrayMap)
+    public boolean containsAll(java.util.Collection)
+    public boolean removeAll(java.util.Collection)
+    public boolean retainAll(java.util.Collection)
+androidx.collection.ArraySet$1
+androidx.collection.ArraySet
+androidx.collection.CircularArray
+androidx.collection.CircularIntArray
+androidx.collection.ContainerHelpers:
+    private void <init>()
+    static int binarySearch(long[],int,long)
+    public static int idealByteArraySize(int)
+    public static int idealIntArraySize(int)
+    public static int idealLongArraySize(int)
+androidx.collection.LongSparseArray
+androidx.collection.LruCache
+androidx.collection.SimpleArrayMap:
+    private static final int BASE_SIZE
+    private static final int CACHE_SIZE
+    private static final boolean CONCURRENT_MODIFICATION_EXCEPTIONS
+    private static final boolean DEBUG
+    private static final java.lang.String TAG
+    public void <init>(int)
+    public void <init>(androidx.collection.SimpleArrayMap)
+    public void putAll(androidx.collection.SimpleArrayMap)
+androidx.collection.SparseArrayCompat
+androidx.concurrent.futures.AbstractResolvableFuture$1
+androidx.concurrent.futures.AbstractResolvableFuture$AtomicHelper
+androidx.concurrent.futures.AbstractResolvableFuture$Cancellation
+androidx.concurrent.futures.AbstractResolvableFuture$Failure$1
+androidx.concurrent.futures.AbstractResolvableFuture$Failure
+androidx.concurrent.futures.AbstractResolvableFuture$Listener
+androidx.concurrent.futures.AbstractResolvableFuture$SafeAtomicHelper
+androidx.concurrent.futures.AbstractResolvableFuture$SetFuture
+androidx.concurrent.futures.AbstractResolvableFuture$SynchronizedHelper
+androidx.concurrent.futures.AbstractResolvableFuture$Waiter
+androidx.concurrent.futures.AbstractResolvableFuture
+androidx.concurrent.futures.CallbackToFutureAdapter$Completer
+androidx.concurrent.futures.CallbackToFutureAdapter$FutureGarbageCollectedException
+androidx.concurrent.futures.CallbackToFutureAdapter$Resolver
+androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture$1
+androidx.concurrent.futures.CallbackToFutureAdapter$SafeFuture
+androidx.concurrent.futures.CallbackToFutureAdapter
+androidx.concurrent.futures.DirectExecutor
+androidx.concurrent.futures.ResolvableFuture
+androidx.core.R$attr
+androidx.core.R$color
+androidx.core.R$dimen
+androidx.core.R$drawable
+androidx.core.R$id
+androidx.core.R$integer
+androidx.core.R$layout
+androidx.core.R$string
+androidx.core.R$style
+androidx.core.R$styleable
+androidx.core.R
+androidx.core.accessibilityservice.AccessibilityServiceInfoCompat
+androidx.core.app.ActivityCompat$PermissionCompatDelegate:
+    public abstract boolean onActivityResult(android.app.Activity,int,int,android.content.Intent)
+androidx.core.app.ActivityCompat$SharedElementCallback21Impl$1
+androidx.core.app.ActivityCompat$SharedElementCallback21Impl
+androidx.core.app.ActivityCompat:
+    protected void <init>()
+    public static void finishAffinity(android.app.Activity)
+    public static void finishAfterTransition(android.app.Activity)
+    public static androidx.core.app.ActivityCompat$PermissionCompatDelegate getPermissionCompatDelegate()
+    public static android.net.Uri getReferrer(android.app.Activity)
+    public static boolean invalidateOptionsMenu(android.app.Activity)
+    public static void postponeEnterTransition(android.app.Activity)
+    public static void recreate(android.app.Activity)
+    public static androidx.core.view.DragAndDropPermissionsCompat requestDragAndDropPermissions(android.app.Activity,android.view.DragEvent)
+    public static android.view.View requireViewById(android.app.Activity,int)
+    public static void setEnterSharedElementCallback(android.app.Activity,androidx.core.app.SharedElementCallback)
+    public static void setExitSharedElementCallback(android.app.Activity,androidx.core.app.SharedElementCallback)
+    public static void setPermissionCompatDelegate(androidx.core.app.ActivityCompat$PermissionCompatDelegate)
+    public static boolean shouldShowRequestPermissionRationale(android.app.Activity,java.lang.String)
+    public static void startActivityForResult(android.app.Activity,android.content.Intent,int,android.os.Bundle)
+    public static void startIntentSenderForResult(android.app.Activity,android.content.IntentSender,int,android.content.Intent,int,int,int,android.os.Bundle)
+    public static void startPostponedEnterTransition(android.app.Activity)
+androidx.core.app.ActivityManagerCompat
+androidx.core.app.ActivityOptionsCompat$ActivityOptionsCompatImpl
+androidx.core.app.ActivityOptionsCompat
+androidx.core.app.ActivityRecreator$1
+androidx.core.app.ActivityRecreator$2
+androidx.core.app.ActivityRecreator$3
+androidx.core.app.ActivityRecreator$LifecycleCheckCallbacks
+androidx.core.app.ActivityRecreator
+androidx.core.app.AlarmManagerCompat
+androidx.core.app.AppComponentFactory
+androidx.core.app.AppLaunchChecker
+androidx.core.app.AppOpsManagerCompat
+androidx.core.app.BundleCompat$BundleCompatBaseImpl:
+    private static final java.lang.String TAG
+    private static java.lang.reflect.Method sGetIBinderMethod
+    private static boolean sGetIBinderMethodFetched
+    private void <init>()
+    public static android.os.IBinder getBinder(android.os.Bundle,java.lang.String)
+androidx.core.app.BundleCompat:
+    private void <init>()
+    public static android.os.IBinder getBinder(android.os.Bundle,java.lang.String)
+androidx.core.app.ComponentActivity$ExtraData
+androidx.core.app.ComponentActivity
+androidx.core.app.DialogCompat
+androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl$1
+androidx.core.app.FrameMetricsAggregator$FrameMetricsApi24Impl
+androidx.core.app.FrameMetricsAggregator$FrameMetricsBaseImpl
+androidx.core.app.FrameMetricsAggregator$MetricType
+androidx.core.app.FrameMetricsAggregator
+androidx.core.app.JobIntentService$CommandProcessor
+androidx.core.app.JobIntentService$CompatJobEngine
+androidx.core.app.JobIntentService$CompatWorkEnqueuer
+androidx.core.app.JobIntentService$CompatWorkItem
+androidx.core.app.JobIntentService$GenericWorkItem
+androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem
+androidx.core.app.JobIntentService$JobServiceEngineImpl
+androidx.core.app.JobIntentService$JobWorkEnqueuer
+androidx.core.app.JobIntentService$WorkEnqueuer
+androidx.core.app.JobIntentService
+androidx.core.app.NavUtils
+androidx.core.app.NotificationBuilderWithBuilderAccessor
+androidx.core.app.NotificationCompat$Action$Builder
+androidx.core.app.NotificationCompat$Action$Extender
+androidx.core.app.NotificationCompat$Action$SemanticAction
+androidx.core.app.NotificationCompat$Action$WearableExtender
+androidx.core.app.NotificationCompat$Action
+androidx.core.app.NotificationCompat$BadgeIconType
+androidx.core.app.NotificationCompat$BigPictureStyle
+androidx.core.app.NotificationCompat$BigTextStyle
+androidx.core.app.NotificationCompat$Builder
+androidx.core.app.NotificationCompat$CarExtender$UnreadConversation$Builder
+androidx.core.app.NotificationCompat$CarExtender$UnreadConversation
+androidx.core.app.NotificationCompat$CarExtender
+androidx.core.app.NotificationCompat$DecoratedCustomViewStyle
+androidx.core.app.NotificationCompat$Extender
+androidx.core.app.NotificationCompat$GroupAlertBehavior
+androidx.core.app.NotificationCompat$InboxStyle
+androidx.core.app.NotificationCompat$MessagingStyle$Message
+androidx.core.app.NotificationCompat$MessagingStyle
+androidx.core.app.NotificationCompat$NotificationVisibility
+androidx.core.app.NotificationCompat$StreamType
+androidx.core.app.NotificationCompat$Style
+androidx.core.app.NotificationCompat$WearableExtender
+androidx.core.app.NotificationCompat
+androidx.core.app.NotificationCompatBuilder
+androidx.core.app.NotificationCompatExtras
+androidx.core.app.NotificationCompatJellybean
+androidx.core.app.NotificationCompatSideChannelService$NotificationSideChannelStub
+androidx.core.app.NotificationCompatSideChannelService
+androidx.core.app.NotificationManagerCompat$CancelTask
+androidx.core.app.NotificationManagerCompat$NotifyTask
+androidx.core.app.NotificationManagerCompat$ServiceConnectedEvent
+androidx.core.app.NotificationManagerCompat$SideChannelManager$ListenerRecord
+androidx.core.app.NotificationManagerCompat$SideChannelManager
+androidx.core.app.NotificationManagerCompat$Task
+androidx.core.app.NotificationManagerCompat:
+    public static final java.lang.String ACTION_BIND_SIDE_CHANNEL
+    private static final java.lang.String CHECK_OP_NO_THROW
+    public static final java.lang.String EXTRA_USE_SIDE_CHANNEL
+    public static final int IMPORTANCE_DEFAULT
+    public static final int IMPORTANCE_HIGH
+    public static final int IMPORTANCE_LOW
+    public static final int IMPORTANCE_MAX
+    public static final int IMPORTANCE_MIN
+    public static final int IMPORTANCE_NONE
+    public static final int IMPORTANCE_UNSPECIFIED
+    static final int MAX_SIDE_CHANNEL_SDK_VERSION
+    private static final java.lang.String OP_POST_NOTIFICATION
+    private static final java.lang.String SETTING_ENABLED_NOTIFICATION_LISTENERS
+    private static final int SIDE_CHANNEL_RETRY_BASE_INTERVAL_MS
+    private static final int SIDE_CHANNEL_RETRY_MAX_COUNT
+    private static final java.lang.String TAG
+    private static java.lang.String sEnabledNotificationListeners
+    private static androidx.core.app.NotificationManagerCompat$SideChannelManager sSideChannelManager
+    public void cancel(int)
+    public void cancel(java.lang.String,int)
+    public void cancelAll()
+    public void createNotificationChannelGroup(android.app.NotificationChannelGroup)
+    public void createNotificationChannelGroups(java.util.List)
+    public void createNotificationChannels(java.util.List)
+    public void deleteNotificationChannel(java.lang.String)
+    public void deleteNotificationChannelGroup(java.lang.String)
+    public static java.util.Set getEnabledListenerPackages(android.content.Context)
+    public int getImportance()
+    public android.app.NotificationChannelGroup getNotificationChannelGroup(java.lang.String)
+    public java.util.List getNotificationChannelGroups()
+    public java.util.List getNotificationChannels()
+    public void notify(int,android.app.Notification)
+    public void notify(java.lang.String,int,android.app.Notification)
+    private void pushSideChannelQueue(androidx.core.app.NotificationManagerCompat$Task)
+    private static boolean useSideChannelForNotification(android.app.Notification)
+androidx.core.app.Person$Builder
+androidx.core.app.Person
+androidx.core.app.RemoteActionCompat:
+    public void <init>(androidx.core.app.RemoteActionCompat)
+    public void <init>(androidx.core.graphics.drawable.IconCompat,java.lang.CharSequence,java.lang.CharSequence,android.app.PendingIntent)
+    public static androidx.core.app.RemoteActionCompat createFromRemoteAction(android.app.RemoteAction)
+    public android.app.PendingIntent getActionIntent()
+    public java.lang.CharSequence getContentDescription()
+    public androidx.core.graphics.drawable.IconCompat getIcon()
+    public java.lang.CharSequence getTitle()
+    public boolean isEnabled()
+    public void setEnabled(boolean)
+    public void setShouldShowIcon(boolean)
+    public boolean shouldShowIcon()
+    public android.app.RemoteAction toRemoteAction()
+androidx.core.app.RemoteInput$Builder
+androidx.core.app.RemoteInput$Source
+androidx.core.app.RemoteInput
+androidx.core.app.ServiceCompat$StopForegroundFlags
+androidx.core.app.ServiceCompat
+androidx.core.app.ShareCompat$IntentBuilder
+androidx.core.app.ShareCompat$IntentReader
+androidx.core.app.ShareCompat
+androidx.core.app.SharedElementCallback$OnSharedElementsReadyListener
+androidx.core.app.SharedElementCallback
+androidx.core.app.TaskStackBuilder$SupportParentable
+androidx.core.app.TaskStackBuilder
+androidx.core.content.ContentResolverCompat
+androidx.core.content.ContextCompat$LegacyServiceMapHolder
+androidx.core.content.ContextCompat$MainHandlerExecutor
+androidx.core.content.ContextCompat:
+    private static final java.lang.String TAG
+    protected void <init>()
+    public static int checkSelfPermission(android.content.Context,java.lang.String)
+    public static android.content.Context createDeviceProtectedStorageContext(android.content.Context)
+    private static synchronized java.io.File createFilesDir(java.io.File)
+    public static java.io.File getCodeCacheDir(android.content.Context)
+    public static android.content.res.ColorStateList getColorStateList(android.content.Context,int)
+    public static java.io.File getDataDir(android.content.Context)
+    public static java.util.concurrent.Executor getMainExecutor(android.content.Context)
+    public static java.io.File getNoBackupFilesDir(android.content.Context)
+    public static java.io.File[] getObbDirs(android.content.Context)
+    public static java.lang.Object getSystemService(android.content.Context,java.lang.Class)
+    public static java.lang.String getSystemServiceName(android.content.Context,java.lang.Class)
+    public static boolean isDeviceProtectedStorage(android.content.Context)
+    public static boolean startActivities(android.content.Context,android.content.Intent[])
+    public static boolean startActivities(android.content.Context,android.content.Intent[],android.os.Bundle)
+    public static void startForegroundService(android.content.Context,android.content.Intent)
+androidx.core.content.FileProvider:
+    private static final java.lang.String ATTR_NAME
+    private static final java.lang.String ATTR_PATH
+    private static final java.lang.String META_DATA_FILE_PROVIDER_PATHS
+    private static final java.lang.String TAG_CACHE_PATH
+    private static final java.lang.String TAG_EXTERNAL
+    private static final java.lang.String TAG_EXTERNAL_CACHE
+    private static final java.lang.String TAG_EXTERNAL_FILES
+    private static final java.lang.String TAG_EXTERNAL_MEDIA
+    private static final java.lang.String TAG_FILES_PATH
+    private static final java.lang.String TAG_ROOT_PATH
+androidx.core.content.IntentCompat
+androidx.core.content.MimeTypeFilter
+androidx.core.content.PermissionChecker$PermissionResult
+androidx.core.content.PermissionChecker
+androidx.core.content.SharedPreferencesCompat$EditorCompat$Helper
+androidx.core.content.SharedPreferencesCompat$EditorCompat
+androidx.core.content.SharedPreferencesCompat
+androidx.core.content.pm.ActivityInfoCompat
+androidx.core.content.pm.PackageInfoCompat
+androidx.core.content.pm.PermissionInfoCompat$Protection
+androidx.core.content.pm.PermissionInfoCompat$ProtectionFlags
+androidx.core.content.pm.PermissionInfoCompat
+androidx.core.content.pm.ShortcutInfoCompat$Builder
+androidx.core.content.pm.ShortcutInfoCompat
+androidx.core.content.pm.ShortcutInfoCompatSaver$NoopImpl
+androidx.core.content.pm.ShortcutInfoCompatSaver
+androidx.core.content.pm.ShortcutManagerCompat$1
+androidx.core.content.pm.ShortcutManagerCompat
+androidx.core.content.res.ColorStateListInflaterCompat
+androidx.core.content.res.ComplexColorCompat
+androidx.core.content.res.ConfigurationHelper
+androidx.core.content.res.FontResourcesParserCompat$FamilyResourceEntry
+androidx.core.content.res.FontResourcesParserCompat$FetchStrategy
+androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry
+androidx.core.content.res.FontResourcesParserCompat$FontFileResourceEntry
+androidx.core.content.res.FontResourcesParserCompat$ProviderResourceEntry
+androidx.core.content.res.FontResourcesParserCompat
+androidx.core.content.res.GradientColorInflaterCompat$ColorStops
+androidx.core.content.res.GradientColorInflaterCompat
+androidx.core.content.res.GrowingArrayUtils
+androidx.core.content.res.ResourcesCompat$FontCallback$1
+androidx.core.content.res.ResourcesCompat$FontCallback$2
+androidx.core.content.res.ResourcesCompat$FontCallback
+androidx.core.content.res.ResourcesCompat
+androidx.core.content.res.TypedArrayUtils
+androidx.core.database.CursorWindowCompat
+androidx.core.database.DatabaseUtilsCompat
+androidx.core.database.sqlite.SQLiteCursorCompat
+androidx.core.graphics.BitmapCompat
+androidx.core.graphics.ColorUtils
+androidx.core.graphics.PaintCompat
+androidx.core.graphics.PathParser$ExtractFloatResult
+androidx.core.graphics.PathParser$PathDataNode
+androidx.core.graphics.PathParser
+androidx.core.graphics.PathSegment
+androidx.core.graphics.PathUtils
+androidx.core.graphics.TypefaceCompat
+androidx.core.graphics.TypefaceCompatApi21Impl
+androidx.core.graphics.TypefaceCompatApi24Impl
+androidx.core.graphics.TypefaceCompatApi26Impl
+androidx.core.graphics.TypefaceCompatApi28Impl
+androidx.core.graphics.TypefaceCompatBaseImpl$1
+androidx.core.graphics.TypefaceCompatBaseImpl$2
+androidx.core.graphics.TypefaceCompatBaseImpl$StyleExtractor
+androidx.core.graphics.TypefaceCompatBaseImpl
+androidx.core.graphics.TypefaceCompatUtil
+androidx.core.graphics.drawable.DrawableCompat:
+    private static final java.lang.String TAG
+    private static java.lang.reflect.Method sGetLayoutDirectionMethod
+    private static boolean sGetLayoutDirectionMethodFetched
+    private static java.lang.reflect.Method sSetLayoutDirectionMethod
+    private static boolean sSetLayoutDirectionMethodFetched
+    private void <init>()
+    public static void applyTheme(android.graphics.drawable.Drawable,android.content.res.Resources$Theme)
+    public static boolean canApplyTheme(android.graphics.drawable.Drawable)
+    public static void clearColorFilter(android.graphics.drawable.Drawable)
+    public static int getAlpha(android.graphics.drawable.Drawable)
+    public static android.graphics.ColorFilter getColorFilter(android.graphics.drawable.Drawable)
+    public static int getLayoutDirection(android.graphics.drawable.Drawable)
+    public static void inflate(android.graphics.drawable.Drawable,android.content.res.Resources,org.xmlpull.v1.XmlPullParser,android.util.AttributeSet,android.content.res.Resources$Theme)
+    public static boolean isAutoMirrored(android.graphics.drawable.Drawable)
+    public static void jumpToCurrentState(android.graphics.drawable.Drawable)
+    public static void setAutoMirrored(android.graphics.drawable.Drawable,boolean)
+    public static void setHotspot(android.graphics.drawable.Drawable,float,float)
+    public static void setHotspotBounds(android.graphics.drawable.Drawable,int,int,int,int)
+    public static boolean setLayoutDirection(android.graphics.drawable.Drawable,int)
+    public static void setTint(android.graphics.drawable.Drawable,int)
+    public static void setTintList(android.graphics.drawable.Drawable,android.content.res.ColorStateList)
+    public static void setTintMode(android.graphics.drawable.Drawable,android.graphics.PorterDuff$Mode)
+    public static android.graphics.drawable.Drawable unwrap(android.graphics.drawable.Drawable)
+androidx.core.graphics.drawable.IconCompat$IconType
+androidx.core.graphics.drawable.IconCompat:
+    private static final float ADAPTIVE_ICON_INSET_FACTOR
+    private static final int AMBIENT_SHADOW_ALPHA
+    private static final float BLUR_FACTOR
+    private static final float DEFAULT_VIEW_PORT_SCALE
+    private static final java.lang.String EXTRA_INT1
+    private static final java.lang.String EXTRA_INT2
+    private static final java.lang.String EXTRA_OBJ
+    private static final java.lang.String EXTRA_TINT_LIST
+    private static final java.lang.String EXTRA_TINT_MODE
+    private static final java.lang.String EXTRA_TYPE
+    private static final float ICON_DIAMETER_FACTOR
+    private static final int KEY_SHADOW_ALPHA
+    private static final float KEY_SHADOW_OFFSET_FACTOR
+    private static final java.lang.String TAG
+    public static final int TYPE_UNKNOWN
+    private void <init>(int)
+    public void addToShortcutIntent(android.content.Intent,android.graphics.drawable.Drawable,android.content.Context)
+    public void checkResource(android.content.Context)
+    public static androidx.core.graphics.drawable.IconCompat createFromBundle(android.os.Bundle)
+    public static androidx.core.graphics.drawable.IconCompat createFromIcon(android.content.Context,android.graphics.drawable.Icon)
+    public static androidx.core.graphics.drawable.IconCompat createFromIcon(android.graphics.drawable.Icon)
+    static android.graphics.Bitmap createLegacyIconFromAdaptiveIcon(android.graphics.Bitmap,boolean)
+    public static androidx.core.graphics.drawable.IconCompat createWithAdaptiveBitmap(android.graphics.Bitmap)
+    public static androidx.core.graphics.drawable.IconCompat createWithBitmap(android.graphics.Bitmap)
+    public static androidx.core.graphics.drawable.IconCompat createWithContentUri(android.net.Uri)
+    public static androidx.core.graphics.drawable.IconCompat createWithContentUri(java.lang.String)
+    public static androidx.core.graphics.drawable.IconCompat createWithData(byte[],int,int)
+    public static androidx.core.graphics.drawable.IconCompat createWithResource(android.content.Context,int)
+    public static androidx.core.graphics.drawable.IconCompat createWithResource(android.content.res.Resources,java.lang.String,int)
+    public android.graphics.Bitmap getBitmap()
+    private static android.content.res.Resources getResources(android.content.Context,java.lang.String)
+    public int getType()
+    private static int getType(android.graphics.drawable.Icon)
+    public android.net.Uri getUri()
+    private static android.net.Uri getUri(android.graphics.drawable.Icon)
+    public android.graphics.drawable.Drawable loadDrawable(android.content.Context)
+    private android.graphics.drawable.Drawable loadDrawableInner(android.content.Context)
+    public androidx.core.graphics.drawable.IconCompat setTint(int)
+    public androidx.core.graphics.drawable.IconCompat setTintList(android.content.res.ColorStateList)
+    public androidx.core.graphics.drawable.IconCompat setTintMode(android.graphics.PorterDuff$Mode)
+    public android.os.Bundle toBundle()
+    public android.graphics.drawable.Icon toIcon()
+androidx.core.graphics.drawable.RoundedBitmapDrawable21
+androidx.core.graphics.drawable.RoundedBitmapDrawable
+androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable
+androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
+androidx.core.graphics.drawable.TintAwareDrawable:
+    public abstract void setTint(int)
+    public abstract void setTintList(android.content.res.ColorStateList)
+    public abstract void setTintMode(android.graphics.PorterDuff$Mode)
+androidx.core.graphics.drawable.WrappedDrawable
+androidx.core.graphics.drawable.WrappedDrawableApi14:
+    public final android.graphics.drawable.Drawable getWrappedDrawable()
+androidx.core.graphics.drawable.WrappedDrawableApi21:
+    private static final java.lang.String TAG
+androidx.core.hardware.display.DisplayManagerCompat
+androidx.core.hardware.fingerprint.FingerprintManagerCompat$1
+androidx.core.hardware.fingerprint.FingerprintManagerCompat$AuthenticationCallback
+androidx.core.hardware.fingerprint.FingerprintManagerCompat$AuthenticationResult
+androidx.core.hardware.fingerprint.FingerprintManagerCompat$CryptoObject
+androidx.core.hardware.fingerprint.FingerprintManagerCompat
+androidx.core.internal.package-info
+androidx.core.internal.view.SupportMenu
+androidx.core.internal.view.SupportMenuItem
+androidx.core.internal.view.SupportSubMenu
+androidx.core.location.LocationManagerCompat
+androidx.core.math.MathUtils
+androidx.core.net.ConnectivityManagerCompat$RestrictBackgroundStatus
+androidx.core.net.ConnectivityManagerCompat
+androidx.core.net.DatagramSocketWrapper$DatagramSocketImplWrapper
+androidx.core.net.DatagramSocketWrapper
+androidx.core.net.TrafficStatsCompat
+androidx.core.os.BuildCompat
+androidx.core.os.CancellationSignal$OnCancelListener
+androidx.core.os.CancellationSignal
+androidx.core.os.ConfigurationCompat
+androidx.core.os.EnvironmentCompat
+androidx.core.os.HandlerCompat
+androidx.core.os.LocaleListCompat
+androidx.core.os.LocaleListCompatWrapper
+androidx.core.os.LocaleListInterface
+androidx.core.os.LocaleListPlatformWrapper
+androidx.core.os.MessageCompat
+androidx.core.os.OperationCanceledException
+androidx.core.os.ParcelCompat
+androidx.core.os.ParcelableCompat$ParcelableCompatCreatorHoneycombMR2
+androidx.core.os.ParcelableCompat
+androidx.core.os.ParcelableCompatCreatorCallbacks
+androidx.core.os.TraceCompat
+androidx.core.os.UserManagerCompat
+androidx.core.provider.FontRequest
+androidx.core.provider.FontsContractCompat$1
+androidx.core.provider.FontsContractCompat$2
+androidx.core.provider.FontsContractCompat$3
+androidx.core.provider.FontsContractCompat$4$1
+androidx.core.provider.FontsContractCompat$4$2
+androidx.core.provider.FontsContractCompat$4$3
+androidx.core.provider.FontsContractCompat$4$4
+androidx.core.provider.FontsContractCompat$4$5
+androidx.core.provider.FontsContractCompat$4$6
+androidx.core.provider.FontsContractCompat$4$7
+androidx.core.provider.FontsContractCompat$4$8
+androidx.core.provider.FontsContractCompat$4$9
+androidx.core.provider.FontsContractCompat$4
+androidx.core.provider.FontsContractCompat$5
+androidx.core.provider.FontsContractCompat$Columns
+androidx.core.provider.FontsContractCompat$FontFamilyResult
+androidx.core.provider.FontsContractCompat$FontInfo
+androidx.core.provider.FontsContractCompat$FontRequestCallback$FontRequestFailReason
+androidx.core.provider.FontsContractCompat$FontRequestCallback
+androidx.core.provider.FontsContractCompat$TypefaceResult
+androidx.core.provider.FontsContractCompat
+androidx.core.provider.SelfDestructiveThread$1
+androidx.core.provider.SelfDestructiveThread$2$1
+androidx.core.provider.SelfDestructiveThread$2
+androidx.core.provider.SelfDestructiveThread$3
+androidx.core.provider.SelfDestructiveThread$ReplyCallback
+androidx.core.provider.SelfDestructiveThread
+androidx.core.telephony.mbms.MbmsHelper
+androidx.core.text.BidiFormatter$Builder
+androidx.core.text.BidiFormatter$DirectionalityEstimator
+androidx.core.text.BidiFormatter
+androidx.core.text.HtmlCompat
+androidx.core.text.ICUCompat
+androidx.core.text.PrecomputedTextCompat$Params$Builder
+androidx.core.text.PrecomputedTextCompat$Params
+androidx.core.text.PrecomputedTextCompat$PrecomputedTextFutureTask$PrecomputedTextCallback
+androidx.core.text.PrecomputedTextCompat$PrecomputedTextFutureTask
+androidx.core.text.PrecomputedTextCompat
+androidx.core.text.TextDirectionHeuristicCompat
+androidx.core.text.TextDirectionHeuristicsCompat$AnyStrong
+androidx.core.text.TextDirectionHeuristicsCompat$FirstStrong
+androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionAlgorithm
+androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicImpl
+androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicInternal
+androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicLocale
+androidx.core.text.TextDirectionHeuristicsCompat
+androidx.core.text.TextUtilsCompat
+androidx.core.text.util.FindAddress$ZipRange
+androidx.core.text.util.FindAddress
+androidx.core.text.util.LinkifyCompat$1
+androidx.core.text.util.LinkifyCompat$LinkSpec
+androidx.core.text.util.LinkifyCompat$LinkifyMask
+androidx.core.text.util.LinkifyCompat
+androidx.core.util.AtomicFile
+androidx.core.util.Consumer
+androidx.core.util.DebugUtils
+androidx.core.util.LogWriter
+androidx.core.util.ObjectsCompat
+androidx.core.util.Pair
+androidx.core.util.PatternsCompat
+androidx.core.util.Pools$Pool
+androidx.core.util.Pools$SimplePool
+androidx.core.util.Pools$SynchronizedPool
+androidx.core.util.Pools
+androidx.core.util.Preconditions
+androidx.core.util.Supplier
+androidx.core.util.TimeUtils
+androidx.core.view.AccessibilityDelegateCompat$AccessibilityDelegateAdapter
+androidx.core.view.AccessibilityDelegateCompat
+androidx.core.view.ActionProvider$SubUiVisibilityListener
+androidx.core.view.ActionProvider$VisibilityListener
+androidx.core.view.ActionProvider
+androidx.core.view.DisplayCutoutCompat
+androidx.core.view.DragAndDropPermissionsCompat
+androidx.core.view.DragStartHelper$1
+androidx.core.view.DragStartHelper$2
+androidx.core.view.DragStartHelper$OnDragStartListener
+androidx.core.view.DragStartHelper
+androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImpl
+androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler
+androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplBase
+androidx.core.view.GestureDetectorCompat$GestureDetectorCompatImplJellybeanMr2
+androidx.core.view.GestureDetectorCompat
+androidx.core.view.GravityCompat
+androidx.core.view.InputDeviceCompat
+androidx.core.view.KeyEventDispatcher$Component
+androidx.core.view.KeyEventDispatcher
+androidx.core.view.LayoutInflaterCompat$Factory2Wrapper
+androidx.core.view.LayoutInflaterCompat
+androidx.core.view.LayoutInflaterFactory
+androidx.core.view.MarginLayoutParamsCompat
+androidx.core.view.MenuCompat
+androidx.core.view.MenuItemCompat$1
+androidx.core.view.MenuItemCompat$OnActionExpandListener
+androidx.core.view.MenuItemCompat
+androidx.core.view.MotionEventCompat
+androidx.core.view.NestedScrollingChild2
+androidx.core.view.NestedScrollingChild3
+androidx.core.view.NestedScrollingChild
+androidx.core.view.NestedScrollingChildHelper
+androidx.core.view.NestedScrollingParent2
+androidx.core.view.NestedScrollingParent3
+androidx.core.view.NestedScrollingParent
+androidx.core.view.NestedScrollingParentHelper
+androidx.core.view.OnApplyWindowInsetsListener
+androidx.core.view.OneShotPreDrawListener
+androidx.core.view.PointerIconCompat
+androidx.core.view.ScaleGestureDetectorCompat
+androidx.core.view.ScrollingView
+androidx.core.view.TintableBackgroundView
+androidx.core.view.VelocityTrackerCompat
+androidx.core.view.ViewCompat$1
+androidx.core.view.ViewCompat$2
+androidx.core.view.ViewCompat$3
+androidx.core.view.ViewCompat$4
+androidx.core.view.ViewCompat$5
+androidx.core.view.ViewCompat$AccessibilityPaneVisibilityManager
+androidx.core.view.ViewCompat$AccessibilityViewProperty
+androidx.core.view.ViewCompat$FocusDirection
+androidx.core.view.ViewCompat$FocusRealDirection
+androidx.core.view.ViewCompat$FocusRelativeDirection
+androidx.core.view.ViewCompat$NestedScrollType
+androidx.core.view.ViewCompat$OnUnhandledKeyEventListenerCompat
+androidx.core.view.ViewCompat$ScrollAxis
+androidx.core.view.ViewCompat$ScrollIndicators
+androidx.core.view.ViewCompat$UnhandledKeyEventManager
+androidx.core.view.ViewCompat
+androidx.core.view.ViewConfigurationCompat
+androidx.core.view.ViewGroupCompat
+androidx.core.view.ViewParentCompat
+androidx.core.view.ViewPropertyAnimatorCompat$1
+androidx.core.view.ViewPropertyAnimatorCompat$2
+androidx.core.view.ViewPropertyAnimatorCompat$ViewPropertyAnimatorListenerApi14
+androidx.core.view.ViewPropertyAnimatorCompat
+androidx.core.view.ViewPropertyAnimatorListener
+androidx.core.view.ViewPropertyAnimatorListenerAdapter
+androidx.core.view.ViewPropertyAnimatorUpdateListener
+androidx.core.view.WindowCompat
+androidx.core.view.WindowInsetsCompat
+androidx.core.view.accessibility.AccessibilityClickableSpanCompat
+androidx.core.view.accessibility.AccessibilityEventCompat
+androidx.core.view.accessibility.AccessibilityManagerCompat$AccessibilityStateChangeListener
+androidx.core.view.accessibility.AccessibilityManagerCompat$AccessibilityStateChangeListenerCompat
+androidx.core.view.accessibility.AccessibilityManagerCompat$AccessibilityStateChangeListenerWrapper
+androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListener
+androidx.core.view.accessibility.AccessibilityManagerCompat$TouchExplorationStateChangeListenerWrapper
+androidx.core.view.accessibility.AccessibilityManagerCompat
+androidx.core.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityActionCompat
+androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionInfoCompat
+androidx.core.view.accessibility.AccessibilityNodeInfoCompat$CollectionItemInfoCompat
+androidx.core.view.accessibility.AccessibilityNodeInfoCompat$RangeInfoCompat
+androidx.core.view.accessibility.AccessibilityNodeInfoCompat
+androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi16
+androidx.core.view.accessibility.AccessibilityNodeProviderCompat$AccessibilityNodeProviderApi19
+androidx.core.view.accessibility.AccessibilityNodeProviderCompat
+androidx.core.view.accessibility.AccessibilityRecordCompat
+androidx.core.view.accessibility.AccessibilityViewCommand$CommandArguments
+androidx.core.view.accessibility.AccessibilityViewCommand$MoveAtGranularityArguments
+androidx.core.view.accessibility.AccessibilityViewCommand$MoveHtmlArguments
+androidx.core.view.accessibility.AccessibilityViewCommand$MoveWindowArguments
+androidx.core.view.accessibility.AccessibilityViewCommand$ScrollToPositionArguments
+androidx.core.view.accessibility.AccessibilityViewCommand$SetProgressArguments
+androidx.core.view.accessibility.AccessibilityViewCommand$SetSelectionArguments
+androidx.core.view.accessibility.AccessibilityViewCommand$SetTextArguments
+androidx.core.view.accessibility.AccessibilityViewCommand
+androidx.core.view.accessibility.AccessibilityWindowInfoCompat
+androidx.core.view.animation.PathInterpolatorApi14
+androidx.core.view.animation.PathInterpolatorCompat
+androidx.core.view.inputmethod.EditorInfoCompat
+androidx.core.view.inputmethod.InputConnectionCompat$1
+androidx.core.view.inputmethod.InputConnectionCompat$2
+androidx.core.view.inputmethod.InputConnectionCompat$OnCommitContentListener
+androidx.core.view.inputmethod.InputConnectionCompat
+androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatApi25Impl
+androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatBaseImpl
+androidx.core.view.inputmethod.InputContentInfoCompat$InputContentInfoCompatImpl
+androidx.core.view.inputmethod.InputContentInfoCompat
+androidx.core.widget.AutoScrollHelper$ClampedScroller
+androidx.core.widget.AutoScrollHelper$ScrollAnimationRunnable
+androidx.core.widget.AutoScrollHelper
+androidx.core.widget.AutoSizeableTextView
+androidx.core.widget.CompoundButtonCompat
+androidx.core.widget.ContentLoadingProgressBar$1
+androidx.core.widget.ContentLoadingProgressBar$2
+androidx.core.widget.ContentLoadingProgressBar
+androidx.core.widget.EdgeEffectCompat
+androidx.core.widget.ImageViewCompat
+androidx.core.widget.ListPopupWindowCompat
+androidx.core.widget.ListViewAutoScrollHelper
+androidx.core.widget.ListViewCompat
+androidx.core.widget.NestedScrollView$AccessibilityDelegate
+androidx.core.widget.NestedScrollView$OnScrollChangeListener
+androidx.core.widget.NestedScrollView$SavedState$1
+androidx.core.widget.NestedScrollView$SavedState
+androidx.core.widget.NestedScrollView
+androidx.core.widget.PopupMenuCompat
+androidx.core.widget.PopupWindowCompat
+androidx.core.widget.ScrollerCompat
+androidx.core.widget.TextViewCompat$AutoSizeTextType
+androidx.core.widget.TextViewCompat$OreoCallback
+androidx.core.widget.TextViewCompat
+androidx.core.widget.TintableCompoundButton
+androidx.core.widget.TintableCompoundDrawablesView
+androidx.core.widget.TintableImageSourceView
+androidx.interpolator.R
+androidx.interpolator.view.animation.FastOutLinearInInterpolator
+androidx.interpolator.view.animation.FastOutSlowInInterpolator
+androidx.interpolator.view.animation.LinearOutSlowInInterpolator
+androidx.interpolator.view.animation.LookupTableInterpolator
+androidx.lifecycle.ClassesInfoCache$CallbackInfo
+androidx.lifecycle.ClassesInfoCache$MethodReference
+androidx.lifecycle.ClassesInfoCache
+androidx.lifecycle.CompositeGeneratedAdaptersObserver:
+    private final androidx.lifecycle.GeneratedAdapter[] mGeneratedAdapters
+    void <init>(androidx.lifecycle.GeneratedAdapter[])
+    public void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event)
+androidx.lifecycle.FullLifecycleObserver
+androidx.lifecycle.FullLifecycleObserverAdapter$1
+androidx.lifecycle.FullLifecycleObserverAdapter:
+    private final androidx.lifecycle.FullLifecycleObserver mObserver
+    void <init>(androidx.lifecycle.FullLifecycleObserver)
+    public void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event)
+androidx.lifecycle.GeneratedAdapter
+androidx.lifecycle.GenericLifecycleObserver
+androidx.lifecycle.Lifecycle$Event
+androidx.lifecycle.Lifecycle$State
+androidx.lifecycle.Lifecycle
+androidx.lifecycle.LifecycleObserver
+androidx.lifecycle.LifecycleOwner
+androidx.lifecycle.LifecycleRegistry$1
+androidx.lifecycle.LifecycleRegistry$ObserverWithState
+androidx.lifecycle.LifecycleRegistry
+androidx.lifecycle.LifecycleRegistryOwner
+androidx.lifecycle.Lifecycling
+androidx.lifecycle.MethodCallsLogger
+androidx.lifecycle.OnLifecycleEvent
+androidx.lifecycle.R
+androidx.lifecycle.ReflectiveGenericLifecycleObserver:
+    private final androidx.lifecycle.ClassesInfoCache$CallbackInfo mInfo
+    private final java.lang.Object mWrapped
+    void <init>(java.lang.Object)
+    public void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event)
+androidx.lifecycle.ReportFragment$ActivityInitializationListener
+androidx.lifecycle.ReportFragment
+androidx.lifecycle.SingleGeneratedAdapterObserver:
+    private final androidx.lifecycle.GeneratedAdapter mGeneratedAdapter
+    void <init>(androidx.lifecycle.GeneratedAdapter)
+    public void onStateChanged(androidx.lifecycle.LifecycleOwner,androidx.lifecycle.Lifecycle$Event)
+androidx.versionedparcelable.CustomVersionedParcelable:
+    public void onPostParceling()
+    public void onPreParceling(boolean)
+androidx.versionedparcelable.NonParcelField
+androidx.versionedparcelable.ParcelField
+androidx.versionedparcelable.ParcelImpl:
+    public void <init>(androidx.versionedparcelable.VersionedParcelable)
+    public androidx.versionedparcelable.VersionedParcelable getVersionedParcel()
+androidx.versionedparcelable.ParcelUtils
+androidx.versionedparcelable.R
+androidx.versionedparcelable.VersionedParcel$1
+androidx.versionedparcelable.VersionedParcel$ParcelException
+androidx.versionedparcelable.VersionedParcel:
+    private static final int EX_BAD_PARCELABLE
+    private static final int EX_ILLEGAL_ARGUMENT
+    private static final int EX_ILLEGAL_STATE
+    private static final int EX_NETWORK_MAIN_THREAD
+    private static final int EX_NULL_POINTER
+    private static final int EX_PARCELABLE
+    private static final int EX_SECURITY
+    private static final int EX_UNSUPPORTED_OPERATION
+    private static final java.lang.String TAG
+    private static final int TYPE_BINDER
+    private static final int TYPE_FLOAT
+    private static final int TYPE_INTEGER
+    private static final int TYPE_PARCELABLE
+    private static final int TYPE_SERIALIZABLE
+    private static final int TYPE_STRING
+    private static final int TYPE_VERSIONED_PARCELABLE
+    private java.lang.Exception createException(int,java.lang.String)
+    protected static java.lang.Throwable getRootCause(java.lang.Throwable)
+    private int getType(java.lang.Object)
+    protected java.lang.Object[] readArray(java.lang.Object[])
+    public java.lang.Object[] readArray(java.lang.Object[],int)
+    protected boolean[] readBooleanArray()
+    public boolean[] readBooleanArray(boolean[],int)
+    protected abstract android.os.Bundle readBundle()
+    public android.os.Bundle readBundle(android.os.Bundle,int)
+    public byte readByte(byte,int)
+    public char[] readCharArray(char[],int)
+    private java.util.Collection readCollection(java.util.Collection)
+    protected abstract double readDouble()
+    public double readDouble(double,int)
+    protected double[] readDoubleArray()
+    public double[] readDoubleArray(double[],int)
+    private java.lang.Exception readException(int,java.lang.String)
+    public java.lang.Exception readException(java.lang.Exception,int)
+    private int readExceptionCode()
+    protected abstract float readFloat()
+    public float readFloat(float,int)
+    protected float[] readFloatArray()
+    public float[] readFloatArray(float[],int)
+    protected int[] readIntArray()
+    public int[] readIntArray(int[],int)
+    public java.util.List readList(java.util.List,int)
+    protected abstract long readLong()
+    public long readLong(long,int)
+    protected long[] readLongArray()
+    public long[] readLongArray(long[],int)
+    public java.util.Map readMap(java.util.Map,int)
+    protected java.io.Serializable readSerializable()
+    public java.util.Set readSet(java.util.Set,int)
+    public android.util.Size readSize(android.util.Size,int)
+    public android.util.SizeF readSizeF(android.util.SizeF,int)
+    public android.util.SparseBooleanArray readSparseBooleanArray(android.util.SparseBooleanArray,int)
+    protected abstract android.os.IBinder readStrongBinder()
+    public android.os.IBinder readStrongBinder(android.os.IBinder,int)
+    protected void writeArray(java.lang.Object[])
+    public void writeArray(java.lang.Object[],int)
+    protected void writeBooleanArray(boolean[])
+    public void writeBooleanArray(boolean[],int)
+    protected abstract void writeBundle(android.os.Bundle)
+    public void writeBundle(android.os.Bundle,int)
+    public void writeByte(byte,int)
+    protected abstract void writeByteArray(byte[],int,int)
+    public void writeByteArray(byte[],int,int,int)
+    public void writeCharArray(char[],int)
+    private void writeCollection(java.util.Collection)
+    private void writeCollection(java.util.Collection,int)
+    protected abstract void writeDouble(double)
+    public void writeDouble(double,int)
+    protected void writeDoubleArray(double[])
+    public void writeDoubleArray(double[],int)
+    public void writeException(java.lang.Exception,int)
+    protected abstract void writeFloat(float)
+    public void writeFloat(float,int)
+    protected void writeFloatArray(float[])
+    public void writeFloatArray(float[],int)
+    protected void writeIntArray(int[])
+    public void writeIntArray(int[],int)
+    public void writeList(java.util.List,int)
+    protected abstract void writeLong(long)
+    public void writeLong(long,int)
+    protected void writeLongArray(long[])
+    public void writeLongArray(long[],int)
+    public void writeMap(java.util.Map,int)
+    protected void writeNoException()
+    private void writeSerializable(java.io.Serializable)
+    public void writeSerializable(java.io.Serializable,int)
+    public void writeSet(java.util.Set,int)
+    public void writeSize(android.util.Size,int)
+    public void writeSizeF(android.util.SizeF,int)
+    public void writeSparseBooleanArray(android.util.SparseBooleanArray,int)
+    protected abstract void writeStrongBinder(android.os.IBinder)
+    public void writeStrongBinder(android.os.IBinder,int)
+    protected abstract void writeStrongInterface(android.os.IInterface)
+    public void writeStrongInterface(android.os.IInterface,int)
+androidx.versionedparcelable.VersionedParcelParcel:
+    private static final boolean DEBUG
+    private static final java.lang.String TAG
+    public android.os.Bundle readBundle()
+    public double readDouble()
+    public float readFloat()
+    public long readLong()
+    public android.os.IBinder readStrongBinder()
+    public void writeBundle(android.os.Bundle)
+    public void writeByteArray(byte[],int,int)
+    public void writeDouble(double)
+    public void writeFloat(float)
+    public void writeLong(long)
+    public void writeStrongBinder(android.os.IBinder)
+    public void writeStrongInterface(android.os.IInterface)
+androidx.versionedparcelable.VersionedParcelStream$1
+androidx.versionedparcelable.VersionedParcelStream$FieldBuffer
+androidx.versionedparcelable.VersionedParcelStream
+androidx.versionedparcelable.VersionedParcelize
+com.bb999.drocon.R$bool
+com.bb999.drocon.R$color
+com.bb999.drocon.R$drawable
+com.bb999.drocon.R$integer
+com.bb999.drocon.R$mipmap
+com.bb999.drocon.R$raw
+com.bb999.drocon.R$string
+com.bb999.drocon.R$xml
+com.bb999.drocon.R
+com.google.common.util.concurrent.ListenableFuture
+com.meta.androidbrowserhelper.BuildConfig
+com.meta.androidbrowserhelper.R$attr
+com.meta.androidbrowserhelper.R$color
+com.meta.androidbrowserhelper.R$dimen
+com.meta.androidbrowserhelper.R$drawable:
+    public static int notification_action_background
+    public static int notification_bg
+    public static int notification_bg_low
+    public static int notification_bg_low_normal
+    public static int notification_bg_low_pressed
+    public static int notification_bg_normal
+    public static int notification_bg_normal_pressed
+    public static int notification_icon_background
+    public static int notification_template_icon_bg
+    public static int notification_template_icon_low_bg
+    public static int notification_tile_bg
+    public static int notify_panel_notification_icon_bg
+    private void <init>()
+com.meta.androidbrowserhelper.R$id
+com.meta.androidbrowserhelper.R$integer
+com.meta.androidbrowserhelper.R$layout
+com.meta.androidbrowserhelper.R$string:
+    public static int app_name
+    public static int copy_toast_msg
+    public static int fallback_menu_item_copy_link
+    public static int fallback_menu_item_open_in_browser
+    public static int fallback_menu_item_share_link
+    public static int no_provider_toast
+    public static int status_bar_notification_info_overflow
+    public static int update_chrome_toast
+    private void <init>()
+com.meta.androidbrowserhelper.R$style
+com.meta.androidbrowserhelper.R$styleable
+com.meta.androidbrowserhelper.R$xml
+com.meta.androidbrowserhelper.R
+com.meta.androidbrowserhelper.horizonpermissions.BuildConfig
+com.meta.androidbrowserhelper.horizonpermissions.PermissionRequestActivity:
+    private static final java.lang.String EXTRA_GRANT_RESULTS
+    private static final java.lang.String EXTRA_PERMISSIONS
+    private static final java.lang.String EXTRA_RESULT_RECEIVER
+    private static final java.lang.String REQUEST_PERMISSIONS_INTENT_ACTION
+    private static final java.lang.String REQUEST_PERMISSIONS_RESULT
+    private android.os.Messenger mMessenger
+    public void <init>()
+    protected void onCreate(android.os.Bundle)
+    public void onRequestPermissionsResult(int,java.lang.String[],int[])
+com.meta.androidbrowserhelper.horizonpermissions.PermissionRequestExtraCommandHandler:
+    private static final java.lang.String PERMISSIONS_ARG_PERMISSIONS_NAMES
+    private static final java.lang.String REQUEST_PERMISSIONS_COMMAND_NAME
+com.meta.androidbrowserhelper.horizonpermissions.R$attr
+com.meta.androidbrowserhelper.horizonpermissions.R$color
+com.meta.androidbrowserhelper.horizonpermissions.R$dimen
+com.meta.androidbrowserhelper.horizonpermissions.R$drawable
+com.meta.androidbrowserhelper.horizonpermissions.R$id
+com.meta.androidbrowserhelper.horizonpermissions.R$integer
+com.meta.androidbrowserhelper.horizonpermissions.R$layout
+com.meta.androidbrowserhelper.horizonpermissions.R$string
+com.meta.androidbrowserhelper.horizonpermissions.R$style
+com.meta.androidbrowserhelper.horizonpermissions.R$styleable
+com.meta.androidbrowserhelper.horizonpermissions.R$xml
+com.meta.androidbrowserhelper.horizonpermissions.R
+com.meta.androidbrowserhelper.horizonplatformsdk.BuildConfig
+com.meta.androidbrowserhelper.horizonplatformsdk.HorizonPlatformSdkRequestHandler:
+    private static final java.lang.String TAG
+    static final java.lang.String USERAGE_RESPONSE_COMMAND
+    static final java.lang.String USERAGE_RESULT_KEY
+    static final java.lang.String USERID_RESPONSE_COMMAND
+    static final java.lang.String USERID_RESULT_KEY
+com.meta.androidbrowserhelper.horizonplatformsdk.R$attr
+com.meta.androidbrowserhelper.horizonplatformsdk.R$color
+com.meta.androidbrowserhelper.horizonplatformsdk.R$dimen
+com.meta.androidbrowserhelper.horizonplatformsdk.R$drawable
+com.meta.androidbrowserhelper.horizonplatformsdk.R$id
+com.meta.androidbrowserhelper.horizonplatformsdk.R$integer
+com.meta.androidbrowserhelper.horizonplatformsdk.R$layout
+com.meta.androidbrowserhelper.horizonplatformsdk.R$string
+com.meta.androidbrowserhelper.horizonplatformsdk.R$style
+com.meta.androidbrowserhelper.horizonplatformsdk.R$styleable
+com.meta.androidbrowserhelper.horizonplatformsdk.R$xml
+com.meta.androidbrowserhelper.horizonplatformsdk.R
+com.meta.androidbrowserhelper.trusted.ChromeLegacyUtils:
+    private static final java.lang.String CHROME_BETA_PACKAGE
+    private static final java.lang.String CHROME_CANARY_PACKAGE
+    private static final java.lang.String CHROME_DEV_PACKAGE
+    private static final java.lang.String CHROME_LOCAL_BUILD_PACKAGE
+    private static final java.lang.String CHROME_STABLE_PACKAGE
+    private static final java.lang.String CHROMIUM_LOCAL_BUILD_PACKAGE
+    private static final int VERSION_SUPPORTS_CUSTOM_COLOR
+    private static final int VERSION_SUPPORTS_NO_PREWARM
+    private static final int VERSION_SUPPORTS_SIMPLIFIED_MANAGE_DATA
+    static final int VERSION_SUPPORTS_TRUSTED_WEB_ACTIVITIES
+    private void <init>()
+com.meta.androidbrowserhelper.trusted.ChromeOsSupport:
+    public static final java.lang.String ARC_FEATURE
+    public static final java.lang.String ARC_PAYMENT_APP
+    public void <init>()
+com.meta.androidbrowserhelper.trusted.ChromeUpdatePrompt:
+    private static final java.lang.String UPDATE_CHROME_MESSAGE_RESOURCE_ID
+    private void <init>()
+com.meta.androidbrowserhelper.trusted.ExtraCommandHandler:
+    public static final java.lang.String EXTRA_COMMAND_SUCCESS
+com.meta.androidbrowserhelper.trusted.FocusActivity:
+    private static final java.lang.String EXTRA_FOCUS_INTENT
+com.meta.androidbrowserhelper.trusted.HorizonOSQualityEnforcer:
+    static final java.lang.String CRASH
+    static final java.lang.String FINISH_TASK_COMMAND_NAME
+    static final java.lang.String KEY_CRASH_REASON
+    static final java.lang.String KEY_SUCCESS
+    private static final java.lang.String TAG
+    void <init>(com.meta.androidbrowserhelper.trusted.HorizonOSQualityEnforcer$Delegate)
+com.meta.androidbrowserhelper.trusted.LauncherActivity:
+    private static final java.lang.String BROWSER_WAS_LAUNCHED_KEY
+    private static final java.lang.String FALLBACK_TYPE_WEBVIEW
+    private static final java.lang.String TAG
+com.meta.androidbrowserhelper.trusted.LauncherActivityMetadata:
+    private static final int DEFAULT_COLOR_ID
+    private static final int DEFAULT_DIVIDER_COLOR_ID
+    private static final java.lang.String METADATA_ADDITIONAL_TRUSTED_ORIGINS
+    private static final java.lang.String METADATA_DEFAULT_URL
+    private static final java.lang.String METADATA_DISPLAY_MODE
+    private static final java.lang.String METADATA_FALLBACK_STRATEGY
+    private static final java.lang.String METADATA_FILE_PROVIDER_AUTHORITY
+    private static final java.lang.String METADATA_HORIZONOS_APP_MDOE
+    private static final java.lang.String METADATA_NAVIGATION_BAR_COLOR_DARK_ID
+    private static final java.lang.String METADATA_NAVIGATION_BAR_COLOR_ID
+    private static final java.lang.String METADATA_NAVIGATION_BAR_DIVIDER_COLOR_DARK_ID
+    private static final java.lang.String METADATA_NAVIGATION_BAR_DIVIDER_COLOR_ID
+    private static final java.lang.String METADATA_SCREEN_ORIENTATION
+    private static final java.lang.String METADATA_SHARE_TARGET
+    private static final java.lang.String METADATA_SPLASH_IMAGE_DRAWABLE_ID
+    private static final java.lang.String METADATA_SPLASH_SCREEN_BACKGROUND_COLOR
+    private static final java.lang.String METADATA_SPLASH_SCREEN_FADE_OUT_DURATION
+    private static final java.lang.String METADATA_STATUS_BAR_COLOR_DARK_ID
+    private static final java.lang.String METADATA_STATUS_BAR_COLOR_ID
+    private static final java.lang.String TAG
+com.meta.androidbrowserhelper.trusted.ManageDataLauncherActivity:
+    public static final java.lang.String ACTION_MANAGE_TRUSTED_WEB_ACTIVITY_DATA
+    public static final java.lang.String CATEGORY_LAUNCH_SITE_SETTINGS
+    private static final java.lang.String METADATA_MANAGE_SPACE_DEFAULT_URL
+    public static final java.lang.String OVERRIDE_IC_SITE_SETTINGS_ID
+    public static final java.lang.String SITE_SETTINGS_SHORTCUT_ID
+    private static final java.lang.String TAG
+com.meta.androidbrowserhelper.trusted.NotificationDelegationExtraCommandHandler:
+    static final java.lang.String COMMAND_CHECK_NOTIFICATION_PERMISSION
+    private static final java.lang.String COMMAND_GET_NOTIFICATION_PERMISSION_REQUEST_PENDING_INTENT
+    private static final java.lang.String KEY_NOTIFICATION_CHANNEL_NAME
+    private static final java.lang.String KEY_NOTIFICATION_PERMISSION_REQUEST_PENDING_INTENT
+com.meta.androidbrowserhelper.trusted.NotificationPermissionRequestActivity:
+    private static final java.lang.String EXTRA_MESSENGER
+    private static final java.lang.String EXTRA_NOTIFICATION_CHANNEL_NAME
+    static final java.lang.String KEY_PERMISSION_STATUS
+    private static final java.lang.String PERMISSION_POST_NOTIFICATIONS
+    private static final java.lang.String TAG
+    private static final int VERSION_T
+com.meta.androidbrowserhelper.trusted.NotificationUtils:
+    private void <init>()
+com.meta.androidbrowserhelper.trusted.PermissionStatus
+com.meta.androidbrowserhelper.trusted.PrefUtils:
+    private static final java.lang.String KEY_HAS_REQUESTED_NOTIFICATION_PERMISSION
+    private static final java.lang.String SHARED_PREFERENCES_NAME
+    private void <init>()
+com.meta.androidbrowserhelper.trusted.QualityEnforcer:
+    static final java.lang.String CRASH
+    static final java.lang.String KEY_CRASH_REASON
+    static final java.lang.String KEY_SUCCESS
+    private static final java.lang.String TAG
+    void <init>(com.meta.androidbrowserhelper.trusted.QualityEnforcer$Delegate)
+com.meta.androidbrowserhelper.trusted.SharedPreferencesTokenStore:
+    private static final java.lang.String KEY_TOKEN
+    public void setVerifiedProvider(java.lang.String,android.content.pm.PackageManager)
+com.meta.androidbrowserhelper.trusted.SharingUtils:
+    private void <init>()
+com.meta.androidbrowserhelper.trusted.TwaLauncher:
+    private static final int DEFAULT_SESSION_ID
+    private static final java.lang.String TAG
+    public void launch(android.net.Uri)
+    public void launch(androidx.browser.trusted.TrustedWebActivityIntentBuilder,androidx.browser.customtabs.CustomTabsCallback,com.meta.androidbrowserhelper.trusted.splashscreens.SplashScreenStrategy,java.lang.Runnable)
+com.meta.androidbrowserhelper.trusted.TwaProviderPicker$LaunchMode
+com.meta.androidbrowserhelper.trusted.TwaProviderPicker:
+    private static final java.lang.String TAG
+    public void <init>()
+    static void restrictToPackageForTesting(java.lang.String)
+com.meta.androidbrowserhelper.trusted.TwaSharedPreferencesManager:
+    private static final java.lang.String KEY_PROVIDER_PACKAGE
+    private static final java.lang.String PREFS_NAME
+com.meta.androidbrowserhelper.trusted.Utils:
+    public void <init>()
+com.meta.androidbrowserhelper.trusted.WebViewFallbackActivity:
+    private static final java.lang.String KEY_EXTRA_ORIGINS
+    private static final java.lang.String KEY_LAUNCH_URI
+    private static final java.lang.String KEY_NAVIGATION_BAR_COLOR
+    private static final java.lang.String KEY_PREFIX
+    private static final java.lang.String KEY_STATUS_BAR_COLOR
+com.meta.androidbrowserhelper.trusted.splashscreens.PwaWrapperSplashScreenStrategy:
+    private static final java.lang.String TAG
+com.meta.androidbrowserhelper.trusted.splashscreens.SplashImageTransferTask:
+    private static final java.lang.String FILE_NAME
+    private static final java.lang.String FOLDER_NAME
+    private static final java.lang.String PREFS_FILE
+    private static final java.lang.String PREF_LAST_UPDATE_TIME
+    private static final java.lang.String TAG
+com.meta.horizon.billingclient.api.AccountIdentifiers
+com.meta.horizon.billingclient.api.AcknowledgePurchaseParams$Builder
+com.meta.horizon.billingclient.api.AcknowledgePurchaseParams$Companion
+com.meta.horizon.billingclient.api.AcknowledgePurchaseParams
+com.meta.horizon.billingclient.api.AcknowledgePurchaseResponseListener
+com.meta.horizon.billingclient.api.AgeCategoryResponseListener
+com.meta.horizon.billingclient.api.AlternativeBillingListener
+com.meta.horizon.billingclient.api.AlternativeBillingOnlyAvailabilityListener
+com.meta.horizon.billingclient.api.AlternativeBillingOnlyInformationDialogListener
+com.meta.horizon.billingclient.api.AlternativeBillingOnlyReportingDetails
+com.meta.horizon.billingclient.api.AlternativeBillingOnlyReportingDetailsListener
+com.meta.horizon.billingclient.api.AlternativeChoiceDetails$Product
+com.meta.horizon.billingclient.api.AlternativeChoiceDetails
+com.meta.horizon.billingclient.api.BillingClient$AgeCategory$Companion
+com.meta.horizon.billingclient.api.BillingClient$AgeCategory
+com.meta.horizon.billingclient.api.BillingClient$BillingResponseCode$Companion
+com.meta.horizon.billingclient.api.BillingClient$BillingResponseCode
+com.meta.horizon.billingclient.api.BillingClient$Builder
+com.meta.horizon.billingclient.api.BillingClient$Companion
+com.meta.horizon.billingclient.api.BillingClient$ConnectionState$Companion
+com.meta.horizon.billingclient.api.BillingClient$ConnectionState
+com.meta.horizon.billingclient.api.BillingClient$FeatureType$Companion
+com.meta.horizon.billingclient.api.BillingClient$FeatureType
+com.meta.horizon.billingclient.api.BillingClient$ProductType$Companion
+com.meta.horizon.billingclient.api.BillingClient$ProductType
+com.meta.horizon.billingclient.api.BillingClient$SkuType$Companion
+com.meta.horizon.billingclient.api.BillingClient$SkuType
+com.meta.horizon.billingclient.api.BillingClient
+com.meta.horizon.billingclient.api.BillingClientImpl$PurchasesResponseListenerImpl
+com.meta.horizon.billingclient.api.BillingClientImpl$consumeAsync$fetchPurchaseToConsumeRecursively$1$1
+com.meta.horizon.billingclient.api.BillingClientImpl$consumeAsync$fetchPurchaseToConsumeRecursively$1$2
+com.meta.horizon.billingclient.api.BillingClientImpl$consumeAsync$fetchPurchaseToConsumeRecursively$1$skuToConsume$1
+com.meta.horizon.billingclient.api.BillingClientImpl$consumeAsync$fetchPurchaseToConsumeRecursively$1$skuToConsume$2
+com.meta.horizon.billingclient.api.BillingClientImpl$consumeAsync$fetchPurchaseToConsumeRecursively$1
+com.meta.horizon.billingclient.api.BillingClientImpl$consumeAsync$fetchPurchaseToConsumeRecursively$2
+com.meta.horizon.billingclient.api.BillingClientImpl$launchBillingFlow$purchasesResponseListener$1$2
+com.meta.horizon.billingclient.api.BillingClientImpl$launchBillingFlow$purchasesResponseListener$1$3
+com.meta.horizon.billingclient.api.BillingClientImpl$launchBillingFlow$purchasesResponseListener$1
+com.meta.horizon.billingclient.api.BillingClientImpl$queryAgeCategoryAsync$1$WhenMappings
+com.meta.horizon.billingclient.api.BillingClientImpl$queryAgeCategoryAsync$1
+com.meta.horizon.billingclient.api.BillingClientImpl$queryAgeCategoryAsync$2
+com.meta.horizon.billingclient.api.BillingClientImpl$queryProductDetailsAsync$fetchProductsRecursively$1
+com.meta.horizon.billingclient.api.BillingClientImpl$queryProductDetailsAsync$fetchProductsRecursively$2
+com.meta.horizon.billingclient.api.BillingClientImpl$queryPurchaseHistoryAsync$purchasesResponseListener$1
+com.meta.horizon.billingclient.api.BillingClientImpl$queryPurchasesAsync$fetchPurchasesRecursively$1
+com.meta.horizon.billingclient.api.BillingClientImpl$queryPurchasesAsync$fetchPurchasesRecursively$2
+com.meta.horizon.billingclient.api.BillingClientImpl$querySkuDetailsAsync$fetchProductsRecursively$1
+com.meta.horizon.billingclient.api.BillingClientImpl$querySkuDetailsAsync$fetchProductsRecursively$2
+com.meta.horizon.billingclient.api.BillingClientImpl$startConnection$1
+com.meta.horizon.billingclient.api.BillingClientImpl$startConnection$2
+com.meta.horizon.billingclient.api.BillingClientImpl
+com.meta.horizon.billingclient.api.BillingClientStateListener
+com.meta.horizon.billingclient.api.BillingClientUtils
+com.meta.horizon.billingclient.api.BillingConfig
+com.meta.horizon.billingclient.api.BillingConfigResponseListener
+com.meta.horizon.billingclient.api.BillingFlowParams$Builder
+com.meta.horizon.billingclient.api.BillingFlowParams$Companion
+com.meta.horizon.billingclient.api.BillingFlowParams$ProductDetailsParams$Builder
+com.meta.horizon.billingclient.api.BillingFlowParams$ProductDetailsParams$Companion
+com.meta.horizon.billingclient.api.BillingFlowParams$ProductDetailsParams
+com.meta.horizon.billingclient.api.BillingFlowParams$ProrationMode$Companion
+com.meta.horizon.billingclient.api.BillingFlowParams$ProrationMode
+com.meta.horizon.billingclient.api.BillingFlowParams$SubscriptionUpdateParams$Builder
+com.meta.horizon.billingclient.api.BillingFlowParams$SubscriptionUpdateParams$Companion
+com.meta.horizon.billingclient.api.BillingFlowParams$SubscriptionUpdateParams$ReplacementMode$Companion
+com.meta.horizon.billingclient.api.BillingFlowParams$SubscriptionUpdateParams$ReplacementMode
+com.meta.horizon.billingclient.api.BillingFlowParams$SubscriptionUpdateParams
+com.meta.horizon.billingclient.api.BillingFlowParams
+com.meta.horizon.billingclient.api.BillingResult$Builder
+com.meta.horizon.billingclient.api.BillingResult$Companion$PSDK_ERROR_TO_GMS_ERROR_MAP$1
+com.meta.horizon.billingclient.api.BillingResult$Companion
+com.meta.horizon.billingclient.api.BillingResult
+com.meta.horizon.billingclient.api.ConsumeParams$Builder
+com.meta.horizon.billingclient.api.ConsumeParams$Companion
+com.meta.horizon.billingclient.api.ConsumeParams
+com.meta.horizon.billingclient.api.ConsumeResponseListener
+com.meta.horizon.billingclient.api.ExternalOfferAvailabilityListener
+com.meta.horizon.billingclient.api.ExternalOfferInformationDialogListener
+com.meta.horizon.billingclient.api.ExternalOfferReportingDetails
+com.meta.horizon.billingclient.api.ExternalOfferReportingDetailsListener
+com.meta.horizon.billingclient.api.GetBillingConfigParams$Builder
+com.meta.horizon.billingclient.api.GetBillingConfigParams$Companion
+com.meta.horizon.billingclient.api.GetBillingConfigParams
+com.meta.horizon.billingclient.api.InAppMessageParams$Builder
+com.meta.horizon.billingclient.api.InAppMessageParams$Companion
+com.meta.horizon.billingclient.api.InAppMessageParams$InAppMessageCategoryId$Companion
+com.meta.horizon.billingclient.api.InAppMessageParams$InAppMessageCategoryId
+com.meta.horizon.billingclient.api.InAppMessageParams
+com.meta.horizon.billingclient.api.InAppMessageResponseListener
+com.meta.horizon.billingclient.api.InAppMessageResult$InAppMessageResponseCode$Companion
+com.meta.horizon.billingclient.api.InAppMessageResult$InAppMessageResponseCode
+com.meta.horizon.billingclient.api.InAppMessageResult
+com.meta.horizon.billingclient.api.PendingPurchasesParams$Builder
+com.meta.horizon.billingclient.api.PendingPurchasesParams$Companion
+com.meta.horizon.billingclient.api.PendingPurchasesParams
+com.meta.horizon.billingclient.api.PriceChangeConfirmationListener
+com.meta.horizon.billingclient.api.PriceChangeFlowParams$Builder
+com.meta.horizon.billingclient.api.PriceChangeFlowParams$Companion
+com.meta.horizon.billingclient.api.PriceChangeFlowParams
+com.meta.horizon.billingclient.api.ProductDetails$Companion$WhenMappings
+com.meta.horizon.billingclient.api.ProductDetails$Companion
+com.meta.horizon.billingclient.api.ProductDetails$InstallmentPlanDetails
+com.meta.horizon.billingclient.api.ProductDetails$OneTimePurchaseOfferDetails
+com.meta.horizon.billingclient.api.ProductDetails$PricingPhase
+com.meta.horizon.billingclient.api.ProductDetails$PricingPhases
+com.meta.horizon.billingclient.api.ProductDetails$RecurrenceMode$Companion
+com.meta.horizon.billingclient.api.ProductDetails$RecurrenceMode
+com.meta.horizon.billingclient.api.ProductDetails$SubscriptionOfferDetails
+com.meta.horizon.billingclient.api.ProductDetails
+com.meta.horizon.billingclient.api.ProductDetailsResponseListener
+com.meta.horizon.billingclient.api.Purchase$PendingPurchaseUpdate
+com.meta.horizon.billingclient.api.Purchase$PurchaseState$Companion
+com.meta.horizon.billingclient.api.Purchase$PurchaseState
+com.meta.horizon.billingclient.api.Purchase
+com.meta.horizon.billingclient.api.PurchaseHistoryRecord$Companion
+com.meta.horizon.billingclient.api.PurchaseHistoryRecord
+com.meta.horizon.billingclient.api.PurchaseHistoryResponseListener
+com.meta.horizon.billingclient.api.PurchasesResponseListener
+com.meta.horizon.billingclient.api.PurchasesUpdatedListener
+com.meta.horizon.billingclient.api.QueryProductDetailsParams$Builder
+com.meta.horizon.billingclient.api.QueryProductDetailsParams$Companion
+com.meta.horizon.billingclient.api.QueryProductDetailsParams$Product$Builder
+com.meta.horizon.billingclient.api.QueryProductDetailsParams$Product$Companion
+com.meta.horizon.billingclient.api.QueryProductDetailsParams$Product
+com.meta.horizon.billingclient.api.QueryProductDetailsParams
+com.meta.horizon.billingclient.api.QueryPurchaseHistoryParams$Builder
+com.meta.horizon.billingclient.api.QueryPurchaseHistoryParams$Companion
+com.meta.horizon.billingclient.api.QueryPurchaseHistoryParams
+com.meta.horizon.billingclient.api.QueryPurchasesParams$Builder
+com.meta.horizon.billingclient.api.QueryPurchasesParams$Companion
+com.meta.horizon.billingclient.api.QueryPurchasesParams
+com.meta.horizon.billingclient.api.SkuDetails$Companion
+com.meta.horizon.billingclient.api.SkuDetails
+com.meta.horizon.billingclient.api.SkuDetailsParams$Builder
+com.meta.horizon.billingclient.api.SkuDetailsParams$Companion
+com.meta.horizon.billingclient.api.SkuDetailsParams
+com.meta.horizon.billingclient.api.SkuDetailsResponseListener
+com.meta.horizon.billingclient.api.UserChoiceBillingListener
+com.meta.horizon.billingclient.api.UserChoiceDetails$Product
+com.meta.horizon.billingclient.api.UserChoiceDetails
+com.meta.horizon.billingclient.api.debug.BillingResultDebugMessages
+com.meta.horizon.platform.ovr.Core:
+    private static final java.lang.String APP_ID_ANDROID_MANIFEST_METADATA_KEY
+    private static final long DEFAULT_MESSAGE_INTERVAL
+    private static final long INITIAL_DELAY
+    private static final java.lang.String PSDK_JNI
+    private static final java.lang.String TAG
+    private void <init>()
+    public static synchronized com.meta.horizon.platform.ovr.requests.Request asyncInitialize(android.content.Context,com.meta.horizon.platform.ovr.options.PlatformInitializeOptions)
+    public static long httpGetWithMessageType(java.lang.String,com.meta.horizon.platform.ovr.Message$MessageType)
+    public static synchronized boolean initialize(android.content.Context)
+    public static synchronized boolean initialize(android.content.Context,com.meta.horizon.platform.ovr.options.PlatformInitializeOptions)
+    public static synchronized boolean initialize(java.lang.String,android.content.Context)
+    public static synchronized boolean initialize(java.lang.String,android.content.Context,com.meta.horizon.platform.ovr.options.PlatformInitializeOptions)
+    private static native long nativeHTTPGetWithMessageType(java.lang.String,int)
+    private static native boolean nativeInitialize(java.lang.String,android.content.Context)
+com.meta.horizon.platform.ovr.Error:
+    private static final java.lang.String TAG
+    public int getCode()
+    public java.lang.String getDisplayableMessage()
+    public int getHttpCode()
+    public java.lang.String getMessage()
+    private static native int nativeGetCode(long)
+    private static native java.lang.String nativeGetDisplayableMessage(long)
+    private static native int nativeGetHttpCode(long)
+    private static native java.lang.String nativeGetMessage(long)
+com.meta.horizon.platform.ovr.Message:
+    private static final java.lang.String TAG
+    private static native long nativeGetHttpTransferUpdate(long)
+    private static native java.lang.String nativeGetString(long)
+com.meta.horizon.platform.ovr.models.PlatformInitialize:
+    private static final java.lang.String TAG
+    public com.meta.horizon.platform.ovr.enums.PlatformInitializeResult getResult()
+com.meta.horizon.platform.ovr.models.Price:
+    private static final java.lang.String TAG
+    public long getAmountInHundredths()
+    public java.lang.String getCurrency()
+    public java.lang.String getFormatted()
+com.meta.horizon.platform.ovr.models.Product:
+    private static final java.lang.String TAG
+    public java.lang.String getDescription()
+    public java.lang.String getFormattedPrice()
+    public java.lang.String getName()
+    public com.meta.horizon.platform.ovr.models.Price getPrice()
+    public java.lang.String getSku()
+    public com.meta.horizon.platform.ovr.enums.ProductType getType()
+com.meta.horizon.platform.ovr.models.ProductArray:
+    private static final java.lang.String TAG
+    public java.util.List getElements()
+    public com.meta.horizon.platform.ovr.requests.Request getNextPage()
+    public java.lang.String getNextUrl()
+    public long getSize()
+    public boolean hasNextPage()
+com.meta.horizon.platform.ovr.models.Purchase:
+    private static final java.lang.String TAG
+    public java.lang.String getDeveloperPayload()
+    public java.time.LocalDateTime getExpirationTime()
+    public java.time.LocalDateTime getGrantTime()
+    public java.lang.String getID()
+    public java.lang.String getReportingId()
+    public java.lang.String getSku()
+com.meta.horizon.platform.ovr.models.PurchaseArray:
+    private static final java.lang.String TAG
+    public java.util.List getElements()
+    public com.meta.horizon.platform.ovr.requests.Request getNextPage()
+    public java.lang.String getNextUrl()
+    public long getSize()
+    public boolean hasNextPage()
+com.meta.horizon.platform.ovr.models.UserAccountAgeCategory:
+    private static final java.lang.String TAG
+com.meta.horizon.platform.ovr.options.PlatformInitializeOptions:
+    private static final long DEFAULT_MESSAGE_INTERVAL
+    public com.meta.horizon.platform.ovr.options.PlatformInitializeOptions disableMessageQueue()
+    public com.meta.horizon.platform.ovr.options.PlatformInitializeOptions enableMessageQueue()
+    public com.meta.horizon.platform.ovr.options.PlatformInitializeOptions setMessageQueueIntervalDuration(long,java.util.concurrent.TimeUnit)
+    public com.meta.horizon.platform.ovr.options.PlatformInitializeOptions setMessageQueueIntervalDuration(java.time.Duration)
+com.meta.horizon.platform.ovr.requests.IAP
+com.meta.horizon.platform.ovr.requests.Request:
+    private static final java.lang.String TAG
+    public long getRequestId()
+    public static void runCallbacks(int)
+    static void setNotificationCallback(com.meta.horizon.platform.ovr.Message$MessageType,com.meta.horizon.platform.ovr.requests.Request$Handler,com.meta.horizon.platform.ovr.requests.Request$Handler)
+com.meta.horizon.platform.ovr.requests.UserAgeCategory:
+    private void <init>()
+com.meta.horizon.platformsdk.libovrplatform.R
+kotlin.ArrayIntrinsicsKt
+kotlin.BuilderInference
+kotlin.Deprecated
+kotlin.DeprecationLevel
+kotlin.DslMarker
+kotlin.ExceptionsKt
+kotlin.ExceptionsKt__ExceptionsKt
+kotlin.Experimental$Level
+kotlin.Experimental
+kotlin.ExperimentalMultiplatform
+kotlin.ExperimentalStdlibApi
+kotlin.ExperimentalUnsignedTypes
+kotlin.ExtensionFunctionType
+kotlin.Function
+kotlin.HashCodeKt
+kotlin.InitializedLazyImpl
+kotlin.KotlinNullPointerException
+kotlin.KotlinVersion$Companion
+kotlin.KotlinVersion
+kotlin.LateinitKt
+kotlin.Lazy
+kotlin.LazyKt$WhenMappings
+kotlin.LazyKt
+kotlin.LazyKt__LazyJVMKt
+kotlin.LazyKt__LazyKt
+kotlin.LazyThreadSafetyMode
+kotlin.Metadata
+kotlin.NoWhenBranchMatchedException
+kotlin.NotImplementedError
+kotlin.NumbersKt
+kotlin.NumbersKt__BigDecimalsKt
+kotlin.NumbersKt__BigIntegersKt
+kotlin.NumbersKt__NumbersJVMKt
+kotlin.NumbersKt__NumbersKt
+kotlin.OptionalExpectation
+kotlin.Pair
+kotlin.ParameterName
+kotlin.PreconditionsKt
+kotlin.PreconditionsKt__AssertionsJVMKt
+kotlin.PreconditionsKt__PreconditionsKt
+kotlin.PublishedApi
+kotlin.ReplaceWith
+kotlin.Result$Companion
+kotlin.Result$Failure
+kotlin.Result
+kotlin.ResultKt
+kotlin.SafePublicationLazyImpl$Companion
+kotlin.SafePublicationLazyImpl
+kotlin.SinceKotlin
+kotlin.StandardKt
+kotlin.StandardKt__StandardKt
+kotlin.StandardKt__SynchronizedKt
+kotlin.SuccessOrFailureKt
+kotlin.Suppress
+kotlin.SuspendKt
+kotlin.SynchronizedLazyImpl
+kotlin.Triple
+kotlin.TuplesKt
+kotlin.TypeAliasesKt
+kotlin.TypeCastException
+kotlin.UByte$Companion
+kotlin.UByte
+kotlin.UByteArray$Iterator
+kotlin.UByteArray
+kotlin.UByteArrayKt
+kotlin.UByteKt
+kotlin.UInt$Companion
+kotlin.UInt
+kotlin.UIntArray$Iterator
+kotlin.UIntArray
+kotlin.UIntArrayKt
+kotlin.UIntKt
+kotlin.ULong$Companion
+kotlin.ULong
+kotlin.ULongArray$Iterator
+kotlin.ULongArray
+kotlin.ULongArrayKt
+kotlin.ULongKt
+kotlin.UNINITIALIZED_VALUE
+kotlin.UNumbersKt
+kotlin.UShort$Companion
+kotlin.UShort
+kotlin.UShortArray$Iterator
+kotlin.UShortArray
+kotlin.UShortArrayKt
+kotlin.UShortKt
+kotlin.UninitializedPropertyAccessException
+kotlin.Unit
+kotlin.UnsafeLazyImpl
+kotlin.UnsafeVariance
+kotlin.UnsignedKt
+kotlin.UseExperimental
+kotlin.WasExperimental
+kotlin._Assertions
+kotlin.annotation.AnnotationRetention
+kotlin.annotation.AnnotationTarget
+kotlin.annotation.MustBeDocumented
+kotlin.annotation.Repeatable
+kotlin.annotation.Retention
+kotlin.annotation.Target
+kotlin.collections.AbstractCollection$toString$1
+kotlin.collections.AbstractCollection
+kotlin.collections.AbstractIterator$WhenMappings
+kotlin.collections.AbstractIterator
+kotlin.collections.AbstractList$Companion
+kotlin.collections.AbstractList$IteratorImpl
+kotlin.collections.AbstractList$ListIteratorImpl
+kotlin.collections.AbstractList$SubList
+kotlin.collections.AbstractList
+kotlin.collections.AbstractMap$Companion
+kotlin.collections.AbstractMap$keys$1$iterator$1
+kotlin.collections.AbstractMap$keys$1
+kotlin.collections.AbstractMap$toString$1
+kotlin.collections.AbstractMap$values$1$iterator$1
+kotlin.collections.AbstractMap$values$1
+kotlin.collections.AbstractMap
+kotlin.collections.AbstractMutableCollection
+kotlin.collections.AbstractMutableList
+kotlin.collections.AbstractMutableMap
+kotlin.collections.AbstractMutableSet
+kotlin.collections.AbstractSet$Companion
+kotlin.collections.AbstractSet
+kotlin.collections.ArrayAsCollection
+kotlin.collections.ArraysKt
+kotlin.collections.ArraysKt__ArraysJVMKt
+kotlin.collections.ArraysKt__ArraysKt
+kotlin.collections.ArraysKt___ArraysJvmKt$asList$1
+kotlin.collections.ArraysKt___ArraysJvmKt$asList$2
+kotlin.collections.ArraysKt___ArraysJvmKt$asList$3
+kotlin.collections.ArraysKt___ArraysJvmKt$asList$4
+kotlin.collections.ArraysKt___ArraysJvmKt$asList$5
+kotlin.collections.ArraysKt___ArraysJvmKt$asList$6
+kotlin.collections.ArraysKt___ArraysJvmKt$asList$7
+kotlin.collections.ArraysKt___ArraysJvmKt$asList$8
+kotlin.collections.ArraysKt___ArraysJvmKt
+kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$1
+kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$2
+kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$3
+kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$4
+kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$5
+kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$6
+kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$7
+kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$8
+kotlin.collections.ArraysKt___ArraysKt$asIterable$$inlined$Iterable$9
+kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$1
+kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$2
+kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$3
+kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$4
+kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$5
+kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$6
+kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$7
+kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$8
+kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$9
+kotlin.collections.ArraysKt___ArraysKt$groupingBy$1
+kotlin.collections.ArraysKt___ArraysKt$withIndex$1
+kotlin.collections.ArraysKt___ArraysKt$withIndex$2
+kotlin.collections.ArraysKt___ArraysKt$withIndex$3
+kotlin.collections.ArraysKt___ArraysKt$withIndex$4
+kotlin.collections.ArraysKt___ArraysKt$withIndex$5
+kotlin.collections.ArraysKt___ArraysKt$withIndex$6
+kotlin.collections.ArraysKt___ArraysKt$withIndex$7
+kotlin.collections.ArraysKt___ArraysKt$withIndex$8
+kotlin.collections.ArraysKt___ArraysKt$withIndex$9
+kotlin.collections.ArraysKt___ArraysKt
+kotlin.collections.ArraysUtilJVM
+kotlin.collections.BooleanIterator
+kotlin.collections.ByteIterator
+kotlin.collections.CharIterator
+kotlin.collections.CollectionsKt
+kotlin.collections.CollectionsKt__CollectionsJVMKt
+kotlin.collections.CollectionsKt__CollectionsKt$binarySearchBy$1
+kotlin.collections.CollectionsKt__CollectionsKt
+kotlin.collections.CollectionsKt__IterablesKt$Iterable$1
+kotlin.collections.CollectionsKt__IterablesKt
+kotlin.collections.CollectionsKt__IteratorsJVMKt$iterator$1
+kotlin.collections.CollectionsKt__IteratorsJVMKt
+kotlin.collections.CollectionsKt__IteratorsKt
+kotlin.collections.CollectionsKt__MutableCollectionsJVMKt
+kotlin.collections.CollectionsKt__MutableCollectionsKt
+kotlin.collections.CollectionsKt__ReversedViewsKt
+kotlin.collections.CollectionsKt___CollectionsJvmKt
+kotlin.collections.CollectionsKt___CollectionsKt$asSequence$$inlined$Sequence$1
+kotlin.collections.CollectionsKt___CollectionsKt$elementAt$1
+kotlin.collections.CollectionsKt___CollectionsKt$groupingBy$1
+kotlin.collections.CollectionsKt___CollectionsKt$withIndex$1
+kotlin.collections.CollectionsKt___CollectionsKt
+kotlin.collections.DoubleIterator
+kotlin.collections.EmptyIterator
+kotlin.collections.EmptyList
+kotlin.collections.EmptyMap
+kotlin.collections.EmptySet
+kotlin.collections.FloatIterator
+kotlin.collections.Grouping
+kotlin.collections.GroupingKt
+kotlin.collections.GroupingKt__GroupingJVMKt
+kotlin.collections.GroupingKt__GroupingKt
+kotlin.collections.IndexedValue
+kotlin.collections.IndexingIterable
+kotlin.collections.IndexingIterator
+kotlin.collections.IntIterator
+kotlin.collections.LongIterator
+kotlin.collections.MapAccessorsKt
+kotlin.collections.MapWithDefault
+kotlin.collections.MapWithDefaultImpl
+kotlin.collections.MapsKt
+kotlin.collections.MapsKt__MapWithDefaultKt
+kotlin.collections.MapsKt__MapsJVMKt
+kotlin.collections.MapsKt__MapsKt
+kotlin.collections.MapsKt___MapsKt
+kotlin.collections.MovingSubList
+kotlin.collections.MutableMapWithDefault
+kotlin.collections.MutableMapWithDefaultImpl
+kotlin.collections.ReversedList
+kotlin.collections.ReversedListReadOnly
+kotlin.collections.RingBuffer$iterator$1
+kotlin.collections.RingBuffer
+kotlin.collections.SetsKt
+kotlin.collections.SetsKt__SetsJVMKt
+kotlin.collections.SetsKt__SetsKt
+kotlin.collections.SetsKt___SetsKt
+kotlin.collections.ShortIterator
+kotlin.collections.SlidingWindowKt$windowedIterator$1
+kotlin.collections.SlidingWindowKt$windowedSequence$$inlined$Sequence$1
+kotlin.collections.SlidingWindowKt
+kotlin.collections.State
+kotlin.collections.TypeAliasesKt
+kotlin.collections.UArraySortingKt
+kotlin.collections.UArraysKt
+kotlin.collections.UByteIterator
+kotlin.collections.UCollectionsKt
+kotlin.collections.UCollectionsKt___UCollectionsKt
+kotlin.collections.UIntIterator
+kotlin.collections.ULongIterator
+kotlin.collections.UShortIterator
+kotlin.collections.jdk8.CollectionsJDK8Kt
+kotlin.collections.unsigned.UArraysKt
+kotlin.collections.unsigned.UArraysKt___UArraysJvmKt$asList$1
+kotlin.collections.unsigned.UArraysKt___UArraysJvmKt$asList$2
+kotlin.collections.unsigned.UArraysKt___UArraysJvmKt$asList$3
+kotlin.collections.unsigned.UArraysKt___UArraysJvmKt$asList$4
+kotlin.collections.unsigned.UArraysKt___UArraysJvmKt
+kotlin.collections.unsigned.UArraysKt___UArraysKt$withIndex$1
+kotlin.collections.unsigned.UArraysKt___UArraysKt$withIndex$2
+kotlin.collections.unsigned.UArraysKt___UArraysKt$withIndex$3
+kotlin.collections.unsigned.UArraysKt___UArraysKt$withIndex$4
+kotlin.collections.unsigned.UArraysKt___UArraysKt
+kotlin.comparisons.ComparisonsKt
+kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareBy$1
+kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareBy$2
+kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareBy$3
+kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareByDescending$1
+kotlin.comparisons.ComparisonsKt__ComparisonsKt$compareByDescending$2
+kotlin.comparisons.ComparisonsKt__ComparisonsKt$nullsFirst$1
+kotlin.comparisons.ComparisonsKt__ComparisonsKt$nullsLast$1
+kotlin.comparisons.ComparisonsKt__ComparisonsKt$then$1
+kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenBy$1
+kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenBy$2
+kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenByDescending$1
+kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenByDescending$2
+kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenComparator$1
+kotlin.comparisons.ComparisonsKt__ComparisonsKt$thenDescending$1
+kotlin.comparisons.ComparisonsKt__ComparisonsKt
+kotlin.comparisons.ComparisonsKt___ComparisonsJvmKt
+kotlin.comparisons.ComparisonsKt___ComparisonsKt
+kotlin.comparisons.NaturalOrderComparator
+kotlin.comparisons.ReverseOrderComparator
+kotlin.comparisons.ReversedComparator
+kotlin.comparisons.UComparisonsKt
+kotlin.comparisons.UComparisonsKt___UComparisonsKt
+kotlin.concurrent.LocksKt
+kotlin.concurrent.ThreadsKt$thread$thread$1
+kotlin.concurrent.ThreadsKt
+kotlin.concurrent.TimersKt$timerTask$1
+kotlin.concurrent.TimersKt
+kotlin.contracts.CallsInPlace
+kotlin.contracts.ConditionalEffect
+kotlin.contracts.ContractBuilder$DefaultImpls
+kotlin.contracts.ContractBuilder
+kotlin.contracts.ContractBuilderKt
+kotlin.contracts.Effect
+kotlin.contracts.ExperimentalContracts
+kotlin.contracts.InvocationKind
+kotlin.contracts.Returns
+kotlin.contracts.ReturnsNotNull
+kotlin.contracts.SimpleEffect
+kotlin.coroutines.AbstractCoroutineContextElement
+kotlin.coroutines.CombinedContext$Serialized$Companion
+kotlin.coroutines.CombinedContext$Serialized
+kotlin.coroutines.CombinedContext$toString$1
+kotlin.coroutines.CombinedContext$writeReplace$1
+kotlin.coroutines.CombinedContext
+kotlin.coroutines.Continuation
+kotlin.coroutines.ContinuationInterceptor$DefaultImpls
+kotlin.coroutines.ContinuationInterceptor$Key
+kotlin.coroutines.ContinuationInterceptor
+kotlin.coroutines.ContinuationKt$Continuation$1
+kotlin.coroutines.ContinuationKt
+kotlin.coroutines.CoroutineContext$DefaultImpls
+kotlin.coroutines.CoroutineContext$Element$DefaultImpls
+kotlin.coroutines.CoroutineContext$Element
+kotlin.coroutines.CoroutineContext$Key
+kotlin.coroutines.CoroutineContext$plus$1
+kotlin.coroutines.CoroutineContext
+kotlin.coroutines.EmptyCoroutineContext
+kotlin.coroutines.RestrictsSuspension
+kotlin.coroutines.SafeContinuation$Companion
+kotlin.coroutines.SafeContinuation
+kotlin.coroutines.experimental.AbstractCoroutineContextElement
+kotlin.coroutines.experimental.CombinedContext$toString$1
+kotlin.coroutines.experimental.CombinedContext
+kotlin.coroutines.experimental.Continuation
+kotlin.coroutines.experimental.ContinuationInterceptor$DefaultImpls
+kotlin.coroutines.experimental.ContinuationInterceptor$Key
+kotlin.coroutines.experimental.ContinuationInterceptor
+kotlin.coroutines.experimental.CoroutineContext$DefaultImpls
+kotlin.coroutines.experimental.CoroutineContext$Element$DefaultImpls
+kotlin.coroutines.experimental.CoroutineContext$Element
+kotlin.coroutines.experimental.CoroutineContext$Key
+kotlin.coroutines.experimental.CoroutineContext$plus$1
+kotlin.coroutines.experimental.CoroutineContext
+kotlin.coroutines.experimental.CoroutinesKt
+kotlin.coroutines.experimental.EmptyCoroutineContext
+kotlin.coroutines.experimental.RestrictsSuspension
+kotlin.coroutines.experimental.SafeContinuation$Companion
+kotlin.coroutines.experimental.SafeContinuation$Fail
+kotlin.coroutines.experimental.SafeContinuation
+kotlin.coroutines.experimental.SequenceBuilder
+kotlin.coroutines.experimental.SequenceBuilderIterator
+kotlin.coroutines.experimental.SequenceBuilderKt
+kotlin.coroutines.experimental.SequenceBuilderKt__SequenceBuilderKt$buildSequence$$inlined$Sequence$1
+kotlin.coroutines.experimental.SequenceBuilderKt__SequenceBuilderKt
+kotlin.coroutines.experimental.intrinsics.IntrinsicsKt
+kotlin.coroutines.experimental.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$buildContinuationByInvokeCall$continuation$1
+kotlin.coroutines.experimental.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUnchecked$$inlined$buildContinuationByInvokeCall$IntrinsicsKt__IntrinsicsJvmKt$1
+kotlin.coroutines.experimental.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUnchecked$$inlined$buildContinuationByInvokeCall$IntrinsicsKt__IntrinsicsJvmKt$2
+kotlin.coroutines.experimental.intrinsics.IntrinsicsKt__IntrinsicsJvmKt
+kotlin.coroutines.experimental.intrinsics.IntrinsicsKt__IntrinsicsKt
+kotlin.coroutines.experimental.jvm.internal.CoroutineImpl
+kotlin.coroutines.experimental.jvm.internal.CoroutineIntrinsics
+kotlin.coroutines.experimental.migration.ContextMigration$Key
+kotlin.coroutines.experimental.migration.ContextMigration
+kotlin.coroutines.experimental.migration.ContinuationInterceptorMigration
+kotlin.coroutines.experimental.migration.ContinuationMigration
+kotlin.coroutines.experimental.migration.CoroutinesMigrationKt
+kotlin.coroutines.experimental.migration.ExperimentalContextMigration$Key
+kotlin.coroutines.experimental.migration.ExperimentalContextMigration
+kotlin.coroutines.experimental.migration.ExperimentalContinuationInterceptorMigration
+kotlin.coroutines.experimental.migration.ExperimentalContinuationMigration
+kotlin.coroutines.experimental.migration.ExperimentalSuspendFunction0Migration
+kotlin.coroutines.experimental.migration.ExperimentalSuspendFunction1Migration
+kotlin.coroutines.experimental.migration.ExperimentalSuspendFunction2Migration
+kotlin.coroutines.intrinsics.CoroutineSingletons
+kotlin.coroutines.intrinsics.IntrinsicsKt
+kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineFromSuspendFunction$1
+kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineFromSuspendFunction$2
+kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUnintercepted$$inlined$createCoroutineFromSuspendFunction$IntrinsicsKt__IntrinsicsJvmKt$1
+kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUnintercepted$$inlined$createCoroutineFromSuspendFunction$IntrinsicsKt__IntrinsicsJvmKt$2
+kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUnintercepted$$inlined$createCoroutineFromSuspendFunction$IntrinsicsKt__IntrinsicsJvmKt$3
+kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt$createCoroutineUnintercepted$$inlined$createCoroutineFromSuspendFunction$IntrinsicsKt__IntrinsicsJvmKt$4
+kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt
+kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsKt
+kotlin.coroutines.jvm.internal.BaseContinuationImpl
+kotlin.coroutines.jvm.internal.Boxing
+kotlin.coroutines.jvm.internal.CompletedContinuation
+kotlin.coroutines.jvm.internal.ContinuationImpl
+kotlin.coroutines.jvm.internal.CoroutineStackFrame
+kotlin.coroutines.jvm.internal.DebugMetadata
+kotlin.coroutines.jvm.internal.DebugMetadataKt
+kotlin.coroutines.jvm.internal.DebugProbesKt
+kotlin.coroutines.jvm.internal.ModuleNameRetriever$Cache
+kotlin.coroutines.jvm.internal.ModuleNameRetriever
+kotlin.coroutines.jvm.internal.RestrictedContinuationImpl
+kotlin.coroutines.jvm.internal.RestrictedSuspendLambda
+kotlin.coroutines.jvm.internal.RunSuspend
+kotlin.coroutines.jvm.internal.RunSuspendKt
+kotlin.coroutines.jvm.internal.SuspendFunction
+kotlin.coroutines.jvm.internal.SuspendLambda
+kotlin.experimental.BitwiseOperationsKt
+kotlin.experimental.ExperimentalTypeInference
+kotlin.internal.AccessibleLateinitPropertyLiteral
+kotlin.internal.ContractsDsl
+kotlin.internal.DynamicExtension
+kotlin.internal.Exact
+kotlin.internal.HidesMembers
+kotlin.internal.InlineOnly
+kotlin.internal.LowPriorityInOverloadResolution
+kotlin.internal.NoInfer
+kotlin.internal.OnlyInputTypes
+kotlin.internal.PlatformDependent
+kotlin.internal.PlatformImplementations$ReflectAddSuppressedMethod
+kotlin.internal.PlatformImplementations
+kotlin.internal.PlatformImplementationsKt
+kotlin.internal.ProgressionUtilKt
+kotlin.internal.PureReifiable
+kotlin.internal.RequireKotlin
+kotlin.internal.RequireKotlinVersionKind
+kotlin.internal.UProgressionUtilKt
+kotlin.internal.jdk7.JDK7PlatformImplementations
+kotlin.internal.jdk8.JDK8PlatformImplementations
+kotlin.io.AccessDeniedException
+kotlin.io.ByteStreamsKt$iterator$1
+kotlin.io.ByteStreamsKt
+kotlin.io.CloseableKt
+kotlin.io.ConsoleKt$decoder$2
+kotlin.io.ConsoleKt
+kotlin.io.ConstantsKt
+kotlin.io.ExceptionsKt
+kotlin.io.FileAlreadyExistsException
+kotlin.io.FilePathComponents
+kotlin.io.FileSystemException
+kotlin.io.FileTreeWalk$DirectoryState
+kotlin.io.FileTreeWalk$FileTreeWalkIterator$BottomUpDirectoryState
+kotlin.io.FileTreeWalk$FileTreeWalkIterator$SingleFileState
+kotlin.io.FileTreeWalk$FileTreeWalkIterator$TopDownDirectoryState
+kotlin.io.FileTreeWalk$FileTreeWalkIterator$WhenMappings
+kotlin.io.FileTreeWalk$FileTreeWalkIterator
+kotlin.io.FileTreeWalk$WalkState
+kotlin.io.FileTreeWalk
+kotlin.io.FileWalkDirection
+kotlin.io.FilesKt
+kotlin.io.FilesKt__FilePathComponentsKt
+kotlin.io.FilesKt__FileReadWriteKt$readLines$1
+kotlin.io.FilesKt__FileReadWriteKt
+kotlin.io.FilesKt__FileTreeWalkKt
+kotlin.io.FilesKt__UtilsKt$copyRecursively$1
+kotlin.io.FilesKt__UtilsKt$copyRecursively$2
+kotlin.io.FilesKt__UtilsKt
+kotlin.io.LinesSequence$iterator$1
+kotlin.io.LinesSequence
+kotlin.io.NoSuchFileException
+kotlin.io.OnErrorAction
+kotlin.io.SerializableKt
+kotlin.io.TerminateException
+kotlin.io.TextStreamsKt$readLines$1
+kotlin.io.TextStreamsKt
+kotlin.jdk7.AutoCloseableKt
+kotlin.js.JsName
+kotlin.jvm.JvmClassMappingKt
+kotlin.jvm.JvmDefault
+kotlin.jvm.JvmField
+kotlin.jvm.JvmMultifileClass
+kotlin.jvm.JvmName
+kotlin.jvm.JvmOverloads
+kotlin.jvm.JvmPackageName
+kotlin.jvm.JvmStatic
+kotlin.jvm.JvmSuppressWildcards
+kotlin.jvm.JvmSynthetic
+kotlin.jvm.JvmWildcard
+kotlin.jvm.KotlinReflectionNotSupportedError
+kotlin.jvm.PurelyImplements
+kotlin.jvm.Strictfp
+kotlin.jvm.Synchronized
+kotlin.jvm.Throws
+kotlin.jvm.Transient
+kotlin.jvm.Volatile
+kotlin.jvm.functions.Function0
+kotlin.jvm.functions.Function10
+kotlin.jvm.functions.Function11
+kotlin.jvm.functions.Function12
+kotlin.jvm.functions.Function13
+kotlin.jvm.functions.Function14
+kotlin.jvm.functions.Function15
+kotlin.jvm.functions.Function16
+kotlin.jvm.functions.Function17
+kotlin.jvm.functions.Function18
+kotlin.jvm.functions.Function19
+kotlin.jvm.functions.Function1
+kotlin.jvm.functions.Function20
+kotlin.jvm.functions.Function21
+kotlin.jvm.functions.Function22
+kotlin.jvm.functions.Function2
+kotlin.jvm.functions.Function3
+kotlin.jvm.functions.Function4
+kotlin.jvm.functions.Function5
+kotlin.jvm.functions.Function6
+kotlin.jvm.functions.Function7
+kotlin.jvm.functions.Function8
+kotlin.jvm.functions.Function9
+kotlin.jvm.functions.FunctionN
+kotlin.jvm.internal.ArrayBooleanIterator
+kotlin.jvm.internal.ArrayByteIterator
+kotlin.jvm.internal.ArrayCharIterator
+kotlin.jvm.internal.ArrayDoubleIterator
+kotlin.jvm.internal.ArrayFloatIterator
+kotlin.jvm.internal.ArrayIntIterator
+kotlin.jvm.internal.ArrayIterator
+kotlin.jvm.internal.ArrayIteratorKt
+kotlin.jvm.internal.ArrayIteratorsKt
+kotlin.jvm.internal.ArrayLongIterator
+kotlin.jvm.internal.ArrayShortIterator
+kotlin.jvm.internal.BooleanCompanionObject
+kotlin.jvm.internal.BooleanSpreadBuilder
+kotlin.jvm.internal.ByteCompanionObject
+kotlin.jvm.internal.ByteSpreadBuilder
+kotlin.jvm.internal.CallableReference$NoReceiver
+kotlin.jvm.internal.CallableReference
+kotlin.jvm.internal.CharCompanionObject
+kotlin.jvm.internal.CharSpreadBuilder
+kotlin.jvm.internal.ClassBasedDeclarationContainer
+kotlin.jvm.internal.ClassReference
+kotlin.jvm.internal.CollectionToArray
+kotlin.jvm.internal.DefaultConstructorMarker
+kotlin.jvm.internal.DoubleCompanionObject
+kotlin.jvm.internal.DoubleSpreadBuilder
+kotlin.jvm.internal.EnumCompanionObject
+kotlin.jvm.internal.FloatCompanionObject
+kotlin.jvm.internal.FloatSpreadBuilder
+kotlin.jvm.internal.FunctionBase
+kotlin.jvm.internal.FunctionImpl
+kotlin.jvm.internal.FunctionReference
+kotlin.jvm.internal.FunctionReferenceImpl
+kotlin.jvm.internal.InlineMarker
+kotlin.jvm.internal.IntCompanionObject
+kotlin.jvm.internal.IntSpreadBuilder
+kotlin.jvm.internal.Intrinsics
+kotlin.jvm.internal.Lambda
+kotlin.jvm.internal.LocalVariableReference
+kotlin.jvm.internal.LocalVariableReferencesKt
+kotlin.jvm.internal.LongCompanionObject
+kotlin.jvm.internal.LongSpreadBuilder
+kotlin.jvm.internal.MagicApiIntrinsics
+kotlin.jvm.internal.MutableLocalVariableReference
+kotlin.jvm.internal.MutablePropertyReference0
+kotlin.jvm.internal.MutablePropertyReference0Impl
+kotlin.jvm.internal.MutablePropertyReference1
+kotlin.jvm.internal.MutablePropertyReference1Impl
+kotlin.jvm.internal.MutablePropertyReference2
+kotlin.jvm.internal.MutablePropertyReference2Impl
+kotlin.jvm.internal.MutablePropertyReference
+kotlin.jvm.internal.PackageReference
+kotlin.jvm.internal.PrimitiveSpreadBuilder
+kotlin.jvm.internal.PropertyReference0
+kotlin.jvm.internal.PropertyReference0Impl
+kotlin.jvm.internal.PropertyReference1
+kotlin.jvm.internal.PropertyReference1Impl
+kotlin.jvm.internal.PropertyReference2
+kotlin.jvm.internal.PropertyReference2Impl
+kotlin.jvm.internal.PropertyReference
+kotlin.jvm.internal.Ref$BooleanRef
+kotlin.jvm.internal.Ref$ByteRef
+kotlin.jvm.internal.Ref$CharRef
+kotlin.jvm.internal.Ref$DoubleRef
+kotlin.jvm.internal.Ref$FloatRef
+kotlin.jvm.internal.Ref$IntRef
+kotlin.jvm.internal.Ref$LongRef
+kotlin.jvm.internal.Ref$ObjectRef
+kotlin.jvm.internal.Ref$ShortRef
+kotlin.jvm.internal.Ref
+kotlin.jvm.internal.Reflection
+kotlin.jvm.internal.ReflectionFactory
+kotlin.jvm.internal.ShortCompanionObject
+kotlin.jvm.internal.ShortSpreadBuilder
+kotlin.jvm.internal.SpreadBuilder
+kotlin.jvm.internal.StringCompanionObject
+kotlin.jvm.internal.TypeIntrinsics
+kotlin.jvm.internal.TypeReference$WhenMappings
+kotlin.jvm.internal.TypeReference$asString$args$1
+kotlin.jvm.internal.TypeReference
+kotlin.jvm.internal.markers.KMappedMarker
+kotlin.jvm.internal.markers.KMutableCollection
+kotlin.jvm.internal.markers.KMutableIterable
+kotlin.jvm.internal.markers.KMutableIterator
+kotlin.jvm.internal.markers.KMutableList
+kotlin.jvm.internal.markers.KMutableListIterator
+kotlin.jvm.internal.markers.KMutableMap$Entry
+kotlin.jvm.internal.markers.KMutableMap
+kotlin.jvm.internal.markers.KMutableSet
+kotlin.jvm.internal.unsafe.MonitorKt
+kotlin.math.Constants
+kotlin.math.MathKt
+kotlin.math.MathKt__MathHKt
+kotlin.math.MathKt__MathJVMKt
+kotlin.math.UMathKt
+kotlin.native.concurrent.SharedImmutable
+kotlin.native.concurrent.ThreadLocal
+kotlin.properties.Delegates$observable$1
+kotlin.properties.Delegates$vetoable$1
+kotlin.properties.Delegates
+kotlin.properties.NotNullVar
+kotlin.properties.ObservableProperty
+kotlin.properties.ReadOnlyProperty
+kotlin.properties.ReadWriteProperty
+kotlin.random.AbstractPlatformRandom
+kotlin.random.FallbackThreadLocalRandom$implStorage$1
+kotlin.random.FallbackThreadLocalRandom
+kotlin.random.KotlinRandom
+kotlin.random.PlatformRandom
+kotlin.random.PlatformRandomKt
+kotlin.random.Random$Companion
+kotlin.random.Random$Default
+kotlin.random.Random
+kotlin.random.RandomKt
+kotlin.random.URandomKt
+kotlin.random.XorWowRandom
+kotlin.random.jdk8.PlatformThreadLocalRandom
+kotlin.ranges.CharProgression$Companion
+kotlin.ranges.CharProgression
+kotlin.ranges.CharProgressionIterator
+kotlin.ranges.CharRange$Companion
+kotlin.ranges.CharRange
+kotlin.ranges.ClosedDoubleRange
+kotlin.ranges.ClosedFloatRange
+kotlin.ranges.ClosedFloatingPointRange$DefaultImpls
+kotlin.ranges.ClosedFloatingPointRange
+kotlin.ranges.ClosedRange$DefaultImpls
+kotlin.ranges.ClosedRange
+kotlin.ranges.ComparableRange
+kotlin.ranges.IntProgression$Companion
+kotlin.ranges.IntProgression
+kotlin.ranges.IntProgressionIterator
+kotlin.ranges.IntRange$Companion
+kotlin.ranges.IntRange
+kotlin.ranges.LongProgression$Companion
+kotlin.ranges.LongProgression
+kotlin.ranges.LongProgressionIterator
+kotlin.ranges.LongRange$Companion
+kotlin.ranges.LongRange
+kotlin.ranges.RangesKt
+kotlin.ranges.RangesKt__RangesJVMKt
+kotlin.ranges.RangesKt__RangesKt
+kotlin.ranges.RangesKt___RangesKt
+kotlin.ranges.UIntProgression$Companion
+kotlin.ranges.UIntProgression
+kotlin.ranges.UIntProgressionIterator
+kotlin.ranges.UIntRange$Companion
+kotlin.ranges.UIntRange
+kotlin.ranges.ULongProgression$Companion
+kotlin.ranges.ULongProgression
+kotlin.ranges.ULongProgressionIterator
+kotlin.ranges.ULongRange$Companion
+kotlin.ranges.ULongRange
+kotlin.ranges.URangesKt
+kotlin.ranges.URangesKt___URangesKt
+kotlin.reflect.KAnnotatedElement
+kotlin.reflect.KCallable$DefaultImpls
+kotlin.reflect.KCallable
+kotlin.reflect.KClass$DefaultImpls
+kotlin.reflect.KClass
+kotlin.reflect.KClassifier
+kotlin.reflect.KDeclarationContainer
+kotlin.reflect.KFunction$DefaultImpls
+kotlin.reflect.KFunction
+kotlin.reflect.KMutableProperty$Setter
+kotlin.reflect.KMutableProperty0$Setter
+kotlin.reflect.KMutableProperty0
+kotlin.reflect.KMutableProperty1$Setter
+kotlin.reflect.KMutableProperty1
+kotlin.reflect.KMutableProperty2$Setter
+kotlin.reflect.KMutableProperty2
+kotlin.reflect.KMutableProperty
+kotlin.reflect.KParameter$DefaultImpls
+kotlin.reflect.KParameter$Kind
+kotlin.reflect.KParameter
+kotlin.reflect.KProperty$Accessor
+kotlin.reflect.KProperty$DefaultImpls
+kotlin.reflect.KProperty$Getter
+kotlin.reflect.KProperty0$Getter
+kotlin.reflect.KProperty0
+kotlin.reflect.KProperty1$Getter
+kotlin.reflect.KProperty1
+kotlin.reflect.KProperty2$Getter
+kotlin.reflect.KProperty2
+kotlin.reflect.KProperty
+kotlin.reflect.KType$DefaultImpls
+kotlin.reflect.KType
+kotlin.reflect.KTypeParameter
+kotlin.reflect.KTypeProjection$Companion
+kotlin.reflect.KTypeProjection
+kotlin.reflect.KVariance
+kotlin.reflect.KVisibility
+kotlin.reflect.TypeOfKt
+kotlin.sequences.ConstrainedOnceSequence
+kotlin.sequences.DistinctIterator
+kotlin.sequences.DistinctSequence
+kotlin.sequences.DropSequence$iterator$1
+kotlin.sequences.DropSequence
+kotlin.sequences.DropTakeSequence
+kotlin.sequences.DropWhileSequence$iterator$1
+kotlin.sequences.DropWhileSequence
+kotlin.sequences.EmptySequence
+kotlin.sequences.FilteringSequence$iterator$1
+kotlin.sequences.FilteringSequence
+kotlin.sequences.FlatteningSequence$iterator$1
+kotlin.sequences.FlatteningSequence
+kotlin.sequences.GeneratorSequence$iterator$1
+kotlin.sequences.GeneratorSequence
+kotlin.sequences.IndexingSequence$iterator$1
+kotlin.sequences.IndexingSequence
+kotlin.sequences.MergingSequence$iterator$1
+kotlin.sequences.MergingSequence
+kotlin.sequences.Sequence
+kotlin.sequences.SequenceBuilderIterator
+kotlin.sequences.SequenceScope
+kotlin.sequences.SequencesKt
+kotlin.sequences.SequencesKt__SequenceBuilderKt$buildSequence$$inlined$Sequence$1
+kotlin.sequences.SequencesKt__SequenceBuilderKt$sequence$$inlined$Sequence$1
+kotlin.sequences.SequencesKt__SequenceBuilderKt
+kotlin.sequences.SequencesKt__SequencesJVMKt
+kotlin.sequences.SequencesKt__SequencesKt$Sequence$1
+kotlin.sequences.SequencesKt__SequencesKt$asSequence$$inlined$Sequence$1
+kotlin.sequences.SequencesKt__SequencesKt$flatten$1
+kotlin.sequences.SequencesKt__SequencesKt$flatten$2
+kotlin.sequences.SequencesKt__SequencesKt$flatten$3
+kotlin.sequences.SequencesKt__SequencesKt$generateSequence$1
+kotlin.sequences.SequencesKt__SequencesKt$generateSequence$2
+kotlin.sequences.SequencesKt__SequencesKt$ifEmpty$1
+kotlin.sequences.SequencesKt__SequencesKt
+kotlin.sequences.SequencesKt___SequencesJvmKt$filterIsInstance$1
+kotlin.sequences.SequencesKt___SequencesJvmKt
+kotlin.sequences.SequencesKt___SequencesKt$asIterable$$inlined$Iterable$1
+kotlin.sequences.SequencesKt___SequencesKt$distinct$1
+kotlin.sequences.SequencesKt___SequencesKt$elementAt$1
+kotlin.sequences.SequencesKt___SequencesKt$filterIndexed$1
+kotlin.sequences.SequencesKt___SequencesKt$filterIndexed$2
+kotlin.sequences.SequencesKt___SequencesKt$filterIsInstance$1
+kotlin.sequences.SequencesKt___SequencesKt$filterNotNull$1
+kotlin.sequences.SequencesKt___SequencesKt$flatMap$1
+kotlin.sequences.SequencesKt___SequencesKt$groupingBy$1
+kotlin.sequences.SequencesKt___SequencesKt$minus$1$iterator$1
+kotlin.sequences.SequencesKt___SequencesKt$minus$1
+kotlin.sequences.SequencesKt___SequencesKt$minus$2$iterator$1
+kotlin.sequences.SequencesKt___SequencesKt$minus$2
+kotlin.sequences.SequencesKt___SequencesKt$minus$3$iterator$1
+kotlin.sequences.SequencesKt___SequencesKt$minus$3
+kotlin.sequences.SequencesKt___SequencesKt$minus$4$iterator$1
+kotlin.sequences.SequencesKt___SequencesKt$minus$4
+kotlin.sequences.SequencesKt___SequencesKt$onEach$1
+kotlin.sequences.SequencesKt___SequencesKt$requireNoNulls$1
+kotlin.sequences.SequencesKt___SequencesKt$sorted$1
+kotlin.sequences.SequencesKt___SequencesKt$sortedWith$1
+kotlin.sequences.SequencesKt___SequencesKt$zip$1
+kotlin.sequences.SequencesKt___SequencesKt$zipWithNext$1
+kotlin.sequences.SequencesKt___SequencesKt$zipWithNext$2
+kotlin.sequences.SequencesKt___SequencesKt
+kotlin.sequences.SubSequence$iterator$1
+kotlin.sequences.SubSequence
+kotlin.sequences.TakeSequence$iterator$1
+kotlin.sequences.TakeSequence
+kotlin.sequences.TakeWhileSequence$iterator$1
+kotlin.sequences.TakeWhileSequence
+kotlin.sequences.TransformingIndexedSequence$iterator$1
+kotlin.sequences.TransformingIndexedSequence
+kotlin.sequences.TransformingSequence$iterator$1
+kotlin.sequences.TransformingSequence
+kotlin.sequences.USequencesKt
+kotlin.sequences.USequencesKt___USequencesKt
+kotlin.streams.jdk8.StreamsKt$asSequence$$inlined$Sequence$1
+kotlin.streams.jdk8.StreamsKt$asSequence$$inlined$Sequence$2
+kotlin.streams.jdk8.StreamsKt$asSequence$$inlined$Sequence$3
+kotlin.streams.jdk8.StreamsKt$asSequence$$inlined$Sequence$4
+kotlin.streams.jdk8.StreamsKt$asStream$1
+kotlin.streams.jdk8.StreamsKt
+kotlin.system.ProcessKt
+kotlin.system.TimingKt
+kotlin.text.CharCategory$Companion$categoryMap$2
+kotlin.text.CharCategory$Companion
+kotlin.text.CharCategory
+kotlin.text.CharDirectionality$Companion$directionalityMap$2
+kotlin.text.CharDirectionality$Companion
+kotlin.text.CharDirectionality
+kotlin.text.CharsKt
+kotlin.text.CharsKt__CharJVMKt
+kotlin.text.CharsKt__CharKt
+kotlin.text.Charsets
+kotlin.text.CharsetsKt
+kotlin.text.DelimitedRangesSequence$iterator$1
+kotlin.text.DelimitedRangesSequence
+kotlin.text.FlagEnum
+kotlin.text.MatchGroup
+kotlin.text.MatchGroupCollection
+kotlin.text.MatchNamedGroupCollection
+kotlin.text.MatchResult$DefaultImpls
+kotlin.text.MatchResult$Destructured
+kotlin.text.MatchResult
+kotlin.text.MatcherMatchResult$groupValues$1
+kotlin.text.MatcherMatchResult$groups$1$iterator$1
+kotlin.text.MatcherMatchResult$groups$1
+kotlin.text.MatcherMatchResult
+kotlin.text.Regex$Companion
+kotlin.text.Regex$Serialized$Companion
+kotlin.text.Regex$Serialized
+kotlin.text.Regex$findAll$1
+kotlin.text.Regex$findAll$2
+kotlin.text.Regex$fromInt$$inlined$apply$lambda$1
+kotlin.text.Regex
+kotlin.text.RegexKt$fromInt$$inlined$apply$lambda$1
+kotlin.text.RegexKt
+kotlin.text.RegexOption
+kotlin.text.ScreenFloatValueRegEx
+kotlin.text.StringsKt
+kotlin.text.StringsKt__IndentKt$getIndentFunction$1
+kotlin.text.StringsKt__IndentKt$getIndentFunction$2
+kotlin.text.StringsKt__IndentKt$prependIndent$1
+kotlin.text.StringsKt__IndentKt
+kotlin.text.StringsKt__RegexExtensionsJVMKt
+kotlin.text.StringsKt__RegexExtensionsKt
+kotlin.text.StringsKt__StringBuilderJVMKt
+kotlin.text.StringsKt__StringBuilderKt
+kotlin.text.StringsKt__StringNumberConversionsJVMKt
+kotlin.text.StringsKt__StringNumberConversionsKt
+kotlin.text.StringsKt__StringsJVMKt
+kotlin.text.StringsKt__StringsKt$iterator$1
+kotlin.text.StringsKt__StringsKt$rangesDelimitedBy$2
+kotlin.text.StringsKt__StringsKt$rangesDelimitedBy$4
+kotlin.text.StringsKt__StringsKt$splitToSequence$1
+kotlin.text.StringsKt__StringsKt$splitToSequence$2
+kotlin.text.StringsKt__StringsKt
+kotlin.text.StringsKt___StringsJvmKt
+kotlin.text.StringsKt___StringsKt$asIterable$$inlined$Iterable$1
+kotlin.text.StringsKt___StringsKt$asSequence$$inlined$Sequence$1
+kotlin.text.StringsKt___StringsKt$chunkedSequence$1
+kotlin.text.StringsKt___StringsKt$groupingBy$1
+kotlin.text.StringsKt___StringsKt$windowed$1
+kotlin.text.StringsKt___StringsKt$windowedSequence$1
+kotlin.text.StringsKt___StringsKt$windowedSequence$2
+kotlin.text.StringsKt___StringsKt$withIndex$1
+kotlin.text.StringsKt___StringsKt
+kotlin.text.SystemProperties
+kotlin.text.TypeAliasesKt
+kotlin.text.Typography
+kotlin.text.UStringsKt
+kotlin.text.jdk8.RegexExtensionsJDK8Kt
+kotlin.time.AbstractDoubleClock$DoubleClockMark
+kotlin.time.AbstractDoubleClock
+kotlin.time.AbstractLongClock$LongClockMark
+kotlin.time.AbstractLongClock
+kotlin.time.AdjustedClockMark
+kotlin.time.Clock
+kotlin.time.ClockKt
+kotlin.time.ClockMark
+kotlin.time.Duration$Companion
+kotlin.time.Duration
+kotlin.time.DurationKt
+kotlin.time.DurationUnitKt$WhenMappings
+kotlin.time.DurationUnitKt
+kotlin.time.DurationUnitKt__DurationUnitJvmKt
+kotlin.time.DurationUnitKt__DurationUnitKt
+kotlin.time.ExperimentalTime
+kotlin.time.FormatToDecimalsKt
+kotlin.time.MeasureTimeKt
+kotlin.time.MonoClock
+kotlin.time.TestClock
+kotlin.time.TimedValue
+kotlin.time.jdk8.DurationConversionsJDK8Kt
+org.intellij.lang.annotations.Flow
+org.intellij.lang.annotations.Identifier
+org.intellij.lang.annotations.JdkConstants$AdjustableOrientation
+org.intellij.lang.annotations.JdkConstants$BoxLayoutAxis
+org.intellij.lang.annotations.JdkConstants$CalendarMonth
+org.intellij.lang.annotations.JdkConstants$CursorType
+org.intellij.lang.annotations.JdkConstants$FlowLayoutAlignment
+org.intellij.lang.annotations.JdkConstants$FontStyle
+org.intellij.lang.annotations.JdkConstants$HorizontalAlignment
+org.intellij.lang.annotations.JdkConstants$InputEventMask
+org.intellij.lang.annotations.JdkConstants$ListSelectionMode
+org.intellij.lang.annotations.JdkConstants$PatternFlags
+org.intellij.lang.annotations.JdkConstants$TabLayoutPolicy
+org.intellij.lang.annotations.JdkConstants$TabPlacement
+org.intellij.lang.annotations.JdkConstants$TitledBorderJustification
+org.intellij.lang.annotations.JdkConstants$TitledBorderTitlePosition
+org.intellij.lang.annotations.JdkConstants$TreeSelectionMode
+org.intellij.lang.annotations.JdkConstants
+org.intellij.lang.annotations.Language
+org.intellij.lang.annotations.MagicConstant
+org.intellij.lang.annotations.Pattern
+org.intellij.lang.annotations.PrintFormat
+org.intellij.lang.annotations.PrintFormatPattern
+org.intellij.lang.annotations.RegExp
+org.intellij.lang.annotations.Subst
+org.jetbrains.annotations.Contract
+org.jetbrains.annotations.Nls
+org.jetbrains.annotations.NonNls
+org.jetbrains.annotations.NotNull
+org.jetbrains.annotations.Nullable
+org.jetbrains.annotations.PropertyKey
+org.jetbrains.annotations.TestOnly
+androidx.core.app.ActivityCompat$$InternalSyntheticThrowCCEIfNotNull$8$87f5f3ee39a507a821c0cac2c41ae97972cc2fd75bcf9c839fb098eb6d4675fb$0
+androidx.core.app.ActivityCompat$1$$InternalSyntheticThrowCCEIfNotNull$8$a4650200ea34729841d2251593f2c5754b8e758eca88770c25593bc1ba2598de$0
+androidx.core.app.ActivityCompat$1
+androidx.core.app.ActivityCompat$OnRequestPermissionsResultCallback
+androidx.core.app.ActivityCompat$PermissionCompatDelegate
+androidx.core.app.ActivityCompat$RequestPermissionsRequestCodeValidator
+androidx.core.app.ActivityCompat:
+    private static androidx.core.app.ActivityCompat$PermissionCompatDelegate sDelegate
+androidx.core.app.BundleCompat$BundleCompatBaseImpl
+androidx.core.app.CoreComponentFactory$$InternalSyntheticThrowCCEIfNotNull$8$28d6d52be828bd520f37653069cdb0fd59ddc413967dd43deec606fddf5e864e$0
+androidx.core.app.CoreComponentFactory$CompatWrapped
+androidx.core.content.ContextCompat:
+    private static android.util.TypedValue sTempValue
+androidx.core.graphics.drawable.TintAwareDrawable
+androidx.core.graphics.drawable.WrappedDrawableApi14
+androidx.core.graphics.drawable.WrappedDrawableApi21
+androidx.core.graphics.drawable.WrappedDrawableState
+com.meta.androidbrowserhelper.trusted.splashscreens.SplashImageTransferTask:
+    static final synthetic boolean $assertionsDisabled

@@ -1,0 +1,10 @@
+com.bb999.drocon.app-core-1.1.0-0 /Users/noranekob/.gradle/caches/8.8/transforms/2144911bb09dce3a07f407e3b390637e/transformed/core-1.1.0/res
+com.bb999.drocon.app-androidbrowserhelper-2.5.0-1 /Users/noranekob/.gradle/caches/8.8/transforms/6c5e59d927a808ada2a8a315ba991c71/transformed/androidbrowserhelper-2.5.0/res
+com.bb999.drocon.app-browser-1.4.0-2 /Users/noranekob/.gradle/caches/8.8/transforms/b511174c15fdde7dea3e957094b4390b/transformed/browser-1.4.0/res
+com.bb999.drocon.app-pngs-3 /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/build/generated/res/pngs/release
+com.bb999.drocon.app-resValues-4 /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/build/generated/res/resValues/release
+com.bb999.drocon.app-packageReleaseResources-5 /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/build/intermediates/incremental/release/packageReleaseResources/merged.dir
+com.bb999.drocon.app-packageReleaseResources-6 /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/build/intermediates/incremental/release/packageReleaseResources/stripped.dir
+com.bb999.drocon.app-release-7 /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/build/intermediates/merged_res/release/mergeReleaseResources
+com.bb999.drocon.app-main-8 /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/res
+com.bb999.drocon.app-release-9 /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/release/res

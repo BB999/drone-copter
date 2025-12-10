@@ -1,0 +1,323 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:23:1-226:12
+INJECTED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:23:1-226:12
+INJECTED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:23:1-226:12
+INJECTED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:23:1-226:12
+MERGED from [com.meta.androidbrowserhelper:horizonpermissions:1.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/0727f19292fbf9d74e16329fee1fd0f6/transformed/horizonpermissions-1.0.0/AndroidManifest.xml:2:1-11:12
+MERGED from [com.meta.androidbrowserhelper:horizonplatformsdk:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/e65e3564e2d12f26f44925e53114ea7c/transformed/horizonplatformsdk-1.1.0/AndroidManifest.xml:2:1-11:12
+MERGED from [com.meta.androidbrowserhelper:androidbrowserhelper:2.5.0] /Users/noranekob/.gradle/caches/8.8/transforms/6c5e59d927a808ada2a8a315ba991c71/transformed/androidbrowserhelper-2.5.0/AndroidManifest.xml:17:1-36:12
+MERGED from [androidx.browser:browser:1.4.0] /Users/noranekob/.gradle/caches/8.8/transforms/b511174c15fdde7dea3e957094b4390b/transformed/browser-1.4.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.meta.horizon.platform.ovr:android-platform-sdk:71] /Users/noranekob/.gradle/caches/8.8/transforms/9680ab6a4503dbf3a06af541011379c4/transformed/android-platform-sdk-71/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.core:core:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2144911bb09dce3a07f407e3b390637e/transformed/core-1.1.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2fd04857057ce230bd6016b4ac1ced40/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/b0650a412e26a3a2ee3caaa6aaf8b7f8/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/e807fb6701c5feba89b5db3fc097d290/transformed/lifecycle-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+	package
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:24:5-31
+		INJECTED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:23:11-69
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:27:9-80
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:27:26-78
+uses-permission#com.oculus.permission.HAND_TRACKING
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:35:5-75
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:35:22-72
+uses-feature#android.hardware.vr.headtracking
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:41:5-44:31
+	android:version
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:44:9-28
+	android:required
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:43:9-33
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:42:9-56
+uses-feature#oculus.software.handtracking
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:46:5-48:36
+	android:required
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:48:9-33
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:47:9-52
+application
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:51:5-225:19
+INJECTED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:51:5-225:19
+MERGED from [androidx.core:core:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2144911bb09dce3a07f407e3b390637e/transformed/core-1.1.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2144911bb09dce3a07f407e3b390637e/transformed/core-1.1.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2fd04857057ce230bd6016b4ac1ced40/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2fd04857057ce230bd6016b4ac1ced40/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+	android:extractNativeLibs
+		INJECTED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2144911bb09dce3a07f407e3b390637e/transformed/core-1.1.0/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:59:9-35
+	android:label
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:55:9-40
+	android:manageSpaceActivity
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:57:9-103
+	android:icon
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:54:9-43
+	android:allowBackup
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:53:9-35
+	android:theme
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:60:9-68
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:52:9-35
+meta-data#asset_statements
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:62:9-64:58
+	android:resource
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:64:13-55
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:63:13-44
+meta-data#twa_generator
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:69:9-71:52
+	android:value
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:71:13-49
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:70:13-41
+meta-data#com.meta.horizon.platform.ovr.OCULUS_APP_ID
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:76:13-78:39
+	android:value
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:78:17-36
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:77:17-75
+activity#com.meta.androidbrowserhelper.trusted.ManageDataLauncherActivity
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:85:13-89:24
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:85:23-102
+meta-data#android.support.customtabs.trusted.MANAGE_SPACE_URL
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:86:13-88:53
+	android:value
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:88:17-50
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:87:17-83
+activity#com.bb999.drocon.LauncherActivity
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:92:9-184:20
+	android:label
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:94:13-49
+	android:exported
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:96:13-36
+	android:alwaysRetainTaskState
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:93:13-49
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:92:19-50
+meta-data#android.support.customtabs.trusted.DEFAULT_URL
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:97:13-98:53
+	android:value
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:98:17-50
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:97:24-85
+meta-data#android.support.customtabs.trusted.STATUS_BAR_COLOR
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:100:13-102:58
+	android:resource
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:102:17-55
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:101:17-83
+meta-data#android.support.customtabs.trusted.STATUS_BAR_COLOR_DARK
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:104:13-106:62
+	android:resource
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:106:17-59
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:105:17-88
+meta-data#android.support.customtabs.trusted.NAVIGATION_BAR_COLOR
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:108:13-110:61
+	android:resource
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:110:17-58
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:109:17-87
+meta-data#android.support.customtabs.trusted.NAVIGATION_BAR_COLOR_DARK
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:112:13-114:65
+	android:resource
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:114:17-62
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:113:17-92
+meta-data#androix.browser.trusted.NAVIGATION_BAR_DIVIDER_COLOR
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:116:13-118:68
+	android:resource
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:118:17-65
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:117:17-84
+meta-data#androix.browser.trusted.NAVIGATION_BAR_DIVIDER_COLOR_DARK
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:120:13-122:72
+	android:resource
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:122:17-69
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:121:17-89
+meta-data#android.support.customtabs.trusted.SPLASH_IMAGE_DRAWABLE
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:124:13-125:54
+	android:resource
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:125:17-52
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:124:24-95
+meta-data#android.support.customtabs.trusted.SPLASH_SCREEN_BACKGROUND_COLOR
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:127:13-128:60
+	android:resource
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:128:17-58
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:127:24-104
+meta-data#android.support.customtabs.trusted.SPLASH_SCREEN_FADE_OUT_DURATION
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:130:13-131:71
+	android:value
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:131:17-69
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:130:24-105
+meta-data#android.support.customtabs.trusted.FILE_PROVIDER_AUTHORITY
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:133:13-134:60
+	android:value
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:134:17-58
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:133:24-97
+meta-data#android.app.shortcuts
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:136:13-97
+	android:resource
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:136:61-94
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:136:24-60
+meta-data#android.support.customtabs.trusted.FALLBACK_STRATEGY
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:138:13-139:56
+	android:value
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:139:17-53
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:138:24-91
+meta-data#horizonos.pwa.APP_MODE
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:142:17-144:64
+	android:value
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:144:21-61
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:143:21-58
+meta-data#com.oculus.vrshell.uses_secure_layer
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:146:21-147:49
+	android:value
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:147:25-47
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:146:32-83
+meta-data#android.support.customtabs.trusted.SCREEN_ORIENTATION
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:155:13-156:54
+	android:value
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:156:17-52
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:155:24-92
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER+category:name:com.oculus.intent.category.2D
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:162:13-169:29
+action#android.intent.action.MAIN
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:163:17-69
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:163:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:164:17-77
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:164:27-74
+category#com.oculus.intent.category.2D
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:167:21-78
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:167:31-75
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:@string/hostName+data:pathPrefix:/drone-copter/+data:scheme:https
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:171:13-181:29
+	android:autoVerify
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:171:28-53
+action#android.intent.action.VIEW
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:172:17-68
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:172:25-66
+category#android.intent.category.DEFAULT
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:173:17-76
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:173:27-73
+category#android.intent.category.BROWSABLE
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:174:17-77
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:174:27-75
+data
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:175:17-180:19
+	android:host
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:176:21-52
+	android:scheme
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:175:23-45
+	android:pathPrefix
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:178:21-56
+activity#com.meta.androidbrowserhelper.trusted.FocusActivity
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:186:9-88
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:186:19-85
+activity#com.meta.androidbrowserhelper.trusted.WebViewFallbackActivity
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:188:9-189:62
+	android:configChanges
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:189:13-59
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:188:19-95
+provider#androidx.core.content.FileProvider
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:191:9-199:20
+	android:grantUriPermissions
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:194:13-47
+	android:authorities
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:193:13-60
+	android:exported
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:195:13-37
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:192:13-62
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:196:13-198:53
+	android:resource
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:198:17-50
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:197:17-67
+service#com.bb999.drocon.DelegationService
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:201:9-216:19
+	android:enabled
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:203:13-55
+	android:exported
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:204:13-56
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:202:13-46
+meta-data#android.support.customtabs.trusted.SMALL_ICON
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:207:17-209:73
+	android:resource
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:209:21-70
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:208:21-81
+intent-filter#action:name:android.support.customtabs.trusted.TRUSTED_WEB_ACTIVITY_SERVICE+category:name:android.intent.category.DEFAULT
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:212:13-215:29
+action#android.support.customtabs.trusted.TRUSTED_WEB_ACTIVITY_SERVICE
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:213:17-105
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:213:25-103
+activity#com.meta.androidbrowserhelper.trusted.NotificationPermissionRequestActivity
+ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:219:13-116
+	android:name
+		ADDED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml:219:23-113
+uses-sdk
+INJECTED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml
+INJECTED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml
+MERGED from [com.meta.androidbrowserhelper:horizonpermissions:1.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/0727f19292fbf9d74e16329fee1fd0f6/transformed/horizonpermissions-1.0.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.meta.androidbrowserhelper:horizonpermissions:1.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/0727f19292fbf9d74e16329fee1fd0f6/transformed/horizonpermissions-1.0.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.meta.androidbrowserhelper:horizonplatformsdk:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/e65e3564e2d12f26f44925e53114ea7c/transformed/horizonplatformsdk-1.1.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.meta.androidbrowserhelper:horizonplatformsdk:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/e65e3564e2d12f26f44925e53114ea7c/transformed/horizonplatformsdk-1.1.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.meta.androidbrowserhelper:androidbrowserhelper:2.5.0] /Users/noranekob/.gradle/caches/8.8/transforms/6c5e59d927a808ada2a8a315ba991c71/transformed/androidbrowserhelper-2.5.0/AndroidManifest.xml:22:5-24:41
+MERGED from [com.meta.androidbrowserhelper:androidbrowserhelper:2.5.0] /Users/noranekob/.gradle/caches/8.8/transforms/6c5e59d927a808ada2a8a315ba991c71/transformed/androidbrowserhelper-2.5.0/AndroidManifest.xml:22:5-24:41
+MERGED from [androidx.browser:browser:1.4.0] /Users/noranekob/.gradle/caches/8.8/transforms/b511174c15fdde7dea3e957094b4390b/transformed/browser-1.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.4.0] /Users/noranekob/.gradle/caches/8.8/transforms/b511174c15fdde7dea3e957094b4390b/transformed/browser-1.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.meta.horizon.platform.ovr:android-platform-sdk:71] /Users/noranekob/.gradle/caches/8.8/transforms/9680ab6a4503dbf3a06af541011379c4/transformed/android-platform-sdk-71/AndroidManifest.xml:7:5-9:41
+MERGED from [com.meta.horizon.platform.ovr:android-platform-sdk:71] /Users/noranekob/.gradle/caches/8.8/transforms/9680ab6a4503dbf3a06af541011379c4/transformed/android-platform-sdk-71/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.core:core:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2144911bb09dce3a07f407e3b390637e/transformed/core-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2144911bb09dce3a07f407e3b390637e/transformed/core-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2fd04857057ce230bd6016b4ac1ced40/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2fd04857057ce230bd6016b4ac1ced40/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/b0650a412e26a3a2ee3caaa6aaf8b7f8/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/b0650a412e26a3a2ee3caaa6aaf8b7f8/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/e807fb6701c5feba89b5db3fc097d290/transformed/lifecycle-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/e807fb6701c5feba89b5db3fc097d290/transformed/lifecycle-runtime-2.0.0/AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/noranekob/cursor/drone-copter/drocon-apk-meta/app/src/main/AndroidManifest.xml
+queries
+ADDED from [com.meta.androidbrowserhelper:androidbrowserhelper:2.5.0] /Users/noranekob/.gradle/caches/8.8/transforms/6c5e59d927a808ada2a8a315ba991c71/transformed/androidbrowserhelper-2.5.0/AndroidManifest.xml:26:5-34:15
+intent#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+data:scheme:https
+ADDED from [com.meta.androidbrowserhelper:androidbrowserhelper:2.5.0] /Users/noranekob/.gradle/caches/8.8/transforms/6c5e59d927a808ada2a8a315ba991c71/transformed/androidbrowserhelper-2.5.0/AndroidManifest.xml:27:9-33:18

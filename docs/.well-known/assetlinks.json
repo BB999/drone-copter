@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.bb999.drocon",
+        "sha256_cert_fingerprints": ["F7:61:87:69:C1:58:A8:57:72:AC:23:FE:E1:CA:2B:92:F1:4C:16:88:39:34:B6:09:D4:9C:34:4F:3C:3C:2F:3B"]
+      }
+    }]

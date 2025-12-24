@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 import * as state from './state.js';
 import { updateInfo } from './utils.js';
 import { loadDroneModel, updateMaxSpeed } from './drone.js';
@@ -16,7 +15,7 @@ import {
   loadSettingsFromStorage
 } from './ui.js';
 import { checkPlaneCollision, updatePreStartupPhysics, updateHoverAnimation, updateReturnToHover } from './physics.js';
-import { createVREnvironment, removeVREnvironment, createMRShadow, removeMRShadow, processDepthInformation, updatePlanes, createDepthVisualization, positionDrone } from './vr.js';
+import { createMRShadow, removeMRShadow, processDepthInformation, updatePlanes, createDepthVisualization, positionDrone } from './vr.js';
 import {
   updateAutoReturn, handleSpeedChange, handleRightControllerButtons,
   handleStartupSequence, handleSizeChange, handleControllerGrab, handleHandGrab,
@@ -203,7 +202,7 @@ function render() {
   // FPVモードのカメラオフセット更新
   updateFpvCamera();
 
-  // VRモード時の影用ライト位置をドローンに追従
+  // MRモード時の影用ライト位置をドローンに追従
   updateShadowLight();
 
   state.renderer.render(state.scene, state.camera);
@@ -833,10 +832,6 @@ async function startXR() {
     if (button) {
       button.style.display = 'none';
     }
-    const vrButton = document.getElementById('vr-button');
-    if (vrButton) {
-      vrButton.style.display = 'none';
-    }
 
     window.dispatchEvent(new Event('xr-session-start'));
 
@@ -907,157 +902,12 @@ async function startXR() {
       if (button) {
         button.style.display = 'block';
       }
-      if (vrButton) {
-        vrButton.style.display = 'block';
-      }
     });
 
   } catch (error) {
     console.error('XRセッション開始エラー:', error);
     updateInfo('エラー: ' + (error.message || error.name || 'Unknown error'));
     alert('MRセッションを開始できませんでした: ' + (error.message || error.name || 'Unknown error'));
-  }
-}
-
-// VRセッション開始
-async function startVR() {
-  if (!navigator.xr) {
-    updateInfo('WebXRがサポートされていません');
-    alert('このデバイスはWebXRをサポートしていません');
-    return;
-  }
-
-  try {
-    updateInfo('VRセッションを開始中...');
-
-    const supported = await navigator.xr.isSessionSupported('immersive-vr');
-
-    if (!supported) {
-      updateInfo('immersive-VRがサポートされていません');
-      alert('このデバイスはVR機能をサポートしていません');
-      return;
-    }
-
-    const xrSession = await navigator.xr.requestSession('immersive-vr', {
-      requiredFeatures: [],
-      optionalFeatures: ['local-floor', 'bounded-floor', 'hand-tracking']
-    });
-
-    state.setXrSession(xrSession);
-
-    await state.renderer.xr.setSession(xrSession);
-
-    createVREnvironment();
-
-    const rightController = state.renderer.xr.getController(0);
-    const leftController = state.renderer.xr.getController(1);
-    state.scene.add(rightController);
-    state.scene.add(leftController);
-    state.setRightController(rightController);
-    state.setLeftController(leftController);
-
-    // コントローラーモデルを追加（VRモード用）
-    const controllerModelFactory = new XRControllerModelFactory();
-    const rightControllerGrip = state.renderer.xr.getControllerGrip(0);
-    const leftControllerGrip = state.renderer.xr.getControllerGrip(1);
-    rightControllerGrip.add(controllerModelFactory.createControllerModel(rightControllerGrip));
-    leftControllerGrip.add(controllerModelFactory.createControllerModel(leftControllerGrip));
-    state.scene.add(rightControllerGrip);
-    state.scene.add(leftControllerGrip);
-
-    const hand1 = state.renderer.xr.getHand(0);
-    const hand2 = state.renderer.xr.getHand(1);
-    state.scene.add(hand1);
-    state.scene.add(hand2);
-    state.setHand1(hand1);
-    state.setHand2(hand2);
-
-    // フラグをリセット
-    state.setDronePositioned(false);
-    state.setIsStartupComplete(false);
-    state.setIsStartingUp(false);
-    state.setPropellerSpeedMultiplier(0);
-    state.setLiftStartTime(null);
-    state.setLiftStartPos(null);
-    state.setLiftTargetHeight(null);
-    state.dronePhysicsVelocity.set(0, 0, 0);
-    state.droneAngularVelocity.set(0, 0, 0);
-    state.dronePreviousPosition.set(0, 0, 0);
-
-    if (state.droneSound && state.droneSound.isPlaying) {
-      state.droneSound.stop();
-      console.log('ドローン音声停止');
-    }
-
-    const button = document.getElementById('start-button');
-    if (button) {
-      button.style.display = 'none';
-    }
-    const vrButton = document.getElementById('vr-button');
-    if (vrButton) {
-      vrButton.style.display = 'none';
-    }
-
-    window.dispatchEvent(new Event('xr-session-start'));
-
-    updateInfo('VRセッション開始');
-
-    // チュートリアル完了フラグをlocalStorageから読み込み
-    const tutorialCompletedStorageVR = localStorage.getItem('tutorialCompleted');
-    const restartTutorialStorageVR = localStorage.getItem('restartTutorial');
-
-    // チュートリアルを受けるボタンが押された場合はリセット
-    if (restartTutorialStorageVR === 'true') {
-      localStorage.removeItem('restartTutorial');
-      localStorage.removeItem('tutorialCompleted');
-      state.setTutorialCompleted(false);
-      state.setRestartTutorial(false);
-      state.setTutorialStep(1);
-      // 1秒待機してからチュートリアル1を表示
-      setTimeout(() => {
-        createWelcomeWindow();
-      }, 1000);
-    } else if (tutorialCompletedStorageVR === 'true') {
-      // チュートリアル完了済みの場合はスキップ
-      state.setTutorialCompleted(true);
-      state.setTutorialStep(0);
-    } else {
-      // 初回はチュートリアルを表示（1秒待機）
-      setTimeout(() => {
-        createWelcomeWindow();
-      }, 1000);
-    }
-
-    xrSession.addEventListener('end', () => {
-      state.setXrSession(null);
-      state.setBaseReferenceSpace(null);
-      state.setIsFpvMode(false);
-      state.setWasFpvMode(false);
-      state.setFpvInitialCameraPos(null);
-      state.setFpvInitialDronePos(null);
-
-      removeVREnvironment();
-
-      if (state.droneSound && state.droneSound.isPlaying) {
-        state.droneSound.stop();
-        console.log('ドローン音声停止');
-      }
-
-      window.dispatchEvent(new Event('xr-session-end'));
-
-      updateInfo('VRセッション終了');
-      if (button) {
-        button.style.display = 'block';
-      }
-      if (vrButton) {
-        vrButton.style.display = 'block';
-      }
-    });
-
-  } catch (error) {
-    console.error('VRセッション開始エラー:', error);
-    updateInfo('エラー: ' + (error.message || error.name || 'Unknown error'));
-    alert('VRセッションを開始できませんでした: ' + (error.message || error.name || 'Unknown error'));
   }
 }
 
@@ -1068,11 +918,6 @@ init();
 const startButton = document.getElementById('start-button');
 if (startButton) {
   startButton.addEventListener('click', startXR);
-}
-
-const vrButton = document.getElementById('vr-button');
-if (vrButton) {
-  vrButton.addEventListener('click', startVR);
 }
 
 // 深度表示切り替えボタン

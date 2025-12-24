@@ -2944,6 +2944,19 @@ function updateWelcomeWindowAnimation() {
         if (state.welcomeGuideDot.material) state.welcomeGuideDot.material.dispose();
         state.setWelcomeGuideDot(null);
       }
+      // 右コントローラー用ガイドラインとドットも削除
+      if (state.welcomeControllerGuideLine) {
+        state.scene.remove(state.welcomeControllerGuideLine);
+        if (state.welcomeControllerGuideLine.geometry) state.welcomeControllerGuideLine.geometry.dispose();
+        if (state.welcomeControllerGuideLine.material) state.welcomeControllerGuideLine.material.dispose();
+        state.setWelcomeControllerGuideLine(null);
+      }
+      if (state.welcomeControllerGuideDot) {
+        state.scene.remove(state.welcomeControllerGuideDot);
+        if (state.welcomeControllerGuideDot.geometry) state.welcomeControllerGuideDot.geometry.dispose();
+        if (state.welcomeControllerGuideDot.material) state.welcomeControllerGuideDot.material.dispose();
+        state.setWelcomeControllerGuideDot(null);
+      }
     }
   }
 
@@ -3042,6 +3055,94 @@ export function updateWelcomeWindow() {
     const pulse = (Math.sin(Date.now() * 0.001 * pulseSpeed) + 1) / 2;
     state.welcomeGuideDot.material.opacity = 0.3 + pulse * 0.7;
     state.welcomeGuideDot.scale.setScalar(0.8 + pulse * 0.4);
+  }
+
+  // 右コントローラーへの矢印を描画
+  if (state.rightController && state.xrSession) {
+    const frame = state.renderer.xr.getFrame();
+    const referenceSpace = state.renderer.xr.getReferenceSpace();
+
+    if (frame && referenceSpace) {
+      // 右コントローラーの位置を取得
+      let controllerPos = null;
+      const inputSources = state.xrSession.inputSources;
+      for (const source of inputSources) {
+        if (source.handedness === 'right' && source.gripSpace) {
+          const gripPose = frame.getPose(source.gripSpace, referenceSpace);
+          if (gripPose) {
+            controllerPos = new THREE.Vector3().setFromMatrixPosition(
+              new THREE.Matrix4().fromArray(gripPose.transform.matrix)
+            );
+            break;
+          }
+        }
+      }
+
+      if (controllerPos) {
+        // ウィンドウの右下からコントローラーへのライン
+        const cameraQuat = new THREE.Quaternion();
+        state.camera.getWorldQuaternion(cameraQuat);
+        const forward = new THREE.Vector3(0, 0, -1);
+        forward.applyQuaternion(cameraQuat);
+        const cameraPos = new THREE.Vector3();
+        state.camera.getWorldPosition(cameraPos);
+        const windowPos = cameraPos.clone().add(forward.clone().multiplyScalar(1.0));
+        windowPos.y -= 0.15;
+
+        const direction = new THREE.Vector3();
+        direction.subVectors(cameraPos, windowPos);
+        direction.y = 0;
+        direction.normalize();
+        const angle = Math.atan2(direction.x, direction.z);
+
+        const lineStartOffset = new THREE.Vector3(0.25, -0.15, 0); // ウィンドウの右下
+        lineStartOffset.applyAxisAngle(new THREE.Vector3(0, 1, 0), angle);
+        const lineStart = windowPos.clone().add(lineStartOffset);
+        const lineEnd = controllerPos.clone();
+
+        // ガイドラインの作成/更新
+        if (!state.welcomeControllerGuideLine) {
+          const lineGeometry = new THREE.BufferGeometry();
+          const lineMaterial = new THREE.LineBasicMaterial({
+            color: 0xffff00, // 黄色（ドローンと同じ）
+            transparent: true,
+            opacity: 0.8
+          });
+          const line = new THREE.Line(lineGeometry, lineMaterial);
+          state.scene.add(line);
+          state.setWelcomeControllerGuideLine(line);
+        }
+
+        // ラインの頂点を更新
+        const positions = new Float32Array([
+          lineStart.x, lineStart.y, lineStart.z,
+          lineEnd.x, lineEnd.y, lineEnd.z
+        ]);
+        state.welcomeControllerGuideLine.geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        state.welcomeControllerGuideLine.geometry.attributes.position.needsUpdate = true;
+
+        // ドット（コントローラー位置を示す点滅する球）の作成/更新
+        if (!state.welcomeControllerGuideDot) {
+          const dotGeometry = new THREE.SphereGeometry(0.02, 16, 16);
+          const dotMaterial = new THREE.MeshBasicMaterial({
+            color: 0xffff00, // 黄色（ドローンと同じ）
+            transparent: true
+          });
+          const dot = new THREE.Mesh(dotGeometry, dotMaterial);
+          state.scene.add(dot);
+          state.setWelcomeControllerGuideDot(dot);
+        }
+
+        // ドットの位置を更新（コントローラー位置）
+        state.welcomeControllerGuideDot.position.copy(controllerPos);
+
+        // ドットの点滅アニメーション
+        const pulseSpeed = 3.0;
+        const pulse = (Math.sin(Date.now() * 0.001 * pulseSpeed) + 1) / 2;
+        state.welcomeControllerGuideDot.material.opacity = 0.3 + pulse * 0.7;
+        state.welcomeControllerGuideDot.scale.setScalar(0.8 + pulse * 0.4);
+      }
+    }
   }
 }
 

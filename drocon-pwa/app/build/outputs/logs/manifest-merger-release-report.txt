@@ -1,0 +1,343 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:23:1-243:12
+INJECTED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:23:1-243:12
+INJECTED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:23:1-243:12
+INJECTED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:23:1-243:12
+MERGED from [com.meta.androidbrowserhelper:horizonpermissions:1.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/0727f19292fbf9d74e16329fee1fd0f6/transformed/horizonpermissions-1.0.0/AndroidManifest.xml:2:1-11:12
+MERGED from [com.meta.androidbrowserhelper:horizonplatformsdk:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/e65e3564e2d12f26f44925e53114ea7c/transformed/horizonplatformsdk-1.1.0/AndroidManifest.xml:2:1-11:12
+MERGED from [com.meta.androidbrowserhelper:androidbrowserhelper:2.5.0] /Users/noranekob/.gradle/caches/8.8/transforms/6c5e59d927a808ada2a8a315ba991c71/transformed/androidbrowserhelper-2.5.0/AndroidManifest.xml:17:1-36:12
+MERGED from [androidx.browser:browser:1.4.0] /Users/noranekob/.gradle/caches/8.8/transforms/b511174c15fdde7dea3e957094b4390b/transformed/browser-1.4.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.meta.horizon.platform.ovr:android-platform-sdk:71] /Users/noranekob/.gradle/caches/8.8/transforms/9680ab6a4503dbf3a06af541011379c4/transformed/android-platform-sdk-71/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.core:core:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2144911bb09dce3a07f407e3b390637e/transformed/core-1.1.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2fd04857057ce230bd6016b4ac1ced40/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/b0650a412e26a3a2ee3caaa6aaf8b7f8/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/e807fb6701c5feba89b5db3fc097d290/transformed/lifecycle-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+	package
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:24:5-31
+		INJECTED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:23:11-69
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:27:9-80
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:27:26-78
+uses-permission#com.oculus.permission.USE_SCENE
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:33:5-70
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:33:22-68
+uses-permission#com.oculus.permission.HAND_TRACKING
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:37:5-75
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:37:22-72
+uses-feature#android.hardware.vr.headtracking
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:43:5-46:31
+	android:version
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:46:9-28
+	android:required
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:45:9-33
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:44:9-56
+uses-feature#oculus.software.handtracking
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:48:5-50:36
+	android:required
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:50:9-33
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:49:9-52
+application
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:53:5-242:19
+INJECTED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:53:5-242:19
+MERGED from [androidx.core:core:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2144911bb09dce3a07f407e3b390637e/transformed/core-1.1.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2144911bb09dce3a07f407e3b390637e/transformed/core-1.1.0/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2fd04857057ce230bd6016b4ac1ced40/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2fd04857057ce230bd6016b4ac1ced40/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+	android:extractNativeLibs
+		INJECTED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2144911bb09dce3a07f407e3b390637e/transformed/core-1.1.0/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:61:9-35
+	android:label
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:57:9-40
+	android:manageSpaceActivity
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:59:9-103
+	android:icon
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:56:9-43
+	android:allowBackup
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:55:9-35
+	android:theme
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:62:9-68
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:54:9-35
+meta-data#asset_statements
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:64:9-66:58
+	android:resource
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:66:13-55
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:65:13-44
+meta-data#twa_generator
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:71:9-73:52
+	android:value
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:73:13-49
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:72:13-41
+meta-data#com.meta.horizon.platform.ovr.OCULUS_APP_ID
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:78:13-80:55
+	android:value
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:80:17-52
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:79:17-75
+meta-data#com.oculus.ossplash.background
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:85:14-87:57
+	android:value
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:87:17-55
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:86:17-62
+activity#com.meta.androidbrowserhelper.trusted.ManageDataLauncherActivity
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:91:13-95:24
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:91:23-102
+meta-data#android.support.customtabs.trusted.MANAGE_SPACE_URL
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:92:13-94:53
+	android:value
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:94:17-50
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:93:17-83
+activity#com.bb999.drocon.LauncherActivity
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:98:9-187:20
+	android:label
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:100:13-49
+	android:exported
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:102:13-36
+	android:alwaysRetainTaskState
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:99:13-49
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:98:19-50
+meta-data#android.support.customtabs.trusted.DEFAULT_URL
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:103:13-104:53
+	android:value
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:104:17-50
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:103:24-85
+meta-data#android.support.customtabs.trusted.STATUS_BAR_COLOR
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:106:13-108:58
+	android:resource
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:108:17-55
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:107:17-83
+meta-data#android.support.customtabs.trusted.STATUS_BAR_COLOR_DARK
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:110:13-112:62
+	android:resource
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:112:17-59
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:111:17-88
+meta-data#android.support.customtabs.trusted.NAVIGATION_BAR_COLOR
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:114:13-116:61
+	android:resource
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:116:17-58
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:115:17-87
+meta-data#android.support.customtabs.trusted.NAVIGATION_BAR_COLOR_DARK
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:118:13-120:65
+	android:resource
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:120:17-62
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:119:17-92
+meta-data#androix.browser.trusted.NAVIGATION_BAR_DIVIDER_COLOR
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:122:13-124:68
+	android:resource
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:124:17-65
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:123:17-84
+meta-data#androix.browser.trusted.NAVIGATION_BAR_DIVIDER_COLOR_DARK
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:126:13-128:72
+	android:resource
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:128:17-69
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:127:17-89
+meta-data#android.support.customtabs.trusted.SPLASH_IMAGE_DRAWABLE
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:130:13-131:54
+	android:resource
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:131:17-52
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:130:24-95
+meta-data#android.support.customtabs.trusted.SPLASH_SCREEN_BACKGROUND_COLOR
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:133:13-134:60
+	android:resource
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:134:17-58
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:133:24-104
+meta-data#android.support.customtabs.trusted.SPLASH_SCREEN_FADE_OUT_DURATION
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:136:13-137:71
+	android:value
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:137:17-69
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:136:24-105
+meta-data#android.support.customtabs.trusted.FILE_PROVIDER_AUTHORITY
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:139:13-140:60
+	android:value
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:140:17-58
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:139:24-97
+meta-data#android.app.shortcuts
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:142:13-97
+	android:resource
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:142:61-94
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:142:24-60
+meta-data#android.support.customtabs.trusted.FALLBACK_STRATEGY
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:144:13-145:56
+	android:value
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:145:17-53
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:144:24-91
+meta-data#horizonos.pwa.APP_MODE
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:148:17-150:64
+	android:value
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:150:21-61
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:149:21-58
+meta-data#android.support.customtabs.trusted.SCREEN_ORIENTATION
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:158:13-159:54
+	android:value
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:159:17-52
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:158:24-92
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER+category:name:com.oculus.intent.category.VR
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:165:13-172:29
+action#android.intent.action.MAIN
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:166:17-69
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:166:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:167:17-77
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:167:27-74
+category#com.oculus.intent.category.VR
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:169:21-78
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:169:31-75
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:@string/hostName+data:pathPrefix:/drone-copter/+data:scheme:https
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:174:13-184:29
+	android:autoVerify
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:174:28-53
+action#android.intent.action.VIEW
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:175:17-68
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:175:25-66
+category#android.intent.category.DEFAULT
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:176:17-76
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:176:27-73
+category#android.intent.category.BROWSABLE
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:177:17-77
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:177:27-75
+data
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:178:17-183:19
+	android:host
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:179:21-52
+	android:scheme
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:178:23-45
+	android:pathPrefix
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:181:21-56
+activity#com.meta.androidbrowserhelper.trusted.FocusActivity
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:189:9-88
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:189:19-85
+activity#com.meta.androidbrowserhelper.trusted.WebViewFallbackActivity
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:191:9-192:62
+	android:configChanges
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:192:13-59
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:191:19-95
+provider#androidx.core.content.FileProvider
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:194:9-202:20
+	android:grantUriPermissions
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:197:13-47
+	android:authorities
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:196:13-60
+	android:exported
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:198:13-37
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:195:13-62
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:199:13-201:53
+	android:resource
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:201:17-50
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:200:17-67
+service#com.bb999.drocon.DelegationService
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:204:9-219:19
+	android:enabled
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:206:13-55
+	android:exported
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:207:13-56
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:205:13-46
+meta-data#android.support.customtabs.trusted.SMALL_ICON
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:210:17-212:73
+	android:resource
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:212:21-70
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:211:21-81
+intent-filter#action:name:android.support.customtabs.trusted.TRUSTED_WEB_ACTIVITY_SERVICE+category:name:android.intent.category.DEFAULT
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:215:13-218:29
+action#android.support.customtabs.trusted.TRUSTED_WEB_ACTIVITY_SERVICE
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:216:17-105
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:216:25-103
+activity#com.meta.androidbrowserhelper.trusted.NotificationPermissionRequestActivity
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:222:13-116
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:222:23-113
+activity#com.meta.androidbrowserhelper.horizonpermissions.PermissionRequestActivity
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:227:17-237:28
+	android:screenOrientation
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:231:21-58
+	android:exported
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:229:21-45
+	android:theme
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:230:21-85
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:228:21-110
+intent-filter#action:name:com.meta.androidbrowserhelper.horizonpermissions.permissions.REQUEST+category:name:android.intent.category.DEFAULT+category:name:com.oculus.intent.category.VR
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:232:21-236:37
+action#com.meta.androidbrowserhelper.horizonpermissions.permissions.REQUEST
+ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:233:25-118
+	android:name
+		ADDED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml:233:33-116
+uses-sdk
+INJECTED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml
+INJECTED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml
+MERGED from [com.meta.androidbrowserhelper:horizonpermissions:1.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/0727f19292fbf9d74e16329fee1fd0f6/transformed/horizonpermissions-1.0.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.meta.androidbrowserhelper:horizonpermissions:1.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/0727f19292fbf9d74e16329fee1fd0f6/transformed/horizonpermissions-1.0.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.meta.androidbrowserhelper:horizonplatformsdk:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/e65e3564e2d12f26f44925e53114ea7c/transformed/horizonplatformsdk-1.1.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.meta.androidbrowserhelper:horizonplatformsdk:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/e65e3564e2d12f26f44925e53114ea7c/transformed/horizonplatformsdk-1.1.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.meta.androidbrowserhelper:androidbrowserhelper:2.5.0] /Users/noranekob/.gradle/caches/8.8/transforms/6c5e59d927a808ada2a8a315ba991c71/transformed/androidbrowserhelper-2.5.0/AndroidManifest.xml:22:5-24:41
+MERGED from [com.meta.androidbrowserhelper:androidbrowserhelper:2.5.0] /Users/noranekob/.gradle/caches/8.8/transforms/6c5e59d927a808ada2a8a315ba991c71/transformed/androidbrowserhelper-2.5.0/AndroidManifest.xml:22:5-24:41
+MERGED from [androidx.browser:browser:1.4.0] /Users/noranekob/.gradle/caches/8.8/transforms/b511174c15fdde7dea3e957094b4390b/transformed/browser-1.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.4.0] /Users/noranekob/.gradle/caches/8.8/transforms/b511174c15fdde7dea3e957094b4390b/transformed/browser-1.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.meta.horizon.platform.ovr:android-platform-sdk:71] /Users/noranekob/.gradle/caches/8.8/transforms/9680ab6a4503dbf3a06af541011379c4/transformed/android-platform-sdk-71/AndroidManifest.xml:7:5-9:41
+MERGED from [com.meta.horizon.platform.ovr:android-platform-sdk:71] /Users/noranekob/.gradle/caches/8.8/transforms/9680ab6a4503dbf3a06af541011379c4/transformed/android-platform-sdk-71/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.core:core:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2144911bb09dce3a07f407e3b390637e/transformed/core-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2144911bb09dce3a07f407e3b390637e/transformed/core-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2fd04857057ce230bd6016b4ac1ced40/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/noranekob/.gradle/caches/8.8/transforms/2fd04857057ce230bd6016b4ac1ced40/transformed/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/b0650a412e26a3a2ee3caaa6aaf8b7f8/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/b0650a412e26a3a2ee3caaa6aaf8b7f8/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/e807fb6701c5feba89b5db3fc097d290/transformed/lifecycle-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /Users/noranekob/.gradle/caches/8.8/transforms/e807fb6701c5feba89b5db3fc097d290/transformed/lifecycle-runtime-2.0.0/AndroidManifest.xml:20:5-44
+	android:targetSdkVersion
+		INJECTED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/noranekob/cursor/drocon-pwa/app/src/main/AndroidManifest.xml
+queries
+ADDED from [com.meta.androidbrowserhelper:androidbrowserhelper:2.5.0] /Users/noranekob/.gradle/caches/8.8/transforms/6c5e59d927a808ada2a8a315ba991c71/transformed/androidbrowserhelper-2.5.0/AndroidManifest.xml:26:5-34:15
+intent#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+data:scheme:https
+ADDED from [com.meta.androidbrowserhelper:androidbrowserhelper:2.5.0] /Users/noranekob/.gradle/caches/8.8/transforms/6c5e59d927a808ada2a8a315ba991c71/transformed/androidbrowserhelper-2.5.0/AndroidManifest.xml:27:9-33:18

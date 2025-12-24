@@ -1,0 +1,109 @@
+androidx.core.app.CoreComponentFactory
+com.meta.horizon.platform.ovr.models.PlatformInitialize
+androidx.core.app.RemoteActionCompatParcelizer
+androidx.versionedparcelable.ParcelImpl
+androidx.lifecycle.ReflectiveGenericLifecycleObserver
+com.meta.androidbrowserhelper.trusted.WebViewFallbackActivity
+com.meta.androidbrowserhelper.trusted.NotificationPermissionRequestActivity
+com.meta.horizon.platform.ovr.Error
+androidx.lifecycle.FullLifecycleObserverAdapter
+androidx.annotation.Keep
+androidx.versionedparcelable.CustomVersionedParcelable
+com.meta.horizon.platform.ovr.Core
+com.meta.horizon.platform.ovr.models.Purchase
+androidx.core.content.FileProvider
+com.meta.androidbrowserhelper.trusted.FocusActivity
+android.support.v4.app.RemoteActionCompatParcelizer
+androidx.core.app.RemoteActionCompat
+com.bb999.drocon.LauncherActivity
+com.bb999.drocon.Application
+com.meta.horizon.platform.ovr.models.Product
+com.meta.horizon.platform.ovr.models.UserAccountAgeCategory
+com.meta.horizon.platform.ovr.models.Price
+com.meta.horizon.platform.ovr.requests.UserAgeCategory
+androidx.lifecycle.CompositeGeneratedAdaptersObserver
+androidx.core.graphics.drawable.IconCompat
+com.bb999.drocon.DelegationService
+com.meta.androidbrowserhelper.trusted.ManageDataLauncherActivity
+com.meta.horizon.platform.ovr.Message
+android.support.v4.graphics.drawable.IconCompatParcelizer
+androidx.core.graphics.drawable.IconCompatParcelizer
+com.meta.androidbrowserhelper.horizonpermissions.PermissionRequestActivity
+androidx.lifecycle.SingleGeneratedAdapterObserver
+androidx.browser.browseractions.BrowserActionsFallbackMenuView
+com.meta.horizon.platform.ovr.models.PurchaseArray
+com.meta.horizon.platform.ovr.models.ProductArray
+androidx.versionedparcelable.ParcelImpl: android.os.Parcelable$Creator CREATOR
+com.meta.horizon.platform.ovr.models.Purchase: java.lang.String nativeGetPurchaseStrID(long)
+com.bb999.drocon.Application: Application()
+androidx.core.app.CoreComponentFactory: CoreComponentFactory()
+com.meta.horizon.platform.ovr.Message: int nativeGetType(long)
+com.meta.horizon.platform.ovr.Core: long nativePopMessage()
+com.meta.androidbrowserhelper.horizonpermissions.PermissionRequestActivity: PermissionRequestActivity()
+androidx.versionedparcelable.CustomVersionedParcelable: CustomVersionedParcelable()
+com.meta.androidbrowserhelper.trusted.NotificationPermissionRequestActivity: NotificationPermissionRequestActivity()
+com.meta.horizon.platform.ovr.Message: long nativeGetPurchaseArray(long)
+com.meta.horizon.platform.ovr.models.PlatformInitialize: int nativeGetResult(long)
+com.meta.horizon.platform.ovr.models.Price: long nativeGetAmountInHundredths(long)
+com.meta.horizon.platform.ovr.Message$MessageType: com.meta.horizon.platform.ovr.Message$MessageType valueOf(java.lang.String)
+com.meta.horizon.platform.ovr.models.Purchase: long nativeGetGrantTime(long)
+com.meta.horizon.platform.ovr.requests.UserAgeCategory: long nativeGet()
+com.meta.horizon.platform.ovr.models.ProductArray: boolean nativeHasNextPage(long)
+com.meta.androidbrowserhelper.trusted.FocusActivity: FocusActivity()
+com.bb999.drocon.DelegationService: DelegationService()
+com.meta.horizon.platform.ovr.enums.ProductType: com.meta.horizon.platform.ovr.enums.ProductType[] values()
+com.meta.horizon.platform.ovr.models.Purchase: java.lang.String nativeGetSKU(long)
+android.support.v4.app.RemoteActionCompatParcelizer: RemoteActionCompatParcelizer()
+android.support.v4.app.RemoteActionCompatParcelizer: void write(androidx.core.app.RemoteActionCompat,androidx.versionedparcelable.VersionedParcel)
+com.meta.horizon.platform.ovr.Core: long nativeGetLoggedInUserID()
+com.meta.androidbrowserhelper.trusted.ManageDataLauncherActivity: ManageDataLauncherActivity()
+com.meta.horizon.platform.ovr.models.PurchaseArray: long nativeGetElement(long,int)
+com.meta.horizon.platform.ovr.models.Product: java.lang.String nativeGetFormattedPrice(long)
+androidx.core.graphics.drawable.IconCompatParcelizer: IconCompatParcelizer()
+com.meta.horizon.platform.ovr.Message: long nativeGetPurchase(long)
+com.meta.horizon.platform.ovr.enums.PlatformInitializeResult: com.meta.horizon.platform.ovr.enums.PlatformInitializeResult[] values()
+com.meta.horizon.platform.ovr.models.Purchase: java.lang.String nativeGetReportingId(long)
+android.support.v4.app.RemoteActionCompatParcelizer: androidx.core.app.RemoteActionCompat read(androidx.versionedparcelable.VersionedParcel)
+com.meta.androidbrowserhelper.trusted.WebViewFallbackActivity: WebViewFallbackActivity()
+com.meta.horizon.platform.ovr.models.Product: long nativeGetPrice(long)
+com.meta.horizon.platform.ovr.models.Product: java.lang.String nativeGetSKU(long)
+androidx.core.app.RemoteActionCompatParcelizer: void write(androidx.core.app.RemoteActionCompat,androidx.versionedparcelable.VersionedParcel)
+com.meta.horizon.platform.ovr.models.Price: java.lang.String nativeGetCurrency(long)
+com.meta.horizon.platform.ovr.models.Purchase: java.lang.String nativeGetDeveloperPayload(long)
+androidx.browser.browseractions.BrowserActionsFallbackMenuView: BrowserActionsFallbackMenuView(android.content.Context,android.util.AttributeSet)
+com.meta.horizon.platform.ovr.Message: void nativeFreeMessage(long)
+com.meta.horizon.platform.ovr.Message: long nativeGetRequestId(long)
+com.meta.horizon.platform.ovr.models.ProductArray: java.lang.String nativeGetNextUrl(long)
+androidx.core.graphics.drawable.IconCompatParcelizer: androidx.core.graphics.drawable.IconCompat read(androidx.versionedparcelable.VersionedParcel)
+com.meta.horizon.platform.ovr.models.Product: int nativeGetType(long)
+com.meta.horizon.platform.ovr.models.ProductArray: long nativeGetSize(long)
+androidx.core.graphics.drawable.IconCompatParcelizer: void write(androidx.core.graphics.drawable.IconCompat,androidx.versionedparcelable.VersionedParcel)
+androidx.core.content.FileProvider: FileProvider()
+com.meta.horizon.platform.ovr.enums.PlatformInitializeResult: com.meta.horizon.platform.ovr.enums.PlatformInitializeResult valueOf(java.lang.String)
+com.meta.horizon.platform.ovr.Message: long nativeGetProductArray(long)
+com.meta.horizon.platform.ovr.models.UserAccountAgeCategory: int nativeGetAgeCategory(long)
+android.support.v4.graphics.drawable.IconCompatParcelizer: void write(androidx.core.graphics.drawable.IconCompat,androidx.versionedparcelable.VersionedParcel)
+com.meta.horizon.platform.ovr.models.Product: java.lang.String nativeGetName(long)
+android.support.v4.graphics.drawable.IconCompatParcelizer: androidx.core.graphics.drawable.IconCompat read(androidx.versionedparcelable.VersionedParcel)
+com.meta.horizon.platform.ovr.models.PurchaseArray: long nativeGetSize(long)
+androidx.core.app.RemoteActionCompatParcelizer: RemoteActionCompatParcelizer()
+com.meta.horizon.platform.ovr.models.Purchase: long nativeGetExpirationTime(long)
+android.support.v4.graphics.drawable.IconCompatParcelizer: IconCompatParcelizer()
+com.meta.horizon.platform.ovr.models.Product: java.lang.String nativeGetDescription(long)
+androidx.core.graphics.drawable.IconCompat: IconCompat()
+com.meta.horizon.platform.ovr.Core: long nativeAsyncInitialize(java.lang.String,android.content.Context)
+com.meta.horizon.platform.ovr.Message: long nativeGetPlatformInitialize(long)
+com.meta.horizon.platform.ovr.Message$MessageType: com.meta.horizon.platform.ovr.Message$MessageType[] values()
+com.meta.horizon.platform.ovr.models.ProductArray: long nativeGetElement(long,int)
+com.meta.horizon.platform.ovr.Message: long nativeGetUserAccountAgeCategory(long)
+com.meta.horizon.platform.ovr.models.PurchaseArray: boolean nativeHasNextPage(long)
+com.meta.horizon.platform.ovr.enums.ProductType: com.meta.horizon.platform.ovr.enums.ProductType valueOf(java.lang.String)
+com.meta.horizon.platform.ovr.models.Price: java.lang.String nativeGetFormatted(long)
+com.meta.horizon.platform.ovr.enums.AccountAgeCategory: com.meta.horizon.platform.ovr.enums.AccountAgeCategory[] values()
+androidx.core.app.RemoteActionCompatParcelizer: androidx.core.app.RemoteActionCompat read(androidx.versionedparcelable.VersionedParcel)
+com.meta.horizon.platform.ovr.Message: long nativeGetError(long)
+com.meta.horizon.platform.ovr.models.PurchaseArray: java.lang.String nativeGetNextUrl(long)
+com.bb999.drocon.LauncherActivity: LauncherActivity()
+com.meta.horizon.platform.ovr.Message: boolean nativeIsError(long)
+androidx.core.app.RemoteActionCompat: RemoteActionCompat()
+com.meta.horizon.platform.ovr.enums.AccountAgeCategory: com.meta.horizon.platform.ovr.enums.AccountAgeCategory valueOf(java.lang.String)

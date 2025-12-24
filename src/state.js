@@ -66,6 +66,8 @@ export let welcomeWindowAnimDirection = 1; // 1: 開く, -1: 閉じる
 export let rightAButtonPressedForWelcome = false;
 export let welcomeGuideLine = null;
 export let welcomeGuideDot = null;
+export let welcomeControllerGuideLine = null;
+export let welcomeControllerGuideDot = null;
 export let tutorialStep = 1; // 1: 最初のウェルカム, 2: コントロールガイドの案内
 
 // チュートリアル2用変数
@@ -147,11 +149,7 @@ export let occlusionEnabled = true;
 // plane-detection用変数
 export let detectedPlanes = new Map();
 
-// VR用背景とグリッド
-export let vrBackground = null;
-export let gridHelper = null;
-export let vrObstacles = [];
-export let vrFloor = null;
+// MR用の影ライト
 export let vrShadowLight = null;
 
 // MR用の検出平面影メッシュ
@@ -163,8 +161,6 @@ export let shadowEnabled = true;
 // コントローラーモード（1: モード1, 2: モード2）デフォルトはモード2
 export let controllerMode = 2;
 
-export function setVrObstacles(value) { vrObstacles = value; }
-export function setVrFloor(value) { vrFloor = value; }
 export function setVrShadowLight(value) { vrShadowLight = value; }
 export function setMrPlaneShadowMeshes(value) { mrPlaneShadowMeshes = value; }
 export function setShadowEnabled(value) { shadowEnabled = value; }
@@ -305,6 +301,8 @@ export function setWelcomeWindowAnimDirection(value) { welcomeWindowAnimDirectio
 export function setRightAButtonPressedForWelcome(value) { rightAButtonPressedForWelcome = value; }
 export function setWelcomeGuideLine(value) { welcomeGuideLine = value; }
 export function setWelcomeGuideDot(value) { welcomeGuideDot = value; }
+export function setWelcomeControllerGuideLine(value) { welcomeControllerGuideLine = value; }
+export function setWelcomeControllerGuideDot(value) { welcomeControllerGuideDot = value; }
 export function setTutorialStep(value) { tutorialStep = value; }
 export function setTutorial2Window(value) { tutorial2Window = value; }
 export function setIsTutorial2Visible(value) { isTutorial2Visible = value; }
@@ -360,8 +358,6 @@ export function setDepthMesh(value) { depthMesh = value; }
 export function setShowDepthVisualization(value) { showDepthVisualization = value; }
 export function setOcclusionEnabled(value) { occlusionEnabled = value; }
 export function setDetectedPlanes(value) { detectedPlanes = value; }
-export function setVrBackground(value) { vrBackground = value; }
-export function setGridHelper(value) { gridHelper = value; }
 export function setHand1(value) { hand1 = value; }
 export function setHand2(value) { hand2 = value; }
 export function setIsGrabbedByController(value) { isGrabbedByController = value; }

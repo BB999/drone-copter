@@ -218,21 +218,6 @@
         0 8px 25px rgba(0, 0, 0, 0.4);
     }
 
-    .vr-btn {
-      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
-      color: #fff;
-      box-shadow:
-        0 0 20px rgba(255, 107, 107, 0.4),
-        0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .vr-btn:hover {
-      transform: translateY(-3px);
-      box-shadow:
-        0 0 30px rgba(255, 107, 107, 0.6),
-        0 8px 25px rgba(0, 0, 0, 0.4);
-    }
-
     .action-btn:active {
       transform: translateY(0);
     }
@@ -249,8 +234,7 @@
     }
 
     /* Hidden state for original elements */
-    #start-button,
-    #vr-button {
+    #start-button {
       display: none !important;
     }
 
@@ -486,7 +470,6 @@
       <!-- Action Buttons (under drone icon) -->
       <div class="action-buttons" style="margin-top: 20px;">
         <button class="action-btn mr-btn" id="landing-mr-btn">MR START</button>
-        <button class="action-btn vr-btn" id="landing-vr-btn">VR START</button>
       </div>
 
       <!-- Credits Button -->
@@ -530,9 +513,8 @@
   <button class="back-btn" id="back-btn">← BACK</button>
 
   <button id="start-button">MR START</button>
-  <button id="vr-button">VR START</button>
   <button id="depth-toggle">深度表示 OFF</button>
-  <div id="info">ドローンを表示するには「MR START」または「VR START」をタップしてください</div>
+  <div id="info">ドローンを表示するには「MR START」をタップしてください</div>
 
   <script type="module">
     import * as THREE from 'three';
@@ -738,22 +720,12 @@
     document.getElementById('landing-mr-btn').addEventListener('click', function() {
       const btn = this;
       btn.disabled = true;
-      document.getElementById('landing-vr-btn').disabled = true;
       blinkButton(btn, function() {
         document.getElementById('landing-page').style.display = 'none';
         document.getElementById('start-button').click();
       });
     });
 
-    document.getElementById('landing-vr-btn').addEventListener('click', function() {
-      const btn = this;
-      btn.disabled = true;
-      document.getElementById('landing-mr-btn').disabled = true;
-      blinkButton(btn, function() {
-        document.getElementById('landing-page').style.display = 'none';
-        document.getElementById('vr-button').click();
-      });
-    });
   </script>
   <script type="module" src="/src/main.js"></script>
 </body>

@@ -218,21 +218,6 @@
         0 8px 25px rgba(0, 0, 0, 0.4);
     }
 
-    .vr-btn {
-      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
-      color: #fff;
-      box-shadow:
-        0 0 20px rgba(255, 107, 107, 0.4),
-        0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .vr-btn:hover {
-      transform: translateY(-3px);
-      box-shadow:
-        0 0 30px rgba(255, 107, 107, 0.6),
-        0 8px 25px rgba(0, 0, 0, 0.4);
-    }
-
     .action-btn:active {
       transform: translateY(0);
     }
@@ -249,8 +234,7 @@
     }
 
     /* Hidden state for original elements */
-    #start-button,
-    #vr-button {
+    #start-button {
       display: none !important;
     }
 
@@ -467,7 +451,7 @@
       text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
     }
   </style>
-  <script type="module" crossorigin src="/drone-copter/assets/index-CCgmeW6e.js"></script>
+  <script type="module" crossorigin src="/drone-copter/assets/index-BRUd4F9v.js"></script>
 <link rel="manifest" href="/drone-copter/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/drone-copter/registerSW.js"></script></head>
 <body>
   <div id="app"></div>
@@ -487,7 +471,6 @@
       <!-- Action Buttons (under drone icon) -->
       <div class="action-buttons" style="margin-top: 20px;">
         <button class="action-btn mr-btn" id="landing-mr-btn">MR START</button>
-        <button class="action-btn vr-btn" id="landing-vr-btn">VR START</button>
       </div>
 
       <!-- Credits Button -->
@@ -531,9 +514,8 @@
   <button class="back-btn" id="back-btn">← BACK</button>
 
   <button id="start-button">MR START</button>
-  <button id="vr-button">VR START</button>
   <button id="depth-toggle">深度表示 OFF</button>
-  <div id="info">ドローンを表示するには「MR START」または「VR START」をタップしてください</div>
+  <div id="info">ドローンを表示するには「MR START」をタップしてください</div>
 
 </body>
 </html>

@@ -147,10 +147,13 @@ function render() {
     state.setIsRightControllerTracked(rightFound);
 
     if (prevLeftTracked !== state.isLeftControllerTracked || prevRightTracked !== state.isRightControllerTracked) {
-      if (!state.isLeftControllerTracked || !state.isRightControllerTracked) {
-        createTrackingLostText();
-      } else {
-        removeTrackingLostText();
+      // ランディングページ表示中はトラッキングロストHUDを出さない
+      if (!state.isLandingPage3DVisible) {
+        if (!state.isLeftControllerTracked || !state.isRightControllerTracked) {
+          createTrackingLostText();
+        } else {
+          removeTrackingLostText();
+        }
       }
     }
   }

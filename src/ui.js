@@ -4270,8 +4270,9 @@ export function createLandingPage3D() {
   startButtonMesh.userData.isButton = true;
   startButtonMesh.userData.buttonType = 'start';
   landingPage.add(startButtonMesh);
+  landingPage.userData.startButton = startButtonMesh;
 
-  // CREDITSボタン（小さめ、枠のみ背景透明）
+  // CREDITSボタン（STARTと同じサイズ、枠のみ背景透明）
   const creditsButtonCanvas = document.createElement('canvas');
   creditsButtonCanvas.width = 512;
   creditsButtonCanvas.height = 128;
@@ -4281,7 +4282,7 @@ export function createLandingPage3D() {
   creditsCtx.beginPath();
   creditsCtx.roundRect(20, 20, 472, 88, 30);
   creditsCtx.stroke();
-  creditsCtx.font = 'bold 40px Orbitron, sans-serif';
+  creditsCtx.font = 'bold 48px Orbitron, sans-serif';
   creditsCtx.textAlign = 'center';
   creditsCtx.textBaseline = 'middle';
   creditsCtx.fillStyle = '#ffffff';
@@ -4291,14 +4292,14 @@ export function createLandingPage3D() {
     map: creditsButtonTexture,
     transparent: true
   });
-  const creditsButtonGeometry = new THREE.PlaneGeometry(0.16, 0.045);
+  const creditsButtonGeometry = new THREE.PlaneGeometry(0.2, 0.055);
   const creditsButtonMesh = new THREE.Mesh(creditsButtonGeometry, creditsButtonMaterial);
-  creditsButtonMesh.position.set(0, -0.18, 0.01);
+  creditsButtonMesh.position.set(0, -0.19, 0.01);
   creditsButtonMesh.userData.isButton = true;
   creditsButtonMesh.userData.buttonType = 'credits';
   landingPage.add(creditsButtonMesh);
 
-  // TUTORIALボタン（CREDITSと同じスタイル、左に配置）
+  // TUTORIALボタン（STARTと同じサイズ）
   const tutorialButtonCanvas = document.createElement('canvas');
   tutorialButtonCanvas.width = 512;
   tutorialButtonCanvas.height = 128;
@@ -4308,7 +4309,7 @@ export function createLandingPage3D() {
   tutorialCtx.beginPath();
   tutorialCtx.roundRect(20, 20, 472, 88, 30);
   tutorialCtx.stroke();
-  tutorialCtx.font = 'bold 36px Orbitron, sans-serif';
+  tutorialCtx.font = 'bold 48px Orbitron, sans-serif';
   tutorialCtx.textAlign = 'center';
   tutorialCtx.textBaseline = 'middle';
   tutorialCtx.fillStyle = '#ffffff';
@@ -4318,12 +4319,13 @@ export function createLandingPage3D() {
     map: tutorialButtonTexture,
     transparent: true
   });
-  const tutorialButtonGeometry = new THREE.PlaneGeometry(0.16, 0.045);
+  const tutorialButtonGeometry = new THREE.PlaneGeometry(0.2, 0.055);
   const tutorialButtonMesh = new THREE.Mesh(tutorialButtonGeometry, tutorialButtonMaterial);
-  tutorialButtonMesh.position.set(0, -0.12, 0.01);
+  tutorialButtonMesh.position.set(0, -0.125, 0.01);
   tutorialButtonMesh.userData.isButton = true;
   tutorialButtonMesh.userData.buttonType = 'tutorial';
   landingPage.add(tutorialButtonMesh);
+  landingPage.userData.tutorialButton = tutorialButtonMesh;
 
   // フッター
   const footerCanvas = document.createElement('canvas');
@@ -5028,10 +5030,62 @@ function fadeOutLandingPage3DBGM(duration = 2000) {
   }, stepTime);
 }
 
+// STARTボタン処理中フラグ
+let startButtonProcessing = false;
+
 // STARTボタンでランディングページを閉じてドローン配置へ
 function handleLandingPage3DStartButton() {
   if (!state.isLandingPage3DVisible) return;
+  if (startButtonProcessing) return; // 二重押し防止
+  startButtonProcessing = true;
 
+  // BGMフェードアウト開始（すぐに）
+  if (state.landingPage3DIsBgmPlaying) {
+    fadeOutLandingPage3DBGM(1000);
+  }
+
+  // 3Dサウンドを再生
+  const listener = new THREE.AudioListener();
+  state.camera.add(listener);
+  const sound = new THREE.PositionalAudio(listener);
+  const audioLoader = new THREE.AudioLoader();
+  audioLoader.load('./mainbutton.mp3', (buffer) => {
+    sound.setBuffer(buffer);
+    sound.setRefDistance(1);
+    sound.setVolume(0.8);
+    sound.play();
+  });
+
+  // スタートボタンの位置にサウンドを配置
+  if (state.landingPage3D && state.landingPage3D.userData.startButton) {
+    const buttonWorldPos = new THREE.Vector3();
+    state.landingPage3D.userData.startButton.getWorldPosition(buttonWorldPos);
+    sound.position.copy(buttonWorldPos);
+    state.scene.add(sound);
+  }
+
+  // スタートボタンを点滅させる（1.5秒間）
+  const startButton = state.landingPage3D?.userData?.startButton;
+  if (startButton) {
+    let blinkCount = 0;
+    const blinkInterval = setInterval(() => {
+      startButton.visible = !startButton.visible;
+      blinkCount++;
+      if (blinkCount >= 15) { // 100ms * 15 = 1.5秒
+        clearInterval(blinkInterval);
+        startButton.visible = true;
+        // 点滅終了後に実際の処理を実行
+        executeStartButtonAction();
+      }
+    }, 100);
+  } else {
+    // ボタンがない場合は即実行
+    executeStartButtonAction();
+  }
+}
+
+// スタートボタンの実際のアクション
+function executeStartButtonAction() {
   // ランディングページのドローンモデルからワールド位置と回転を取得
   let droneStartPos = null;
   let droneStartQuat = null;
@@ -5045,22 +5099,72 @@ function handleLandingPage3DStartButton() {
   // ドローンを即座に落下させる（ランディングページを閉じる前に位置を設定）
   dropDrone(droneStartPos, droneStartQuat);
 
-  // BGMフェードアウト
-  if (state.landingPage3DIsBgmPlaying) {
-    fadeOutLandingPage3DBGM(1000);
-  }
-
   // ランディングページを閉じる
   removeLandingPage3D();
 
   // STARTボタンではチュートリアルをスキップ
   state.setTutorialCompleted(true);
+
+  // フラグをリセット
+  startButtonProcessing = false;
 }
+
+// TUTORIALボタン処理中フラグ
+let tutorialButtonProcessing = false;
 
 // TUTORIALボタンでチュートリアル付きでMR開始
 function handleLandingPage3DTutorialButton() {
   if (!state.isLandingPage3DVisible) return;
+  if (tutorialButtonProcessing) return; // 二重押し防止
+  tutorialButtonProcessing = true;
 
+  // BGMフェードアウト開始（すぐに）
+  if (state.landingPage3DIsBgmPlaying) {
+    fadeOutLandingPage3DBGM(1000);
+  }
+
+  // 3Dサウンドを再生
+  const listener = new THREE.AudioListener();
+  state.camera.add(listener);
+  const sound = new THREE.PositionalAudio(listener);
+  const audioLoader = new THREE.AudioLoader();
+  audioLoader.load('./mainbutton.mp3', (buffer) => {
+    sound.setBuffer(buffer);
+    sound.setRefDistance(1);
+    sound.setVolume(0.8);
+    sound.play();
+  });
+
+  // チュートリアルボタンの位置にサウンドを配置
+  if (state.landingPage3D && state.landingPage3D.userData.tutorialButton) {
+    const buttonWorldPos = new THREE.Vector3();
+    state.landingPage3D.userData.tutorialButton.getWorldPosition(buttonWorldPos);
+    sound.position.copy(buttonWorldPos);
+    state.scene.add(sound);
+  }
+
+  // チュートリアルボタンを点滅させる（1.5秒間）
+  const tutorialButton = state.landingPage3D?.userData?.tutorialButton;
+  if (tutorialButton) {
+    let blinkCount = 0;
+    const blinkInterval = setInterval(() => {
+      tutorialButton.visible = !tutorialButton.visible;
+      blinkCount++;
+      if (blinkCount >= 15) { // 100ms * 15 = 1.5秒
+        clearInterval(blinkInterval);
+        tutorialButton.visible = true;
+        // 点滅終了後に実際の処理を実行
+        executeTutorialButtonAction();
+      }
+    }, 100);
+  } else {
+    // ボタンがない場合は即実行
+    executeTutorialButtonAction();
+  }
+}
+
+// チュートリアルボタンの実際のアクション
+function executeTutorialButtonAction() {
   // ランディングページのドローンモデルからワールド位置と回転を取得
   let droneStartPos = null;
   let droneStartQuat = null;
@@ -5074,11 +5178,6 @@ function handleLandingPage3DTutorialButton() {
   // ドローンを即座に落下させる
   dropDrone(droneStartPos, droneStartQuat);
 
-  // BGMフェードアウト
-  if (state.landingPage3DIsBgmPlaying) {
-    fadeOutLandingPage3DBGM(1000);
-  }
-
   // ランディングページを閉じる
   removeLandingPage3D();
 
@@ -5089,6 +5188,9 @@ function handleLandingPage3DTutorialButton() {
   setTimeout(() => {
     createWelcomeWindow();
   }, 500);
+
+  // フラグをリセット
+  tutorialButtonProcessing = false;
 }
 
 // Aボタンでランディングページを閉じてドローン配置へ

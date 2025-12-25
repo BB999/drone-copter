@@ -4171,7 +4171,7 @@ export function createLandingPage3D() {
 
   // ドローンモデルを格納するグループ
   const droneContainer = new THREE.Group();
-  droneContainer.position.set(0, 0, 0.08);  // 半分
+  droneContainer.position.set(0, 0.03, 0.08);  // 文字とボタンの真ん中
   landingPage.add(droneContainer);
   landingPage.userData.droneContainer = droneContainer;
 

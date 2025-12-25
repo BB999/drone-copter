@@ -36,7 +36,7 @@ const i18n = {
       mode2: 'モード2',
       laserInstruction: '右コントローラーのレーザーで操作',
       closeInstruction: 'X ボタンで閉じる',
-      returnToTitle: 'タイトルに戻る',
+      returnToTitle: 'アプリ終了',
       tutorial: 'チュートリアルを受ける',
       default: 'DEFAULT',
       on: 'ON',
@@ -169,7 +169,7 @@ const i18n = {
       mode2: 'Mode 2',
       laserInstruction: 'Use right controller laser to operate',
       closeInstruction: 'Press X to close',
-      returnToTitle: 'Return to Title',
+      returnToTitle: 'Exit App',
       tutorial: 'Start Tutorial',
       default: 'DEFAULT',
       on: 'ON',
@@ -1584,8 +1584,8 @@ export function createSettingsMenu() {
   // 表示項目数に応じてキャンバスの高さを計算
   const visibleItems = settingsItems.filter(item => !item.isHidden || !item.isHidden());
   const itemHeight = 80;
-  // タイトル(90) + 設定項目 + スティック表示(160) + 操作説明(80) + チュートリアルボタン(60) + タイトルに戻るボタン(60) + 余白(30)
-  const canvasHeight = 90 + (visibleItems.length * itemHeight) + 160 + 80 + 60 + 60 + 30;
+  // タイトル(90) + 設定項目 + スティック表示(160) + 操作説明(80) + アプリ終了ボタン(60) + 余白(30)
+  const canvasHeight = 90 + (visibleItems.length * itemHeight) + 160 + 80 + 60 + 30;
 
   settingsMenuCanvas = document.createElement('canvas');
   settingsMenuCanvas.width = 700;
@@ -2092,34 +2092,9 @@ export function redrawSettingsMenu(hoveredButton) {
   ctx.lineTo(canvas.width - 50, bottomLineY);
   ctx.stroke();
 
-  // チュートリアルを受けるボタン
-  const tutorialBtnX = 25;
-  const tutorialBtnY = bottomLineY + 15;
-  const tutorialBtnW = canvas.width - 50;
-  const tutorialBtnH = 50;
-  const isTutorialHovered = hoveredButton && hoveredButton.type === 'tutorial';
-
-  ctx.fillStyle = isTutorialHovered ? 'rgba(100, 200, 255, 0.9)' : 'rgba(100, 200, 255, 0.4)';
-  ctx.beginPath();
-  ctx.roundRect(tutorialBtnX, tutorialBtnY, tutorialBtnW, tutorialBtnH, 8);
-  ctx.fill();
-  ctx.strokeStyle = isTutorialHovered ? '#64c8ff' : 'rgba(100, 200, 255, 0.8)';
-  ctx.lineWidth = 2;
-  ctx.stroke();
-
-  ctx.font = 'bold 22px Arial';
-  ctx.fillStyle = isTutorialHovered ? '#000000' : '#ffffff';
-  ctx.textAlign = 'center';
-  ctx.fillText(t('settings', 'tutorial'), canvas.width / 2, tutorialBtnY + tutorialBtnH / 2 + 8);
-
-  settingsButtonAreas.push({
-    x: tutorialBtnX, y: tutorialBtnY, w: tutorialBtnW, h: tutorialBtnH,
-    type: 'tutorial'
-  });
-
-  // タイトルに戻るボタン
+  // アプリ終了ボタン
   const returnBtnX = 25;
-  const returnBtnY = tutorialBtnY + tutorialBtnH + 10;
+  const returnBtnY = bottomLineY + 15;
   const returnBtnW = canvas.width - 50;
   const returnBtnH = 50;
   const isReturnHovered = hoveredButton && hoveredButton.type === 'returnToTitle';
@@ -2422,29 +2397,13 @@ export function updateSettingsMenu() {
 
 // ボタンクリック処理
 function handleSettingsButtonClick(button) {
-  // チュートリアル中は値変更を禁止（タイトルに戻るとチュートリアル再開は許可）
-  if (!state.tutorialCompleted && button.type !== 'returnToTitle' && button.type !== 'tutorial') {
-    return;
-  }
-
-  if (button.type === 'tutorial') {
-    // チュートリアルを受ける - タイトルに戻ってチュートリアルを再開
-    playButtonSound();
-    state.setRestartTutorial(true);
-    localStorage.setItem('restartTutorial', 'true');
-    removeSettingsMenu();
-    if (state.xrSession) {
-      state.xrSession.end().then(() => {
-        window.location.reload();
-      });
-    } else {
-      window.location.reload();
-    }
+  // チュートリアル中は値変更を禁止（アプリ終了は許可）
+  if (!state.tutorialCompleted && button.type !== 'returnToTitle') {
     return;
   }
 
   if (button.type === 'returnToTitle') {
-    // タイトルに戻る
+    // アプリ終了
     playButtonSound();
     removeSettingsMenu();
     if (state.xrSession) {
@@ -4622,42 +4581,9 @@ function checkLandingPage3DGripDrag() {
   state.landingPage3D.lookAt(state.camera.position.x, state.landingPage3D.position.y, state.camera.position.z);
 }
 
-// Aボタンでランディングページを閉じる処理
+// Aボタンでランディングページを閉じる処理（無効化）
 function checkLandingPage3DAButton() {
-  if (!state.xrSession) return;
-
-  const inputSources = state.xrSession.inputSources;
-  for (const source of inputSources) {
-    if (source.handedness === 'right' && source.gamepad) {
-      const buttons = source.gamepad.buttons;
-      const aButton = buttons[4];
-      const isAPressed = aButton && aButton.pressed;
-
-      if (isAPressed && !landingPageAButtonPressed) {
-        // BGMフェードアウト
-        if (state.landingPage3DIsBgmPlaying) {
-          fadeOutLandingPage3DBGM(1000);
-        }
-
-        // ランディングページを閉じる
-        removeLandingPage3D();
-
-        // チュートリアルを開始（まだ完了していない場合）
-        if (!state.tutorialCompleted && state.tutorialStep >= 1) {
-          setTimeout(() => {
-            createWelcomeWindow();
-          }, 500);
-        }
-
-        landingPageAButtonPressed = true;
-        return;
-      }
-
-      if (!isAPressed) {
-        landingPageAButtonPressed = false;
-      }
-    }
-  }
+  // スタートボタン画面ではAボタンを無効にする
 }
 
 // レーザーポインターによるボタンホバーチェック

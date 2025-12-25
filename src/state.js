@@ -410,3 +410,26 @@ export function setFpvInitialDronePos(value) { fpvInitialDronePos = value; }
 export function setFpvInitialDroneRotationY(value) { fpvInitialDroneRotationY = value; }
 export function setWasFpvMode(value) { wasFpvMode = value; }
 export function setCurrentLanguage(value) { currentLanguage = value; }
+
+// 3Dランディングページ用変数
+export let landingPage3D = null;
+export let isLandingPage3DVisible = false;
+export let landingPage3DDrone = null;
+export let landingPage3DPropellers = [];
+export let landingPage3DBGMAudio = null;
+export let landingPage3DIsBgmPlaying = false;
+export let landingPage3DAnimProgress = 0;
+export let landingPage3DHoverTime = 0;
+export let landingPage3DLaserLine = null;
+export let landingPage3DLaserDot = null;
+
+export function setLandingPage3D(value) { landingPage3D = value; }
+export function setIsLandingPage3DVisible(value) { isLandingPage3DVisible = value; }
+export function setLandingPage3DDrone(value) { landingPage3DDrone = value; }
+export function setLandingPage3DPropellers(value) { landingPage3DPropellers = value; }
+export function setLandingPage3DBGMAudio(value) { landingPage3DBGMAudio = value; }
+export function setLandingPage3DIsBgmPlaying(value) { landingPage3DIsBgmPlaying = value; }
+export function setLandingPage3DAnimProgress(value) { landingPage3DAnimProgress = value; }
+export function setLandingPage3DHoverTime(value) { landingPage3DHoverTime = value; }
+export function setLandingPage3DLaserLine(value) { landingPage3DLaserLine = value; }
+export function setLandingPage3DLaserDot(value) { landingPage3DLaserDot = value; }

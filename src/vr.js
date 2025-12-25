@@ -263,9 +263,112 @@ function updatePlaneShadowMesh(xrPlane, position, quaternion, polygon) {
   mesh.geometry = newGeometry;
 }
 
-// ドローンの初期配置
+// ドローン落下中フラグ
+let isDroneDropping = false;
+let droneDropStartY = 0;
+let droneDropTargetY = 0;
+let droneDropStartTime = 0;
+
+// ドローンを落下させる（STARTボタンから呼び出し）
+// startPos: 落下開始位置（ランディングページのドローン位置）
+// startQuat: 落下開始時の回転（ランディングページのドローンの向き）
+export function dropDrone(startPos, startQuat) {
+  if (!state.xrSession || !state.drone || state.dronePositioned) return;
+
+  // 床の高さを取得
+  let floorY = 0.0;
+  if (state.detectedPlanes && state.detectedPlanes.size > 0) {
+    let lowestY = Infinity;
+    for (const [xrPlane, planeMesh] of state.detectedPlanes) {
+      if (xrPlane.orientation === 'horizontal') {
+        const planeY = planeMesh.position.y;
+        if (planeY < lowestY) {
+          lowestY = planeY;
+        }
+      }
+    }
+    if (lowestY !== Infinity) {
+      floorY = lowestY;
+    }
+  }
+
+  // 開始位置を設定（渡された位置、またはカメラ前方）
+  let dropPos;
+  if (startPos) {
+    dropPos = startPos.clone();
+  } else {
+    const cameraDirection = new THREE.Vector3(0, 0, -1);
+    cameraDirection.applyQuaternion(state.camera.quaternion);
+    cameraDirection.y = 0;
+    cameraDirection.normalize();
+
+    const cameraPos = new THREE.Vector3();
+    state.camera.getWorldPosition(cameraPos);
+    dropPos = cameraPos.clone();
+    dropPos.add(cameraDirection.clone().multiplyScalar(1.5));
+    dropPos.y = cameraPos.y + 0.5;
+  }
+
+  // 回転を設定（渡された回転、またはカメラ方向）
+  if (startQuat) {
+    state.drone.quaternion.copy(startQuat);
+  } else {
+    const cameraDirection = new THREE.Vector3(0, 0, -1);
+    cameraDirection.applyQuaternion(state.camera.quaternion);
+    cameraDirection.y = 0;
+    cameraDirection.normalize();
+    const angle = Math.atan2(cameraDirection.x, cameraDirection.z);
+    state.drone.rotation.order = 'YXZ';
+    state.drone.rotation.set(0, angle, 0);
+    state.drone.quaternion.setFromEuler(state.drone.rotation);
+  }
+
+  // ドローンの位置を設定（完全に一致させる）
+  state.drone.position.copy(dropPos);
+
+  // ドローンを表示
+  state.drone.visible = true;
+
+  // 落下パラメータを設定
+  droneDropStartY = dropPos.y;
+  droneDropTargetY = floorY + 1.0; // 床から1m上でホバリング
+  droneDropStartTime = performance.now();
+  isDroneDropping = true;
+
+  console.log('ドローン落下開始:', dropPos, '→', droneDropTargetY);
+}
+
+// ドローン落下アニメーション更新
+export function updateDroneDrop() {
+  if (!isDroneDropping || !state.drone) return;
+
+  const elapsed = performance.now() - droneDropStartTime;
+  const duration = 600; // 0.6秒で落下
+  const progress = Math.min(elapsed / duration, 1);
+
+  // イージング（最初から速く落下、最後に減速してホバリング）
+  // easeOutQuart: 急降下して減速
+  const eased = 1 - Math.pow(1 - progress, 4);
+
+  const currentY = droneDropStartY + (droneDropTargetY - droneDropStartY) * eased;
+  state.drone.position.y = currentY;
+
+  if (progress >= 1) {
+    isDroneDropping = false;
+    state.setDronePositioned(true);
+    console.log('ドローン落下完了');
+  }
+}
+
+// ドローンの初期配置（従来の処理 - 自動配置用、今は使わない）
 export function positionDrone() {
   if (!state.xrSession || !state.drone || state.dronePositioned) return;
+
+  // ランディングページ表示中は配置しない
+  if (state.isLandingPage3DVisible) return;
+
+  // 落下中は何もしない
+  if (isDroneDropping) return;
 
   const frame = state.renderer.xr.getFrame();
   const referenceSpace = state.renderer.xr.getReferenceSpace();

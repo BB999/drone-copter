@@ -1,6 +1,8 @@
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import * as state from './state.js';
 import { playWindowOpenSound, playWindowCloseSound, playCursorSound, playButtonSound, playTutorialBGM, fadeOutTutorialBGM } from './sound.js';
+import { dropDrone } from './vr.js';
 
 // 多言語テキスト定義
 const i18n = {
@@ -97,8 +99,8 @@ const i18n = {
       stepEn: 'Tutorial 1',
       title: 'ドローンの世界へようこそ',
       titleEn: 'Welcome to Drone World',
-      instruction1: 'コントローラーの前にドローンが配置されます',
-      instruction1En: 'Drone will be placed in front of your controller',
+      instruction1: 'ドローンはタイトル画面の下に配置されます',
+      instruction1En: 'Drone will be placed below the title screen',
       nextWithA: 'A ボタンで次へ',
       nextWithAEn: 'Press A to continue'
     },
@@ -648,6 +650,11 @@ export function updateCollisionText() {
 
 // トラッキングロスト表示を作成
 export function createTrackingLostText() {
+  // ランディングページ表示中は非表示
+  if (state.isLandingPage3DVisible) {
+    return;
+  }
+
   if (state.trackingLostText) {
     state.scene.remove(state.trackingLostText);
     state.trackingLostText.geometry.dispose();
@@ -2691,6 +2698,14 @@ export function createDroneLocationArrow() {
 export function updateDroneLocationArrow() {
   if (!state.drone || !state.camera) return;
 
+  // ドローンが配置されていない、または非表示の場合は矢印も非表示
+  if (!state.dronePositioned || !state.drone.visible || state.isLandingPage3DVisible) {
+    if (state.hudDroneLocationArrow) {
+      state.hudDroneLocationArrow.visible = false;
+    }
+    return;
+  }
+
   const cameraPos = new THREE.Vector3();
   state.camera.getWorldPosition(cameraPos);
 
@@ -4079,4 +4094,1014 @@ export function updateTutorial4Window() {
     state.tutorial4GuideDot.material.opacity = 0.3 + pulse * 0.7;
     state.tutorial4GuideDot.scale.setScalar(0.8 + pulse * 0.4);
   }
+}
+
+// ============================================================
+// 3Dランディングページ（MR内表示）
+// ============================================================
+
+// 3Dランディングページを作成
+export function createLandingPage3D() {
+  if (state.landingPage3D) return;
+
+  // ユーザーの前方にパネルを配置
+  const camera = state.camera;
+  const cameraDirection = new THREE.Vector3(0, 0, -1);
+  cameraDirection.applyQuaternion(camera.quaternion);
+  cameraDirection.y = 0;
+  cameraDirection.normalize();
+
+  const panelDistance = 0.8;  // カメラに近づける
+  const panelPosition = new THREE.Vector3();
+  panelPosition.copy(camera.position);
+  panelPosition.add(cameraDirection.clone().multiplyScalar(panelDistance));
+  panelPosition.y = camera.position.y;
+
+  // パネルのルートグループ
+  const landingPage = new THREE.Group();
+  landingPage.position.copy(panelPosition);
+  landingPage.lookAt(camera.position.x, landingPage.position.y, camera.position.z);
+
+  // タイトルテキスト "DROCON"
+  const titleCanvas = document.createElement('canvas');
+  titleCanvas.width = 1024;
+  titleCanvas.height = 160;
+  const titleCtx = titleCanvas.getContext('2d');
+  titleCtx.clearRect(0, 0, 1024, 160);
+  titleCtx.font = 'bold 120px Orbitron, sans-serif';
+  titleCtx.textAlign = 'center';
+  titleCtx.textBaseline = 'middle';
+  // グロー効果
+  titleCtx.shadowColor = 'rgba(0, 200, 255, 0.8)';
+  titleCtx.shadowBlur = 30;
+  titleCtx.fillStyle = '#ffffff';
+  titleCtx.fillText('DROCON', 512, 80);
+  const titleTexture = new THREE.CanvasTexture(titleCanvas);
+  const titleMaterial = new THREE.MeshBasicMaterial({
+    map: titleTexture,
+    transparent: true
+  });
+  const titleGeometry = new THREE.PlaneGeometry(0.4, 0.0625);
+  const titleMesh = new THREE.Mesh(titleGeometry, titleMaterial);
+  titleMesh.position.set(0, 0.18, 0.01);
+  landingPage.add(titleMesh);
+
+  // サブタイトル
+  const subtitleCanvas = document.createElement('canvas');
+  subtitleCanvas.width = 1024;
+  subtitleCanvas.height = 128;
+  const subtitleCtx = subtitleCanvas.getContext('2d');
+  subtitleCtx.fillStyle = 'rgba(0, 0, 0, 0)';
+  subtitleCtx.fillRect(0, 0, 1024, 128);
+  subtitleCtx.font = 'bold 48px Rajdhani, sans-serif';
+  subtitleCtx.textAlign = 'center';
+  subtitleCtx.textBaseline = 'middle';
+  subtitleCtx.fillStyle = 'rgba(0, 200, 255, 0.9)';
+  subtitleCtx.letterSpacing = '10px';
+  subtitleCtx.fillText('MIXED REALITY DRONE SIMULATOR', 512, 64);
+  const subtitleTexture = new THREE.CanvasTexture(subtitleCanvas);
+  const subtitleMaterial = new THREE.MeshBasicMaterial({
+    map: subtitleTexture,
+    transparent: true
+  });
+  const subtitleGeometry = new THREE.PlaneGeometry(0.5, 0.06);
+  const subtitleMesh = new THREE.Mesh(subtitleGeometry, subtitleMaterial);
+  subtitleMesh.position.set(0, 0.125, 0.01);
+  landingPage.add(subtitleMesh);
+
+  // ドローンモデルを格納するグループ
+  const droneContainer = new THREE.Group();
+  droneContainer.position.set(0, 0, 0.08);  // 半分
+  landingPage.add(droneContainer);
+  landingPage.userData.droneContainer = droneContainer;
+
+  // ドローンモデルをロード
+  const loader = new GLTFLoader();
+  loader.load('./doron.glb', (gltf) => {
+    const drone = gltf.scene;
+    drone.scale.set(0.2, 0.2, 0.2);  // 半分
+    drone.position.set(0, 0, 0);
+    droneContainer.add(drone);
+    state.setLandingPage3DDrone(drone);
+
+    // プロペラを取得
+    const propellers = [];
+    drone.traverse((child) => {
+      if (child.name === 'pera1' || child.name === 'pera2' ||
+          child.name === 'pera3' || child.name === 'pera4') {
+        if (child.geometry) {
+          child.geometry.computeBoundingBox();
+          const center = new THREE.Vector3();
+          child.geometry.boundingBox.getCenter(center);
+          child.geometry.translate(-center.x, -center.y, -center.z);
+          child.position.copy(center);
+        }
+        propellers.push(child);
+      }
+    });
+    state.setLandingPage3DPropellers(propellers);
+
+    // 前方向を示す青い光るボックスを追加
+    const indicatorGeometry = new THREE.BoxGeometry(0.1, 0.04, 0.01);
+    const indicatorMaterial = new THREE.MeshStandardMaterial({
+      color: 0x0088ff,
+      emissive: 0x0088ff,
+      emissiveIntensity: 2,
+    });
+    const indicator = new THREE.Mesh(indicatorGeometry, indicatorMaterial);
+    indicator.position.set(0, 0.04, 0.22);
+    drone.add(indicator);
+    drone.userData.indicator = indicator;
+
+    // 点滅パターンを開始
+    let blinkState = 0;
+    const blinkPattern = [
+      { visible: true, duration: 150 },
+      { visible: false, duration: 150 },
+      { visible: true, duration: 150 },
+      { visible: false, duration: 1000 },
+    ];
+    function blink() {
+      if (!drone.userData.indicator) return;
+      indicator.visible = blinkPattern[blinkState].visible;
+      drone.userData.blinkTimeout = setTimeout(() => {
+        blinkState = (blinkState + 1) % blinkPattern.length;
+        blink();
+      }, blinkPattern[blinkState].duration);
+    }
+    blink();
+  });
+
+  // ライト追加
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+  landingPage.add(ambientLight);
+  const directionalLight = new THREE.DirectionalLight(0x00c8ff, 1);
+  directionalLight.position.set(0.5, 0.5, 0.5);
+  landingPage.add(directionalLight);
+  const backLight = new THREE.DirectionalLight(0xff6b6b, 0.5);
+  backLight.position.set(-0.5, 0.3, -0.5);
+  landingPage.add(backLight);
+
+  // STARTボタン（大きめで目立つ）
+  const startButtonCanvas = document.createElement('canvas');
+  startButtonCanvas.width = 512;
+  startButtonCanvas.height = 128;
+  const startCtx = startButtonCanvas.getContext('2d');
+  startCtx.fillStyle = 'rgba(0, 200, 255, 0.3)';
+  startCtx.beginPath();
+  startCtx.roundRect(20, 20, 472, 88, 30);
+  startCtx.fill();
+  startCtx.strokeStyle = 'rgba(0, 200, 255, 0.8)';
+  startCtx.lineWidth = 4;
+  startCtx.stroke();
+  startCtx.font = 'bold 48px Orbitron, sans-serif';
+  startCtx.textAlign = 'center';
+  startCtx.textBaseline = 'middle';
+  startCtx.fillStyle = '#ffffff';
+  startCtx.fillText('START', 256, 64);
+  const startButtonTexture = new THREE.CanvasTexture(startButtonCanvas);
+  const startButtonMaterial = new THREE.MeshBasicMaterial({
+    map: startButtonTexture,
+    transparent: true
+  });
+  const startButtonGeometry = new THREE.PlaneGeometry(0.2, 0.055);
+  const startButtonMesh = new THREE.Mesh(startButtonGeometry, startButtonMaterial);
+  startButtonMesh.position.set(0, -0.06, 0.01);
+  startButtonMesh.userData.isButton = true;
+  startButtonMesh.userData.buttonType = 'start';
+  landingPage.add(startButtonMesh);
+
+  // CREDITSボタン（小さめ、枠のみ背景透明）
+  const creditsButtonCanvas = document.createElement('canvas');
+  creditsButtonCanvas.width = 512;
+  creditsButtonCanvas.height = 128;
+  const creditsCtx = creditsButtonCanvas.getContext('2d');
+  creditsCtx.strokeStyle = 'rgba(0, 200, 255, 0.8)';
+  creditsCtx.lineWidth = 4;
+  creditsCtx.beginPath();
+  creditsCtx.roundRect(20, 20, 472, 88, 30);
+  creditsCtx.stroke();
+  creditsCtx.font = 'bold 40px Orbitron, sans-serif';
+  creditsCtx.textAlign = 'center';
+  creditsCtx.textBaseline = 'middle';
+  creditsCtx.fillStyle = '#ffffff';
+  creditsCtx.fillText('CREDITS', 256, 64);
+  const creditsButtonTexture = new THREE.CanvasTexture(creditsButtonCanvas);
+  const creditsButtonMaterial = new THREE.MeshBasicMaterial({
+    map: creditsButtonTexture,
+    transparent: true
+  });
+  const creditsButtonGeometry = new THREE.PlaneGeometry(0.16, 0.045);
+  const creditsButtonMesh = new THREE.Mesh(creditsButtonGeometry, creditsButtonMaterial);
+  creditsButtonMesh.position.set(0, -0.18, 0.01);
+  creditsButtonMesh.userData.isButton = true;
+  creditsButtonMesh.userData.buttonType = 'credits';
+  landingPage.add(creditsButtonMesh);
+
+  // TUTORIALボタン（CREDITSと同じスタイル、左に配置）
+  const tutorialButtonCanvas = document.createElement('canvas');
+  tutorialButtonCanvas.width = 512;
+  tutorialButtonCanvas.height = 128;
+  const tutorialCtx = tutorialButtonCanvas.getContext('2d');
+  tutorialCtx.strokeStyle = 'rgba(0, 200, 255, 0.8)';
+  tutorialCtx.lineWidth = 4;
+  tutorialCtx.beginPath();
+  tutorialCtx.roundRect(20, 20, 472, 88, 30);
+  tutorialCtx.stroke();
+  tutorialCtx.font = 'bold 36px Orbitron, sans-serif';
+  tutorialCtx.textAlign = 'center';
+  tutorialCtx.textBaseline = 'middle';
+  tutorialCtx.fillStyle = '#ffffff';
+  tutorialCtx.fillText('TUTORIAL', 256, 64);
+  const tutorialButtonTexture = new THREE.CanvasTexture(tutorialButtonCanvas);
+  const tutorialButtonMaterial = new THREE.MeshBasicMaterial({
+    map: tutorialButtonTexture,
+    transparent: true
+  });
+  const tutorialButtonGeometry = new THREE.PlaneGeometry(0.16, 0.045);
+  const tutorialButtonMesh = new THREE.Mesh(tutorialButtonGeometry, tutorialButtonMaterial);
+  tutorialButtonMesh.position.set(0, -0.12, 0.01);
+  tutorialButtonMesh.userData.isButton = true;
+  tutorialButtonMesh.userData.buttonType = 'tutorial';
+  landingPage.add(tutorialButtonMesh);
+
+  // フッター
+  const footerCanvas = document.createElement('canvas');
+  footerCanvas.width = 1024;
+  footerCanvas.height = 160;
+  const footerCtx = footerCanvas.getContext('2d');
+  footerCtx.fillStyle = 'rgba(0, 0, 0, 0)';
+  footerCtx.fillRect(0, 0, 1024, 160);
+  footerCtx.font = 'bold 36px Rajdhani, sans-serif';
+  footerCtx.textAlign = 'center';
+  footerCtx.textBaseline = 'middle';
+  footerCtx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+  footerCtx.fillText('Quest 3 / Quest Pro | WebXR Immersive Experience', 512, 50);
+  footerCtx.fillText('created by noranekob', 512, 110);
+  const footerTexture = new THREE.CanvasTexture(footerCanvas);
+  const footerMaterial = new THREE.MeshBasicMaterial({
+    map: footerTexture,
+    transparent: true
+  });
+  const footerGeometry = new THREE.PlaneGeometry(0.55, 0.08);
+  const footerMesh = new THREE.Mesh(footerGeometry, footerMaterial);
+  footerMesh.position.set(0, -0.26, 0.01);
+  landingPage.add(footerMesh);
+
+  // BGMボタン（自動再生なので再生中の緑色で初期表示）
+  const bgmButtonCanvas = document.createElement('canvas');
+  bgmButtonCanvas.width = 128;
+  bgmButtonCanvas.height = 128;
+  const bgmCtx = bgmButtonCanvas.getContext('2d');
+  bgmCtx.fillStyle = 'rgba(10, 10, 30, 0.8)';
+  bgmCtx.beginPath();
+  bgmCtx.arc(64, 64, 50, 0, Math.PI * 2);
+  bgmCtx.fill();
+  bgmCtx.strokeStyle = 'rgba(0, 255, 150, 0.8)';
+  bgmCtx.lineWidth = 3;
+  bgmCtx.stroke();
+  bgmCtx.font = '48px sans-serif';
+  bgmCtx.textAlign = 'center';
+  bgmCtx.textBaseline = 'middle';
+  bgmCtx.fillStyle = '#00ff96';
+  bgmCtx.fillText('\u266b', 64, 64);
+  const bgmButtonTexture = new THREE.CanvasTexture(bgmButtonCanvas);
+  const bgmButtonMaterial = new THREE.MeshBasicMaterial({
+    map: bgmButtonTexture,
+    transparent: true
+  });
+  const bgmButtonGeometry = new THREE.PlaneGeometry(0.04, 0.04);
+  const bgmButtonMesh = new THREE.Mesh(bgmButtonGeometry, bgmButtonMaterial);
+  bgmButtonMesh.position.set(0.25, -0.2, 0.01);
+  bgmButtonMesh.userData.isButton = true;
+  bgmButtonMesh.userData.buttonType = 'bgm';
+  landingPage.add(bgmButtonMesh);
+  landingPage.userData.bgmButton = bgmButtonMesh;
+  landingPage.userData.bgmButtonCanvas = bgmButtonCanvas;
+  landingPage.userData.bgmButtonTexture = bgmButtonTexture;
+
+  // BGMオーディオ（自動再生）
+  const bgmAudio = new Audio('./mainBGM.mp3');
+  bgmAudio.loop = true;
+  bgmAudio.volume = 0.2;
+  state.setLandingPage3DBGMAudio(bgmAudio);
+  bgmAudio.play().catch(e => console.log('BGM自動再生エラー:', e));
+  state.setLandingPage3DIsBgmPlaying(true);
+
+  // 操作説明（削除 - STARTボタンで代替）
+
+  state.scene.add(landingPage);
+  state.setLandingPage3D(landingPage);
+  state.setIsLandingPage3DVisible(true);
+
+  // レーザーポインター作成
+  createLandingPage3DLaser();
+
+  playWindowOpenSound();
+}
+
+// 3Dランディングページを削除
+export function removeLandingPage3D() {
+  if (!state.landingPage3D) return;
+
+  // ドローンのアニメーション停止
+  if (state.landingPage3DDrone && state.landingPage3DDrone.userData.blinkTimeout) {
+    clearTimeout(state.landingPage3DDrone.userData.blinkTimeout);
+  }
+
+  // BGM停止
+  if (state.landingPage3DBGMAudio) {
+    state.landingPage3DBGMAudio.pause();
+    state.landingPage3DBGMAudio.currentTime = 0;
+  }
+
+  // レーザー削除
+  removeLandingPage3DLaser();
+
+  state.scene.remove(state.landingPage3D);
+  state.setLandingPage3D(null);
+  state.setIsLandingPage3DVisible(false);
+  state.setLandingPage3DDrone(null);
+  state.setLandingPage3DPropellers([]);
+  state.setLandingPage3DIsBgmPlaying(false);
+
+  playWindowCloseSound();
+}
+
+// レーザーポインターを作成
+function createLandingPage3DLaser() {
+  // レーザーライン（シアン色）
+  const lineGeometry = new THREE.BufferGeometry();
+  const positions = new Float32Array(6); // 2点 * xyz
+  lineGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  const lineMaterial = new THREE.LineBasicMaterial({
+    color: 0x00ffff,
+    transparent: true,
+    opacity: 0.8,
+    linewidth: 2
+  });
+  const laserLine = new THREE.Line(lineGeometry, lineMaterial);
+  laserLine.visible = false;
+  state.scene.add(laserLine);
+  state.setLandingPage3DLaserLine(laserLine);
+
+  // レーザードット（黄色）
+  const dotGeometry = new THREE.SphereGeometry(0.008, 12, 12);
+  const dotMaterial = new THREE.MeshBasicMaterial({
+    color: 0xffff00,
+    transparent: true,
+    opacity: 1.0
+  });
+  const laserDot = new THREE.Mesh(dotGeometry, dotMaterial);
+  laserDot.visible = false;
+  state.scene.add(laserDot);
+  state.setLandingPage3DLaserDot(laserDot);
+}
+
+// レーザーポインターを削除
+function removeLandingPage3DLaser() {
+  if (state.landingPage3DLaserLine) {
+    state.scene.remove(state.landingPage3DLaserLine);
+    state.landingPage3DLaserLine.geometry.dispose();
+    state.landingPage3DLaserLine.material.dispose();
+    state.setLandingPage3DLaserLine(null);
+  }
+  if (state.landingPage3DLaserDot) {
+    state.scene.remove(state.landingPage3DLaserDot);
+    state.landingPage3DLaserDot.geometry.dispose();
+    state.landingPage3DLaserDot.material.dispose();
+    state.setLandingPage3DLaserDot(null);
+  }
+}
+
+// 3DランディングページのBGMトグル
+export function toggleLandingPage3DBGM() {
+  if (!state.landingPage3DBGMAudio) return;
+
+  if (state.landingPage3DIsBgmPlaying) {
+    state.landingPage3DBGMAudio.pause();
+    state.setLandingPage3DIsBgmPlaying(false);
+  } else {
+    state.landingPage3DBGMAudio.play().catch(e => console.log('BGM再生エラー:', e));
+    state.setLandingPage3DIsBgmPlaying(true);
+  }
+
+  // ボタンの表示を更新
+  updateLandingPage3DBGMButton();
+}
+
+// BGMボタンの表示更新
+function updateLandingPage3DBGMButton() {
+  if (!state.landingPage3D || !state.landingPage3D.userData.bgmButtonCanvas) return;
+
+  const canvas = state.landingPage3D.userData.bgmButtonCanvas;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, 128, 128);
+
+  if (state.landingPage3DIsBgmPlaying) {
+    ctx.fillStyle = 'rgba(10, 10, 30, 0.8)';
+    ctx.beginPath();
+    ctx.arc(64, 64, 50, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(0, 255, 150, 0.8)';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    ctx.font = '48px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#00ff96';
+    ctx.fillText('\u266b', 64, 64);
+  } else {
+    ctx.fillStyle = 'rgba(10, 10, 30, 0.8)';
+    ctx.beginPath();
+    ctx.arc(64, 64, 50, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(0, 200, 255, 0.6)';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    ctx.font = '48px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#00c8ff';
+    ctx.fillText('\u266b', 64, 64);
+  }
+
+  state.landingPage3D.userData.bgmButtonTexture.needsUpdate = true;
+}
+
+// ボタン押下状態のトラッキング
+let landingPageAButtonPressed = false;
+let landingPageButtonClicked = false;
+
+// グリップドラッグ用の状態
+let landingPageGripDragging = false;
+let landingPageGripStartPos = null;
+let landingPageOriginalPos = null;
+let landingPageGripHand = null; // どちらの手でドラッグ中か
+
+// 3Dランディングページの更新（毎フレーム呼び出し）
+export function updateLandingPage3D() {
+  if (!state.landingPage3D || !state.isLandingPage3DVisible) return;
+
+  // ドローンのホバーとプロペラ回転
+  if (state.landingPage3DDrone) {
+    state.setLandingPage3DHoverTime(state.landingPage3DHoverTime + 0.016);
+    state.landingPage3DDrone.position.y = Math.sin(state.landingPage3DHoverTime * 1.2) * 0.015;  // 半分
+    state.landingPage3DDrone.rotation.y += 0.005;
+
+    state.landingPage3DPropellers.forEach(prop => {
+      prop.rotation.y += 0.5;
+    });
+  }
+
+  // コントローラーのレーザーによるボタン選択チェック
+  checkLandingPage3DButtonHover();
+
+  // グリップでパネル全体を移動
+  checkLandingPage3DGripDrag();
+
+  // Aボタンでランディングページを閉じてチュートリアルへ
+  checkLandingPage3DAButton();
+}
+
+// グリップでパネル全体を移動する処理
+function checkLandingPage3DGripDrag() {
+  if (!state.xrSession || !state.landingPage3D) return;
+
+  const frame = state.renderer.xr.getFrame();
+  const referenceSpace = state.renderer.xr.getReferenceSpace();
+  if (!frame || !referenceSpace) return;
+
+  let anyGripPressed = false;
+
+  for (const source of state.xrSession.inputSources) {
+    // 左右どちらのコントローラーでも移動可能
+    if ((source.handedness === 'right' || source.handedness === 'left') && source.gripSpace && source.gamepad) {
+      const gripButton = source.gamepad.buttons[1]; // グリップボタン
+      const isGripPressed = gripButton && gripButton.pressed;
+
+      if (!isGripPressed) continue;
+
+      // すでに別の手でドラッグ中なら無視
+      if (landingPageGripDragging && landingPageGripHand !== source.handedness) continue;
+
+      anyGripPressed = true;
+
+      const pose = frame.getPose(source.gripSpace, referenceSpace);
+      if (!pose) continue;
+
+      const controllerPos = new THREE.Vector3().setFromMatrixPosition(
+        new THREE.Matrix4().fromArray(pose.transform.matrix)
+      );
+
+      if (!landingPageGripDragging) {
+        // ドラッグ開始
+        landingPageGripDragging = true;
+        landingPageGripStartPos = controllerPos.clone();
+        landingPageOriginalPos = state.landingPage3D.position.clone();
+        landingPageGripHand = source.handedness;
+      } else {
+        // ドラッグ中：移動量を適用
+        const delta = controllerPos.clone().sub(landingPageGripStartPos);
+        state.landingPage3D.position.copy(landingPageOriginalPos.clone().add(delta));
+      }
+    }
+  }
+
+  // どのグリップも押されていなければリセット
+  if (!anyGripPressed && landingPageGripDragging) {
+    landingPageGripDragging = false;
+    landingPageGripStartPos = null;
+    landingPageOriginalPos = null;
+    landingPageGripHand = null;
+  }
+
+  // 常にカメラの方を向く
+  state.landingPage3D.lookAt(state.camera.position.x, state.landingPage3D.position.y, state.camera.position.z);
+}
+
+// Aボタンでランディングページを閉じる処理
+function checkLandingPage3DAButton() {
+  if (!state.xrSession) return;
+
+  const inputSources = state.xrSession.inputSources;
+  for (const source of inputSources) {
+    if (source.handedness === 'right' && source.gamepad) {
+      const buttons = source.gamepad.buttons;
+      const aButton = buttons[4];
+      const isAPressed = aButton && aButton.pressed;
+
+      if (isAPressed && !landingPageAButtonPressed) {
+        // BGMフェードアウト
+        if (state.landingPage3DIsBgmPlaying) {
+          fadeOutLandingPage3DBGM(1000);
+        }
+
+        // ランディングページを閉じる
+        removeLandingPage3D();
+
+        // チュートリアルを開始（まだ完了していない場合）
+        if (!state.tutorialCompleted && state.tutorialStep >= 1) {
+          setTimeout(() => {
+            createWelcomeWindow();
+          }, 500);
+        }
+
+        landingPageAButtonPressed = true;
+        return;
+      }
+
+      if (!isAPressed) {
+        landingPageAButtonPressed = false;
+      }
+    }
+  }
+}
+
+// レーザーポインターによるボタンホバーチェック
+function checkLandingPage3DButtonHover() {
+  if (!state.xrSession || !state.landingPage3D) return;
+
+  const frame = state.renderer.xr.getFrame();
+  const referenceSpace = state.renderer.xr.getReferenceSpace();
+  if (!frame || !referenceSpace) return;
+
+  let laserHit = false;
+
+  for (const source of state.xrSession.inputSources) {
+    if (source.handedness === 'right' && source.targetRaySpace) {
+      const pose = frame.getPose(source.targetRaySpace, referenceSpace);
+      if (!pose) continue;
+
+      const rayOrigin = new THREE.Vector3().setFromMatrixPosition(
+        new THREE.Matrix4().fromArray(pose.transform.matrix)
+      );
+      const rayDirection = new THREE.Vector3(0, 0, -1).applyQuaternion(
+        new THREE.Quaternion().setFromRotationMatrix(
+          new THREE.Matrix4().fromArray(pose.transform.matrix)
+        )
+      );
+
+      // レーザーラインを更新
+      if (state.landingPage3DLaserLine) {
+        const positions = state.landingPage3DLaserLine.geometry.attributes.position.array;
+        positions[0] = rayOrigin.x;
+        positions[1] = rayOrigin.y;
+        positions[2] = rayOrigin.z;
+        // 終点は後で設定
+        state.landingPage3DLaserLine.geometry.attributes.position.needsUpdate = true;
+        state.landingPage3DLaserLine.visible = true;
+      }
+
+      const raycaster = new THREE.Raycaster(rayOrigin, rayDirection);
+      const intersects = raycaster.intersectObjects(state.landingPage3D.children, true);
+
+      if (intersects.length > 0) {
+        const hit = intersects[0];
+        laserHit = true;
+
+        // レーザーラインの終点を設定
+        if (state.landingPage3DLaserLine) {
+          const positions = state.landingPage3DLaserLine.geometry.attributes.position.array;
+          positions[3] = hit.point.x;
+          positions[4] = hit.point.y;
+          positions[5] = hit.point.z;
+          state.landingPage3DLaserLine.geometry.attributes.position.needsUpdate = true;
+        }
+
+        // レーザードットを表示
+        if (state.landingPage3DLaserDot) {
+          state.landingPage3DLaserDot.visible = true;
+          state.landingPage3DLaserDot.position.copy(hit.point);
+        }
+
+        if (hit.object.userData && hit.object.userData.isButton) {
+          // ボタンにホバー中
+          const buttonType = hit.object.userData.buttonType;
+
+          // Aボタン(buttons[4])または人差し指トリガー(buttons[0])でクリック処理
+          const aButtonPressed = source.gamepad && source.gamepad.buttons[4] && source.gamepad.buttons[4].pressed;
+          const triggerPressed = source.gamepad && source.gamepad.buttons[0] && source.gamepad.buttons[0].pressed;
+          const isPressed = aButtonPressed || triggerPressed;
+
+          if (isPressed && !landingPageButtonClicked) {
+            landingPageButtonClicked = true;
+            if (buttonType === 'bgm') {
+              toggleLandingPage3DBGM();
+            } else if (buttonType === 'credits') {
+              showCreditsPage3D();
+            } else if (buttonType === 'start') {
+              // クレジット画面表示中はSTARTボタンを押せない
+              if (!creditsPage3D) {
+                handleLandingPage3DStartButton();
+              }
+            } else if (buttonType === 'tutorial') {
+              // クレジット画面表示中はTUTORIALボタンも押せない
+              if (!creditsPage3D) {
+                handleLandingPage3DTutorialButton();
+              }
+            }
+          }
+
+          if (!isPressed) {
+            landingPageButtonClicked = false;
+          }
+        }
+      } else {
+        // パネルに当たっていない場合、終点を遠くに設定
+        if (state.landingPage3DLaserLine) {
+          const endPoint = rayOrigin.clone().add(rayDirection.clone().multiplyScalar(2));
+          const positions = state.landingPage3DLaserLine.geometry.attributes.position.array;
+          positions[3] = endPoint.x;
+          positions[4] = endPoint.y;
+          positions[5] = endPoint.z;
+          state.landingPage3DLaserLine.geometry.attributes.position.needsUpdate = true;
+        }
+      }
+    }
+  }
+
+  // ヒットしなかった場合はドットを非表示
+  if (!laserHit && state.landingPage3DLaserDot) {
+    state.landingPage3DLaserDot.visible = false;
+  }
+}
+
+// クレジットページを表示（シンプルな実装）
+let creditsPage3D = null;
+let creditsPageButtonClicked = false;
+
+function showCreditsPage3D() {
+  if (creditsPage3D) return;
+
+  // BGMは継続再生（止めない）
+
+  // ランディングページを非表示（レーザーも非表示）
+  if (state.landingPage3D) {
+    state.landingPage3D.visible = false;
+  }
+  if (state.landingPage3DLaserLine) {
+    state.landingPage3DLaserLine.visible = false;
+  }
+  if (state.landingPage3DLaserDot) {
+    state.landingPage3DLaserDot.visible = false;
+  }
+
+  // クレジットページを作成（ランディングページと同じ位置・角度を使用）
+  creditsPage3D = new THREE.Group();
+
+  if (state.landingPage3D) {
+    // ランディングページと同じ位置・回転を使用
+    creditsPage3D.position.copy(state.landingPage3D.position);
+    creditsPage3D.rotation.copy(state.landingPage3D.rotation);
+  } else {
+    // フォールバック
+    const camera = state.camera;
+    const cameraDirection = new THREE.Vector3(0, 0, -1);
+    cameraDirection.applyQuaternion(camera.quaternion);
+    cameraDirection.y = 0;
+    cameraDirection.normalize();
+
+    const panelPosition = new THREE.Vector3();
+    panelPosition.copy(camera.position);
+    panelPosition.add(cameraDirection.clone().multiplyScalar(0.8));
+    panelPosition.y = camera.position.y;
+
+    creditsPage3D.position.copy(panelPosition);
+    creditsPage3D.lookAt(camera.position.x, creditsPage3D.position.y, camera.position.z);
+  }
+
+  // タイトル（STARTボタンと同じスタイル）
+  const titleCanvas = document.createElement('canvas');
+  titleCanvas.width = 1024;
+  titleCanvas.height = 256;
+  const titleCtx = titleCanvas.getContext('2d');
+  titleCtx.fillStyle = 'rgba(0, 0, 0, 0)';
+  titleCtx.fillRect(0, 0, 1024, 256);
+  titleCtx.font = 'bold 120px Orbitron, sans-serif';
+  titleCtx.textAlign = 'center';
+  titleCtx.textBaseline = 'middle';
+  titleCtx.shadowColor = 'rgba(0, 200, 255, 0.8)';
+  titleCtx.shadowBlur = 30;
+  titleCtx.fillStyle = '#ffffff';
+  titleCtx.fillText('CREDITS', 512, 128);
+  const titleTexture = new THREE.CanvasTexture(titleCanvas);
+  const titleMaterial = new THREE.MeshBasicMaterial({ map: titleTexture, transparent: true });
+  const titleMesh = new THREE.Mesh(new THREE.PlaneGeometry(0.4, 0.1), titleMaterial);
+  titleMesh.position.set(0, 0.175, 0.01);
+  creditsPage3D.add(titleMesh);
+
+  // クレジット項目
+  const credits = [
+    { category: '3D Model', name: 'KAMUI/神威' },
+    { category: 'Sound Effects', name: '効果音ラボ' },
+    { category: 'Sound Effects', name: 'On-Jin ～音人～' },
+    { category: 'Music', name: '魔王魂' }
+  ];
+
+  credits.forEach((credit, index) => {
+    const itemCanvas = document.createElement('canvas');
+    itemCanvas.width = 512;
+    itemCanvas.height = 128;
+    const ctx = itemCanvas.getContext('2d');
+    // 背景透明、枠のみ
+    ctx.strokeStyle = 'rgba(0, 200, 255, 0.8)';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.roundRect(10, 10, 492, 108, 20);
+    ctx.stroke();
+    ctx.font = 'bold 28px Rajdhani, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(0, 200, 255, 0.9)';
+    ctx.fillText(credit.category, 256, 42);
+    ctx.font = 'bold 36px Orbitron, sans-serif';
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(credit.name, 256, 82);
+
+    const texture = new THREE.CanvasTexture(itemCanvas);
+    const material = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
+    const mesh = new THREE.Mesh(new THREE.PlaneGeometry(0.3, 0.07), material);
+    mesh.position.set(0, 0.075 - index * 0.075, 0.01);
+    creditsPage3D.add(mesh);
+  });
+
+  // 戻るボタン（STARTボタンと同じスタイル）
+  const backCanvas = document.createElement('canvas');
+  backCanvas.width = 512;
+  backCanvas.height = 128;
+  const backCtx = backCanvas.getContext('2d');
+  backCtx.fillStyle = 'rgba(0, 200, 255, 0.3)';
+  backCtx.beginPath();
+  backCtx.roundRect(20, 20, 472, 88, 30);
+  backCtx.fill();
+  backCtx.strokeStyle = 'rgba(0, 200, 255, 0.8)';
+  backCtx.lineWidth = 4;
+  backCtx.stroke();
+  backCtx.font = 'bold 48px Orbitron, sans-serif';
+  backCtx.textAlign = 'center';
+  backCtx.textBaseline = 'middle';
+  backCtx.fillStyle = '#ffffff';
+  backCtx.fillText('← BACK', 256, 64);
+  const backTexture = new THREE.CanvasTexture(backCanvas);
+  const backMaterial = new THREE.MeshBasicMaterial({ map: backTexture, transparent: true });
+  const backMesh = new THREE.Mesh(new THREE.PlaneGeometry(0.2, 0.055), backMaterial);
+  backMesh.position.set(0, -0.23, 0.01);
+  backMesh.userData.isButton = true;
+  backMesh.userData.buttonType = 'back';
+  creditsPage3D.add(backMesh);
+
+  state.scene.add(creditsPage3D);
+  playWindowOpenSound();
+}
+
+// クレジットページから戻る
+export function hideCreditsPage3D() {
+  if (!creditsPage3D) return;
+
+  state.scene.remove(creditsPage3D);
+  creditsPage3D = null;
+
+  if (state.landingPage3D) {
+    state.landingPage3D.visible = true;
+  }
+
+  playWindowCloseSound();
+}
+
+// クレジットページの更新（ボタン処理）
+export function updateCreditsPage3D() {
+  if (!creditsPage3D) return;
+
+  if (!state.xrSession) return;
+
+  const frame = state.renderer.xr.getFrame();
+  const referenceSpace = state.renderer.xr.getReferenceSpace();
+  if (!frame || !referenceSpace) return;
+
+  let laserHit = false;
+
+  for (const source of state.xrSession.inputSources) {
+    if (source.handedness === 'right' && source.targetRaySpace) {
+      const pose = frame.getPose(source.targetRaySpace, referenceSpace);
+      if (!pose) continue;
+
+      const rayOrigin = new THREE.Vector3().setFromMatrixPosition(
+        new THREE.Matrix4().fromArray(pose.transform.matrix)
+      );
+      const rayDirection = new THREE.Vector3(0, 0, -1).applyQuaternion(
+        new THREE.Quaternion().setFromRotationMatrix(
+          new THREE.Matrix4().fromArray(pose.transform.matrix)
+        )
+      );
+
+      // レーザーラインを更新（ランディングページのレーザーを再利用）
+      if (state.landingPage3DLaserLine) {
+        const positions = state.landingPage3DLaserLine.geometry.attributes.position.array;
+        positions[0] = rayOrigin.x;
+        positions[1] = rayOrigin.y;
+        positions[2] = rayOrigin.z;
+        state.landingPage3DLaserLine.geometry.attributes.position.needsUpdate = true;
+        state.landingPage3DLaserLine.visible = true;
+      }
+
+      const raycaster = new THREE.Raycaster(rayOrigin, rayDirection);
+      const intersects = raycaster.intersectObjects(creditsPage3D.children, true);
+
+      if (intersects.length > 0) {
+        const hit = intersects[0];
+        laserHit = true;
+
+        // レーザーラインの終点を設定
+        if (state.landingPage3DLaserLine) {
+          const positions = state.landingPage3DLaserLine.geometry.attributes.position.array;
+          positions[3] = hit.point.x;
+          positions[4] = hit.point.y;
+          positions[5] = hit.point.z;
+          state.landingPage3DLaserLine.geometry.attributes.position.needsUpdate = true;
+        }
+
+        // レーザードットを表示
+        if (state.landingPage3DLaserDot) {
+          state.landingPage3DLaserDot.visible = true;
+          state.landingPage3DLaserDot.position.copy(hit.point);
+        }
+
+        if (hit.object.userData && hit.object.userData.isButton) {
+          // Aボタン(buttons[4])または人差し指トリガー(buttons[0])でクリック処理
+          const aButtonPressed = source.gamepad && source.gamepad.buttons[4] && source.gamepad.buttons[4].pressed;
+          const triggerPressed = source.gamepad && source.gamepad.buttons[0] && source.gamepad.buttons[0].pressed;
+          const isPressed = aButtonPressed || triggerPressed;
+
+          if (isPressed && !creditsPageButtonClicked) {
+            creditsPageButtonClicked = true;
+            if (hit.object.userData.buttonType === 'back') {
+              hideCreditsPage3D();
+            }
+          }
+
+          if (!isPressed) {
+            creditsPageButtonClicked = false;
+          }
+        }
+      } else {
+        // パネルに当たっていない場合、終点を遠くに設定
+        if (state.landingPage3DLaserLine) {
+          const endPoint = rayOrigin.clone().add(rayDirection.clone().multiplyScalar(2));
+          const positions = state.landingPage3DLaserLine.geometry.attributes.position.array;
+          positions[3] = endPoint.x;
+          positions[4] = endPoint.y;
+          positions[5] = endPoint.z;
+          state.landingPage3DLaserLine.geometry.attributes.position.needsUpdate = true;
+        }
+      }
+    }
+  }
+
+  // ヒットしなかった場合はドットを非表示
+  if (!laserHit && state.landingPage3DLaserDot) {
+    state.landingPage3DLaserDot.visible = false;
+  }
+}
+
+// BGMフェードアウト
+function fadeOutLandingPage3DBGM(duration = 2000) {
+  if (!state.landingPage3DBGMAudio || !state.landingPage3DIsBgmPlaying) return;
+
+  const startVolume = state.landingPage3DBGMAudio.volume;
+  const fadeSteps = 20;
+  const stepTime = duration / fadeSteps;
+  const volumeStep = startVolume / fadeSteps;
+  let currentStep = 0;
+
+  const fadeInterval = setInterval(() => {
+    currentStep++;
+    state.landingPage3DBGMAudio.volume = Math.max(0, startVolume - (volumeStep * currentStep));
+
+    if (currentStep >= fadeSteps) {
+      clearInterval(fadeInterval);
+      state.landingPage3DBGMAudio.pause();
+      state.landingPage3DBGMAudio.currentTime = 0;
+      state.landingPage3DBGMAudio.volume = 0.2;
+      state.setLandingPage3DIsBgmPlaying(false);
+      updateLandingPage3DBGMButton();
+    }
+  }, stepTime);
+}
+
+// STARTボタンでランディングページを閉じてドローン配置へ
+function handleLandingPage3DStartButton() {
+  if (!state.isLandingPage3DVisible) return;
+
+  // ランディングページのドローンモデルからワールド位置と回転を取得
+  let droneStartPos = null;
+  let droneStartQuat = null;
+  if (state.landingPage3DDrone) {
+    droneStartPos = new THREE.Vector3();
+    droneStartQuat = new THREE.Quaternion();
+    state.landingPage3DDrone.getWorldPosition(droneStartPos);
+    state.landingPage3DDrone.getWorldQuaternion(droneStartQuat);
+  }
+
+  // ドローンを即座に落下させる（ランディングページを閉じる前に位置を設定）
+  dropDrone(droneStartPos, droneStartQuat);
+
+  // BGMフェードアウト
+  if (state.landingPage3DIsBgmPlaying) {
+    fadeOutLandingPage3DBGM(1000);
+  }
+
+  // ランディングページを閉じる
+  removeLandingPage3D();
+
+  // STARTボタンではチュートリアルをスキップ
+  state.setTutorialCompleted(true);
+}
+
+// TUTORIALボタンでチュートリアル付きでMR開始
+function handleLandingPage3DTutorialButton() {
+  if (!state.isLandingPage3DVisible) return;
+
+  // ランディングページのドローンモデルからワールド位置と回転を取得
+  let droneStartPos = null;
+  let droneStartQuat = null;
+  if (state.landingPage3DDrone) {
+    droneStartPos = new THREE.Vector3();
+    droneStartQuat = new THREE.Quaternion();
+    state.landingPage3DDrone.getWorldPosition(droneStartPos);
+    state.landingPage3DDrone.getWorldQuaternion(droneStartQuat);
+  }
+
+  // ドローンを即座に落下させる
+  dropDrone(droneStartPos, droneStartQuat);
+
+  // BGMフェードアウト
+  if (state.landingPage3DIsBgmPlaying) {
+    fadeOutLandingPage3DBGM(1000);
+  }
+
+  // ランディングページを閉じる
+  removeLandingPage3D();
+
+  // チュートリアルを強制的に開始（完了済みでも再開）
+  state.setTutorialCompleted(false);
+  state.setTutorialStep(1);
+  state.setRestartTutorial(true);
+  setTimeout(() => {
+    createWelcomeWindow();
+  }, 500);
+}
+
+// Aボタンでランディングページを閉じてドローン配置へ
+export function handleLandingPage3DAButton() {
+  if (!state.isLandingPage3DVisible) return false;
+
+  // BGMフェードアウト
+  if (state.landingPage3DIsBgmPlaying) {
+    fadeOutLandingPage3DBGM(1000);
+  }
+
+  // ランディングページを閉じる
+  removeLandingPage3D();
+
+  return true;
 }

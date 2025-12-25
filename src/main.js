@@ -12,10 +12,12 @@ import {
   createTutorial2Window, updateTutorial2Window, removeTutorial2Window,
   createTutorial3Window, updateTutorial3Window, removeTutorial3Window,
   createTutorial4Window, updateTutorial4Window, removeTutorial4Window,
-  loadSettingsFromStorage
+  loadSettingsFromStorage,
+  createLandingPage3D, updateLandingPage3D, removeLandingPage3D,
+  handleLandingPage3DAButton, updateCreditsPage3D
 } from './ui.js';
 import { checkPlaneCollision, updatePreStartupPhysics, updateHoverAnimation, updateReturnToHover } from './physics.js';
-import { createMRShadow, removeMRShadow, processDepthInformation, updatePlanes, createDepthVisualization, positionDrone } from './vr.js';
+import { createMRShadow, removeMRShadow, processDepthInformation, updatePlanes, createDepthVisualization, positionDrone, updateDroneDrop } from './vr.js';
 import {
   updateAutoReturn, handleSpeedChange, handleRightControllerButtons,
   handleStartupSequence, handleSizeChange, handleControllerGrab, handleHandGrab,
@@ -90,6 +92,8 @@ function render() {
   updateTutorial2Window();
   updateTutorial3Window();
   updateTutorial4Window();
+  updateLandingPage3D();
+  updateCreditsPage3D();
 
   // ドローンがカメラ外にいる時の方向ガイド（常に更新）
   updateDroneLocationArrow();
@@ -151,8 +155,11 @@ function render() {
     }
   }
 
-  // ドローン配置
-  positionDrone();
+  // ドローン配置（従来の自動配置は無効化、STARTボタンからのdropDroneを使用）
+  // positionDrone();
+
+  // ドローン落下アニメーション更新
+  updateDroneDrop();
 
   // プロペラ回転
   state.propellers.forEach((propeller) => {
@@ -837,6 +844,11 @@ async function startXR() {
 
     updateInfo('MRセッション開始');
 
+    // 3Dランディングページを表示（1秒待機）
+    setTimeout(() => {
+      createLandingPage3D();
+    }, 1000);
+
     // チュートリアル完了フラグをlocalStorageから読み込み
     const tutorialCompletedStorage = localStorage.getItem('tutorialCompleted');
     const restartTutorialStorage = localStorage.getItem('restartTutorial');
@@ -848,19 +860,10 @@ async function startXR() {
       state.setTutorialCompleted(false);
       state.setRestartTutorial(false);
       state.setTutorialStep(1);
-      // 1秒待機してからチュートリアル1を表示
-      setTimeout(() => {
-        createWelcomeWindow();
-      }, 1000);
     } else if (tutorialCompletedStorage === 'true') {
       // チュートリアル完了済みの場合はスキップ
       state.setTutorialCompleted(true);
       state.setTutorialStep(0);
-    } else {
-      // 初回はチュートリアルを表示（1秒待機）
-      setTimeout(() => {
-        createWelcomeWindow();
-      }, 1000);
     }
 
     if (xrSession.depthUsage) {
@@ -879,6 +882,9 @@ async function startXR() {
       state.setWasFpvMode(false);
       state.setFpvInitialCameraPos(null);
       state.setFpvInitialDronePos(null);
+
+      // 3Dランディングページを削除
+      removeLandingPage3D();
 
       // MR用の影設定を削除
       removeMRShadow();

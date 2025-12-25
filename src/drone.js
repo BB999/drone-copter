@@ -137,7 +137,7 @@ export function loadDroneModel() {
     './doron.glb',
     (gltf) => {
       const drone = gltf.scene;
-      drone.scale.set(0.3, 0.3, 0.3);
+      drone.scale.set(0.2, 0.2, 0.2);
       drone.position.set(0, 0, -2);
       state.scene.add(drone);
       state.setDrone(drone);

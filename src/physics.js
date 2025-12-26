@@ -173,10 +173,16 @@ export function updatePreStartupPhysics() {
   const isAlmostStopped = state.dronePhysicsVelocity.length() < 0.05;
 
   if (isOnGround && isAlmostStopped) {
-    // 完全に静止（姿勢はそのまま維持）
+    // 完全に静止し、水平に戻す（Y軸の向きは維持）
     state.drone.position.y = landingPlaneHeight;
     state.dronePhysicsVelocity.set(0, 0, 0);
     state.droneAngularVelocity.set(0, 0, 0);
+
+    // 水平に戻す（Y軸回転のみ保持）
+    const currentYRotation = state.drone.rotation.y;
+    state.drone.rotation.set(0, currentYRotation, 0);
+    state.drone.quaternion.setFromEuler(state.drone.rotation);
+
     state.setHasLanded(true);
     return;
   }
@@ -235,6 +241,12 @@ export function updatePreStartupPhysics() {
   } else {
     state.droneAngularVelocity.set(0, 0, 0);
   }
+
+  // 落下中は徐々に水平に戻す（Y軸の向きは維持）
+  state.drone.rotation.setFromQuaternion(state.drone.quaternion, 'YXZ');
+  state.drone.rotation.x += (0 - state.drone.rotation.x) * 0.05;
+  state.drone.rotation.z += (0 - state.drone.rotation.z) * 0.05;
+  state.drone.quaternion.setFromEuler(state.drone.rotation);
 
 }
 

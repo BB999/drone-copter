@@ -291,11 +291,11 @@ export function handleLeftControllerButtons() {
       const isXPressed = xButton && xButton.pressed;
 
       if (isXPressed && !state.leftXButtonPressedForTutorial3) {
-        // チュートリアル1,2の間、またはコントローラーガイドが開いている間はXボタンを無効にする
+        // チュートリアル1,2の間、またはチュートリアル3のウィンドウが表示される前はXボタンを無効にする
         if (state.tutorialStep >= 1 && state.tutorialStep <= 2) {
           state.setLeftXButtonPressedForTutorial3(true);
-        } else if (state.isControllerGuideVisible) {
-          // コントローラーガイドメニューが開いている間はXボタン無効
+        } else if (state.tutorialStep === 3 && !state.isTutorial3Visible) {
+          // チュートリアル3でウィンドウがまだ表示されていない間は無効
           state.setLeftXButtonPressedForTutorial3(true);
         } else if (state.isTutorial3Visible && state.tutorialStep === 3) {
           // チュートリアル3を閉じて設定ウィンドウを開く
@@ -460,6 +460,8 @@ export function handleStartupSequence() {
 export function handleSizeChange() {
   if (!state.xrSession || !state.drone || !state.dronePositioned) return;
   if (state.isGrabbedByController || state.isGrabbedByHand || state.isStartingUp || state.isShuttingDown) return;
+  // スタートボタン画面（チュートリアル/ウェルカムウィンドウ表示中）ではサイズ変更を無効にする
+  if (state.isWelcomeWindowVisible || state.isTutorial2Visible || state.isTutorial3Visible || state.isTutorial4Visible) return;
 
   const inputSources = state.xrSession.inputSources;
   let rightGripCurrentlyPressed = false;

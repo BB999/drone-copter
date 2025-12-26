@@ -818,7 +818,7 @@ export function createControllerGuideMenu() {
   // キャンバスでメニュー全体を描画
   guideMenuCanvas = document.createElement('canvas');
   guideMenuCanvas.width = 800;
-  guideMenuCanvas.height = 920;
+  guideMenuCanvas.height = 820;
   const canvas = guideMenuCanvas;
   const ctx = canvas.getContext('2d');
 
@@ -973,42 +973,26 @@ export function createControllerGuideMenu() {
     y += 38;
   });
 
-  // ハンドトラッキング情報
-  ctx.fillStyle = 'rgba(0, 255, 150, 0.1)';
-  ctx.strokeStyle = 'rgba(0, 255, 150, 0.3)';
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.roundRect(50, 520, canvas.width - 100, 80, 12);
-  ctx.fill();
-  ctx.stroke();
-
-  ctx.font = 'bold 22px Arial';
-  ctx.fillStyle = '#00ff96';
-  ctx.textAlign = 'center';
-  ctx.fillText(t('guide', 'handTracking'), canvas.width / 2, 555);
-
-  ctx.font = '18px Arial';
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-  ctx.fillText(t('guide', 'handTrackingDesc'), canvas.width / 2, 585);
-
   // 両グリップ操作
   ctx.fillStyle = 'rgba(255, 200, 0, 0.1)';
   ctx.strokeStyle = 'rgba(255, 200, 0, 0.3)';
+  ctx.lineWidth = 2;
   ctx.beginPath();
-  ctx.roundRect(50, 620, canvas.width - 100, 60, 12);
+  ctx.roundRect(50, 520, canvas.width - 100, 60, 12);
   ctx.fill();
   ctx.stroke();
 
   ctx.font = 'bold 20px Arial';
   ctx.fillStyle = '#ffc800';
-  ctx.fillText(t('guide', 'bothGrips'), canvas.width / 2, 660);
+  ctx.textAlign = 'center';
+  ctx.fillText(t('guide', 'bothGrips'), canvas.width / 2, 560);
 
   // 区切り線
   ctx.strokeStyle = 'rgba(0, 200, 255, 0.3)';
   ctx.lineWidth = 2;
   ctx.beginPath();
-  ctx.moveTo(50, 710);
-  ctx.lineTo(canvas.width - 50, 710);
+  ctx.moveTo(50, 610);
+  ctx.lineTo(canvas.width - 50, 610);
   ctx.stroke();
 
   // 閉じる説明
@@ -1016,7 +1000,7 @@ export function createControllerGuideMenu() {
   ctx.fillStyle = '#ffff00';
   ctx.shadowColor = 'rgba(255, 255, 0, 0.5)';
   ctx.shadowBlur = 10;
-  ctx.fillText(t('guide', 'closeWithA'), canvas.width / 2, 760);
+  ctx.fillText(t('guide', 'closeWithA'), canvas.width / 2, 660);
   ctx.shadowBlur = 0;
 
   // テクスチャ作成
@@ -1254,30 +1238,12 @@ export function redrawControllerGuideMenu(pressedButtons) {
   ctx.textAlign = 'center';
   ctx.fillText(t('guide', 'bothGrips'), canvas.width / 2, 558);
 
-  // ハンドトラッキング情報
-  ctx.fillStyle = 'rgba(0, 255, 150, 0.1)';
-  ctx.strokeStyle = 'rgba(0, 255, 150, 0.3)';
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.roundRect(50, 600, canvas.width - 100, 80, 12);
-  ctx.fill();
-  ctx.stroke();
-
-  ctx.font = 'bold 22px Arial';
-  ctx.fillStyle = '#00ff96';
-  ctx.textAlign = 'center';
-  ctx.fillText(t('guide', 'handTracking'), canvas.width / 2, 635);
-
-  ctx.font = '18px Arial';
-  ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-  ctx.fillText(t('guide', 'handTrackingDesc'), canvas.width / 2, 665);
-
   // 区切り線
   ctx.strokeStyle = 'rgba(0, 200, 255, 0.3)';
   ctx.lineWidth = 2;
   ctx.beginPath();
-  ctx.moveTo(50, 710);
-  ctx.lineTo(canvas.width - 50, 710);
+  ctx.moveTo(50, 610);
+  ctx.lineTo(canvas.width - 50, 610);
   ctx.stroke();
 
   // MRモード時の警告表示
@@ -1287,19 +1253,19 @@ export function redrawControllerGuideMenu(pressedButtons) {
     ctx.strokeStyle = 'rgba(255, 150, 0, 0.5)';
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.roundRect(50, 720, canvas.width - 100, 40, 8);
+    ctx.roundRect(50, 620, canvas.width - 100, 40, 8);
     ctx.fill();
     ctx.stroke();
 
     ctx.font = 'bold 18px Arial';
     ctx.fillStyle = '#ffa500';
     ctx.textAlign = 'center';
-    ctx.fillText(t('guide', 'mrWarning'), canvas.width / 2, 747);
+    ctx.fillText(t('guide', 'mrWarning'), canvas.width / 2, 647);
     warningOffset = 50;
   }
 
   // トラッキングロスト警告（常に表示）
-  const trackingWarningY = 720 + warningOffset;
+  const trackingWarningY = 620 + warningOffset;
   ctx.fillStyle = 'rgba(255, 100, 100, 0.15)';
   ctx.strokeStyle = 'rgba(255, 100, 100, 0.5)';
   ctx.lineWidth = 2;

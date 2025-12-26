@@ -460,8 +460,8 @@ export function handleStartupSequence() {
 export function handleSizeChange() {
   if (!state.xrSession || !state.drone || !state.dronePositioned) return;
   if (state.isGrabbedByController || state.isGrabbedByHand || state.isStartingUp || state.isShuttingDown) return;
-  // スタートボタン画面（チュートリアル/ウェルカムウィンドウ表示中）ではサイズ変更を無効にする
-  if (state.isWelcomeWindowVisible || state.isTutorial2Visible || state.isTutorial3Visible || state.isTutorial4Visible) return;
+  // チュートリアル4が終わるまで（tutorialStepが0になるまで）サイズ変更を無効にする
+  if (state.tutorialStep > 0) return;
 
   const inputSources = state.xrSession.inputSources;
   let rightGripCurrentlyPressed = false;

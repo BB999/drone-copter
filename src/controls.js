@@ -183,7 +183,12 @@ export function handleRightControllerButtons() {
           }, 300);
           console.log('コントローラーガイドを閉じ、チュートリアル3を表示');
           state.setRightAButtonPressedForWelcome(true);
-        } else if (!state.isWelcomeWindowVisible && !state.isTutorial2Visible && !state.isTutorial3Visible) {
+        } else if (state.isTutorial3Visible && state.tutorialStep === 3) {
+          // チュートリアル3表示中にAボタンで操作ガイドを開く（チュートリアル3は維持）
+          toggleControllerGuideMenu();
+          console.log('チュートリアル3中：操作ガイド:', state.isControllerGuideVisible ? '表示' : '非表示');
+          state.setRightAButtonPressedForWelcome(true);
+        } else if (!state.isWelcomeWindowVisible && !state.isTutorial2Visible) {
           toggleControllerGuideMenu();
           console.log('コントローラーガイドメニュー:', state.isControllerGuideVisible ? '表示' : '非表示');
         }
@@ -286,7 +291,13 @@ export function handleLeftControllerButtons() {
       const isXPressed = xButton && xButton.pressed;
 
       if (isXPressed && !state.leftXButtonPressedForTutorial3) {
-        if (state.isTutorial3Visible && state.tutorialStep === 3) {
+        // チュートリアル1,2の間、またはコントローラーガイドが開いている間はXボタンを無効にする
+        if (state.tutorialStep >= 1 && state.tutorialStep <= 2) {
+          state.setLeftXButtonPressedForTutorial3(true);
+        } else if (state.isControllerGuideVisible) {
+          // コントローラーガイドメニューが開いている間はXボタン無効
+          state.setLeftXButtonPressedForTutorial3(true);
+        } else if (state.isTutorial3Visible && state.tutorialStep === 3) {
           // チュートリアル3を閉じて設定ウィンドウを開く
           removeTutorial3Window();
           state.setTutorialStep(4); // チュートリアル4へ（設定ウィンドウを閉じた後に表示）
@@ -296,12 +307,12 @@ export function handleLeftControllerButtons() {
           }, 300);
           console.log('チュートリアル3を閉じ、設定ウィンドウを表示');
           state.setLeftXButtonPressedForTutorial3(true);
-        } else if (state.isSettingsMenuVisible && state.tutorialStep === 4) {
-          // チュートリアル中に設定ウィンドウを閉じる（チュートリアル4表示へ）
+        } else if (state.tutorialStep === 4) {
+          // チュートリアル4中は設定メニューをトグル（チュートリアル4ウィンドウとBGMは維持）
           toggleSettingsMenu();
-          console.log('設定ウィンドウを閉じる（チュートリアル4へ）');
+          console.log('チュートリアル4中：設定メニュー:', state.isSettingsMenuVisible ? '表示' : '非表示');
           state.setLeftXButtonPressedForTutorial3(true);
-        } else if (!state.isTutorial3Visible && state.tutorialStep !== 4) {
+        } else {
           // 通常時：設定メニューをトグル
           toggleSettingsMenu();
           console.log('設定メニュー:', state.isSettingsMenuVisible ? '表示' : '非表示');

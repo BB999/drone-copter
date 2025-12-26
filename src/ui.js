@@ -4624,6 +4624,7 @@ function checkLandingPage3DButtonHover() {
               toggleLandingPage3DBGM();
             } else if (buttonType === 'credits') {
               showCreditsPage3D();
+              creditsButtonLastClickTime = Date.now(); // ウェイト用にクリック時刻を記録
             } else if (buttonType === 'start') {
               // クレジット画面表示中はSTARTボタンを押せない
               if (!creditsPage3D) {
@@ -4664,6 +4665,7 @@ function checkLandingPage3DButtonHover() {
 // クレジットページを表示（シンプルな実装）
 let creditsPage3D = null;
 let creditsPageButtonClicked = false;
+let creditsButtonLastClickTime = 0; // ボタンクリック時のウェイト用
 
 function showCreditsPage3D() {
   if (creditsPage3D) return;
@@ -4866,9 +4868,15 @@ export function updateCreditsPage3D() {
           const triggerPressed = source.gamepad && source.gamepad.buttons[0] && source.gamepad.buttons[0].pressed;
           const isPressed = aButtonPressed || triggerPressed;
 
-          if (isPressed && !creditsPageButtonClicked) {
+          // ウェイトチェック（500ms）
+          const now = Date.now();
+          const waitTime = 500;
+          const canClick = (now - creditsButtonLastClickTime) > waitTime;
+
+          if (isPressed && !creditsPageButtonClicked && canClick) {
             creditsPageButtonClicked = true;
             if (hit.object.userData.buttonType === 'back') {
+              creditsButtonLastClickTime = now; // 戻るボタンを押した時刻を記録
               hideCreditsPage3D();
             }
           }

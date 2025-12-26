@@ -312,6 +312,8 @@ export function dropDrone(startPos, startQuat) {
   // 回転を設定（渡された回転、またはカメラ方向）
   if (startQuat) {
     state.drone.quaternion.copy(startQuat);
+    // quaternionからrotationも同期させる
+    state.drone.rotation.setFromQuaternion(startQuat, 'YXZ');
   } else {
     const cameraDirection = new THREE.Vector3(0, 0, -1);
     cameraDirection.applyQuaternion(state.camera.quaternion);

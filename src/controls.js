@@ -370,6 +370,9 @@ export function handleStartupSequence() {
         // 起動シーケンスを開始
         state.setIsStartingUp(true);
         state.setHasLanded(false);
+        // 角速度をリセットして向きが変わらないようにする
+        state.setAngularVelocity(0);
+        state.droneAngularVelocity.set(0, 0, 0);
         console.log('起動シーケンス開始');
         updateInfo('Drone Starting...');
         createSequenceStatusText(t('status', 'startingUp'));

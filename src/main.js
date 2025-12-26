@@ -490,9 +490,8 @@ function updateGamepadMovement() {
       }
       state.setHoverTime(0);
 
-      // 姿勢を水平にリセット（Y軸の向きは維持）
+      // Y軸の向きを保持してリセット
       const currentYRotation = state.drone.rotation.y;
-      state.drone.rotation.order = 'YXZ';
       state.drone.rotation.set(0, currentYRotation, 0);
       state.drone.quaternion.setFromEuler(state.drone.rotation);
       if (state.drone.userData.physicsTilt) {
@@ -500,7 +499,7 @@ function updateGamepadMovement() {
         state.drone.userData.physicsTilt.z = 0;
       }
 
-      console.log('上昇中に衝突検出 - その場で起動完了');
+      console.log('上昇中に衝突検出 - その場で起動完了, Y軸:', currentYRotation);
       updateInfo('Collision Detected - Ready');
       removeSequenceStatusText();
     } else {
@@ -523,9 +522,8 @@ function updateGamepadMovement() {
         }
         state.setHoverTime(0);
 
-        // 姿勢を水平にリセット（Y軸の向きは維持）
+        // Y軸の向きを保持してリセット
         const currentYRotation = state.drone.rotation.y;
-        state.drone.rotation.order = 'YXZ';
         state.drone.rotation.set(0, currentYRotation, 0);
         state.drone.quaternion.setFromEuler(state.drone.rotation);
         if (state.drone.userData.physicsTilt) {
@@ -533,7 +531,7 @@ function updateGamepadMovement() {
           state.drone.userData.physicsTilt.z = 0;
         }
 
-        console.log('起動シーケンス完了 - 最終高さ:', state.drone.position.y);
+        console.log('起動シーケンス完了 - 最終高さ:', state.drone.position.y, 'Y軸:', currentYRotation);
         updateInfo('Drone Ready');
         removeSequenceStatusText();
       }
@@ -726,15 +724,17 @@ function updateGamepadMovement() {
     state.drone.userData.basePosition.add(state.velocity);
   }
 
-  // 角速度の更新
-  let angVel = state.angularVelocity;
-  angVel += inputRotation * state.angularAcceleration;
-  angVel = Math.max(-state.maxAngularSpeed, Math.min(state.maxAngularSpeed, angVel));
-  angVel *= state.angularFriction;
-  state.setAngularVelocity(angVel);
+  // 角速度の更新（上昇・下降中はスキップ）
+  if (state.liftStartTime === null && state.descentStartTime === null) {
+    let angVel = state.angularVelocity;
+    angVel += inputRotation * state.angularAcceleration;
+    angVel = Math.max(-state.maxAngularSpeed, Math.min(state.maxAngularSpeed, angVel));
+    angVel *= state.angularFriction;
+    state.setAngularVelocity(angVel);
 
-  // 角速度を回転に反映
-  state.drone.rotation.y += state.angularVelocity;
+    // 角速度を回転に反映
+    state.drone.rotation.y += state.angularVelocity;
+  }
 
   // 移動方向への傾き
   const targetTiltX = -rawInputZ * state.tiltAmount;

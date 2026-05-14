@@ -4,6 +4,24 @@ import path from 'path';
 import { VitePWA } from 'vite-plugin-pwa';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 
+// .well-known/assetlinks.json を docs/ にコピーするプラグイン
+// Vite はデフォルトで public/ のドット始まりディレクトリを無視するため自前でコピー
+function copyAssetLinks() {
+  return {
+    name: 'copy-assetlinks',
+    closeBundle() {
+      const src = path.resolve(__dirname, 'public/.well-known/assetlinks.json');
+      const destDir = path.resolve(__dirname, 'docs/.well-known');
+      const dest = path.join(destDir, 'assetlinks.json');
+      if (fs.existsSync(src)) {
+        fs.mkdirSync(destDir, { recursive: true });
+        fs.copyFileSync(src, dest);
+        console.log('assetlinks.json をコピー:', dest);
+      }
+    }
+  };
+}
+
 export default defineConfig({
   // GitHub Pages用: https://bb999.github.io/drone-copter/
   base: '/drone-copter/',
@@ -17,6 +35,7 @@ export default defineConfig({
   },
   plugins: [
     basicSsl(),
+    copyAssetLinks(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['doron.glb', 'doron.blend', '*.mp3', 'icons/*.png'],

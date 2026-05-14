@@ -4,19 +4,30 @@ import path from 'path';
 import { VitePWA } from 'vite-plugin-pwa';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 
-// .well-known/assetlinks.json を docs/ にコピーするプラグイン
+// ドット始まりのファイルを docs/ にコピーするプラグイン
+// - .well-known/assetlinks.json: TWA検証用
+// - .nojekyll: GitHub Pages の Jekyll 処理を無効化して dotfile を配信可能にする
 // Vite はデフォルトで public/ のドット始まりディレクトリを無視するため自前でコピー
 function copyAssetLinks() {
   return {
     name: 'copy-assetlinks',
     closeBundle() {
-      const src = path.resolve(__dirname, 'public/.well-known/assetlinks.json');
-      const destDir = path.resolve(__dirname, 'docs/.well-known');
-      const dest = path.join(destDir, 'assetlinks.json');
-      if (fs.existsSync(src)) {
-        fs.mkdirSync(destDir, { recursive: true });
-        fs.copyFileSync(src, dest);
-        console.log('assetlinks.json をコピー:', dest);
+      const outDir = path.resolve(__dirname, 'docs');
+
+      const assetLinksSrc = path.resolve(__dirname, 'public/.well-known/assetlinks.json');
+      const assetLinksDestDir = path.join(outDir, '.well-known');
+      const assetLinksDest = path.join(assetLinksDestDir, 'assetlinks.json');
+      if (fs.existsSync(assetLinksSrc)) {
+        fs.mkdirSync(assetLinksDestDir, { recursive: true });
+        fs.copyFileSync(assetLinksSrc, assetLinksDest);
+        console.log('assetlinks.json をコピー:', assetLinksDest);
+      }
+
+      const nojekyllSrc = path.resolve(__dirname, 'public/.nojekyll');
+      const nojekyllDest = path.join(outDir, '.nojekyll');
+      if (fs.existsSync(nojekyllSrc)) {
+        fs.copyFileSync(nojekyllSrc, nojekyllDest);
+        console.log('.nojekyll をコピー:', nojekyllDest);
       }
     }
   };

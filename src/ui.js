@@ -4307,6 +4307,35 @@ export function createLandingPage3D() {
   landingPage.userData.bgmButtonCanvas = bgmButtonCanvas;
   landingPage.userData.bgmButtonTexture = bgmButtonTexture;
 
+  // Ko-fi支援ボタン（BGMボタンと対の位置、左下隅）
+  const kofiButtonCanvas = document.createElement('canvas');
+  kofiButtonCanvas.width = 128;
+  kofiButtonCanvas.height = 128;
+  const kofiCtx = kofiButtonCanvas.getContext('2d');
+  kofiCtx.fillStyle = 'rgba(10, 10, 30, 0.8)';
+  kofiCtx.beginPath();
+  kofiCtx.arc(64, 64, 50, 0, Math.PI * 2);
+  kofiCtx.fill();
+  kofiCtx.strokeStyle = 'rgba(255, 91, 91, 0.9)';
+  kofiCtx.lineWidth = 3;
+  kofiCtx.stroke();
+  kofiCtx.font = '52px sans-serif';
+  kofiCtx.textAlign = 'center';
+  kofiCtx.textBaseline = 'middle';
+  kofiCtx.fillText('☕', 64, 64);
+  const kofiButtonTexture = new THREE.CanvasTexture(kofiButtonCanvas);
+  const kofiButtonMaterial = new THREE.MeshBasicMaterial({
+    map: kofiButtonTexture,
+    transparent: true
+  });
+  const kofiButtonGeometry = new THREE.PlaneGeometry(0.04, 0.04);
+  const kofiButtonMesh = new THREE.Mesh(kofiButtonGeometry, kofiButtonMaterial);
+  kofiButtonMesh.position.set(-0.25, -0.2, 0.01);
+  kofiButtonMesh.userData.isButton = true;
+  kofiButtonMesh.userData.buttonType = 'kofi';
+  landingPage.add(kofiButtonMesh);
+  landingPage.userData.kofiButton = kofiButtonMesh;
+
   // BGMオーディオ（自動再生）
   const bgmAudio = new Audio('./mainBGM.mp3');
   bgmAudio.loop = true;
@@ -4398,6 +4427,22 @@ function removeLandingPage3DLaser() {
     state.landingPage3DLaserDot.geometry.dispose();
     state.landingPage3DLaserDot.material.dispose();
     state.setLandingPage3DLaserDot(null);
+  }
+}
+
+// Ko-fi支援ページを開く（MRセッション終了→外部ブラウザで開く）
+function openKofiPage() {
+  playButtonSound();
+  const url = 'https://ko-fi.com/noranekob';
+  // MRセッション終了後にブラウザに遷移
+  if (state.xrSession) {
+    state.xrSession.end().then(() => {
+      window.open(url, '_blank');
+    }).catch(() => {
+      window.open(url, '_blank');
+    });
+  } else {
+    window.open(url, '_blank');
   }
 }
 
@@ -4622,6 +4667,8 @@ function checkLandingPage3DButtonHover() {
             landingPageButtonClicked = true;
             if (buttonType === 'bgm') {
               toggleLandingPage3DBGM();
+            } else if (buttonType === 'kofi') {
+              openKofiPage();
             } else if (buttonType === 'credits') {
               showCreditsPage3D();
               creditsButtonLastClickTime = Date.now(); // ウェイト用にクリック時刻を記録
